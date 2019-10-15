@@ -42,7 +42,7 @@ function IndexHeader() {
             <h1 className="h1-seo">SHARE WITH ME.</h1>
             <h3>An organized communty to learn.</h3>
             <div style={{flex:1,alignContent:'center'}}>
-            <div style={{display:'flex', width:'50%',flex:1,justifyContent:'space-between'}}>
+            <div style={{display: 'contents', width:'50%',flex:1,justifyContent:'space-between'}}>
             <Button className="btn-round" color="white" size = "lg" type="button">
                 Sign in
               </Button>
