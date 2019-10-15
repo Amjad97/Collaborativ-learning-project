@@ -8,8 +8,9 @@ import { Button, Container, Row } from "reactstrap";
 function Examples() {
   return (
     <>
-      <div className="section section-examples" data-background-color="black">
-        <div className="space-50"></div>
+    <div className = "ml-auto mr-auto text-center" style = {{paddingTop:30}}>
+      <h2 className="title">Categories</h2>
+      <div className="section section-examples" data-background-color="white">
         <Container className="text-center">
           <Row>
             <div className="col">
@@ -22,12 +23,13 @@ function Examples() {
               </a>
               <Button
                 className="btn-round"
-                color="default"
+                color="white"
                 to="/landing-page"
                 outline
                 tag={Link}
+                style={{backgroundColor:"#2c2c2c"}}
               >
-                View Landing Page
+                Learn more
               </Button>
             </div>
             <div className="col">
@@ -44,12 +46,33 @@ function Examples() {
                 to="/profile-page"
                 outline
                 tag={Link}
+                style={{backgroundColor:"#2c2c2c"}}
               >
-                View Profile Page
+                Learn more
+              </Button>
+            </div>
+            <div className="col">
+              <a href="examples/landing-page.html" target="_blank">
+                <img
+                  alt="..."
+                  className="img-raised"
+                  src={require("assets/img/landing.jpg")}
+                ></img>
+              </a>
+              <Button
+                className="btn-round"
+                color="default"
+                to="/landing-page"
+                outline
+                tag={Link}
+                style={{backgroundColor:"#2c2c2c"}}
+              >
+                Learn more
               </Button>
             </div>
           </Row>
         </Container>
+      </div>
       </div>
     </>
   );
