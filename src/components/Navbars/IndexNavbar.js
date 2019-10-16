@@ -110,7 +110,7 @@ function IndexNavbar() {
                 </NavItem>
               <NavItem>
                 <NavLink
-                  href="https://twitter.com/CreativeTim?ref=creativetim"
+                  href="https://twitter.com/"
                   target="_blank"
                   id="twitter-tooltip"
                 >
@@ -123,7 +123,7 @@ function IndexNavbar() {
               </NavItem>
               <NavItem>
                 <NavLink
-                  href="https://www.facebook.com/CreativeTim?ref=creativetim"
+                  href="https://www.facebook.com/"
                   target="_blank"
                   id="facebook-tooltip"
                 >
@@ -136,7 +136,7 @@ function IndexNavbar() {
               </NavItem>
               <NavItem>
                 <NavLink
-                  href="https://www.instagram.com/CreativeTimOfficial?ref=creativetim"
+                  href="https://www.instagram.com/"
                   target="_blank"
                   id="instagram-tooltip"
                 >
