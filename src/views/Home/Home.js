@@ -5,16 +5,17 @@ import React from "react";
 // } from "reactstrap";
 
 // core components
-import IndexNavbar from "components/Navbars/IndexNavbar.js";
-import IndexHeader from "components/Headers/IndexHeader.js";
-import DarkFooter from "components/Footers/DarkFooter.js";
+import NavBar from "./components/NavBar/NavBar";
+import Header from "./components/Header/Header";
+import About from "./components/About/About";
+import Categories from "./components/Categories/Categories";
+import Contact from "./components/Contact/Contact";
 
-// sections for this page
-import Typography from "./index-sections/Typography.js";
-import Examples from "./index-sections/Examples.js";
-import Download from "./index-sections/Download.js";
+// shared components
+import Footer from "components/Footer/Footer.js";
 
-function Index() {
+
+function Home() {
   React.useEffect(() => {
     document.body.classList.add("index-page");
     document.body.classList.add("sidebar-collapse");
@@ -28,18 +29,18 @@ function Index() {
   });
   return (
     <>
-      <IndexNavbar />
+      <NavBar />
       <div className="wrapper">
-        <IndexHeader />
+        <Header />
         <div className="main">
-          <Typography />
-          <Examples />
-          <Download />
+          <About />
+          <Categories />
+          <Contact />
         </div>
-        <DarkFooter />
+        <Footer color="black"/>
       </div>
     </>
   );
 }
 
-export default Index;
+export default Home;

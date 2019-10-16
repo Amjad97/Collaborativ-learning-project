@@ -4,23 +4,23 @@ import React from "react";
 // reactstrap components
 import { Container } from "reactstrap";
 
-function TransparentFooter() {
+function Footer({color}) {
   return (
-    <footer className="footer">
+    <footer className="footer" data-background-color={color}>
       <Container>
         <nav>
           <ul>
             <li>
               <a
-                href="https://www.creative-tim.com?ref=nukr-transparent-footer"
+                href="/"
                 target="_blank"
               >
-                Creative Tim
+                Share with me
               </a>
             </li>
             <li>
               <a
-                href="http://presentation.creative-tim.com?ref=nukr-transparent-footer"
+                href="/"
                 target="_blank"
               >
                 About Us
@@ -28,7 +28,7 @@ function TransparentFooter() {
             </li>
             <li>
               <a
-                href="http://blog.creative-tim.com?ref=nukr-transparent-footer"
+                href="/"
                 target="_blank"
               >
                 Blog
@@ -37,25 +37,17 @@ function TransparentFooter() {
           </ul>
         </nav>
         <div className="copyright" id="copyright">
-          © {new Date().getFullYear()}, Designed by{" "}
+          © {new Date().getFullYear()}, Designed and coded by{" "}
           <a
-            href="https://www.invisionapp.com?ref=nukr-transparent-footer"
+            href="https://www.facebook.com/mesto.husein"
             target="_blank"
           >
-            Invision
+            MESTO & Amjad
           </a>
-          . Coded by{" "}
-          <a
-            href="https://www.creative-tim.com?ref=nukr-transparent-footer"
-            target="_blank"
-          >
-            Creative Tim
-          </a>
-          .
         </div>
       </Container>
     </footer>
   );
 }
 
-export default TransparentFooter;
+export default Footer;
