@@ -41,16 +41,16 @@ function IndexHeader() {
             ></img>
             <h1 className="h1-seo">SHARE WITH ME.</h1>
             <h3>An organized communty to learn.</h3>
-            <div style={{flex:1,alignContent:'center'}}>
-            <div style={{display: 'contents', width:'50%',flex:1,justifyContent:'space-between'}}>
-            <Button className="btn-round" color="white" size = "lg" type="button">
+            <Container className = "text-center">
+            <Row className ="justify-content-md-center sharing-area text-center" style = {{marginTop : '0px'}}>
+            <Button className="btn-round" color="white" size = "lg" type="button" style ={{margin : '15px 10px 0px'}} >
                 Sign in
               </Button>
-              <Button className="btn-round" color="success" size = "lg" type="button" >
+              <Button className="btn-round" color="success" size = "lg" type="button" style ={{margin : '15px 10px 0px'}} >
                 Register
               </Button>
-          </div>
-          </div>
+          </Row>
+          </Container>
           </div>
           
         </Container>

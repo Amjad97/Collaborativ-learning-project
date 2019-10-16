@@ -18,12 +18,12 @@ function Examples() {
                 <img
                   alt="..."
                   className="img-raised"
-                  src={require("assets/img/landing.jpg")}
+                  src={require("assets/img/english2.png")}
                 ></img>
               </a>
               <Button
                 className="btn-round"
-                color="white"
+                color="default"
                 to="/landing-page"
                 outline
                 tag={Link}
@@ -37,7 +37,7 @@ function Examples() {
                 <img
                   alt="..."
                   className="img-raised"
-                  src={require("assets/img/profile.jpg")}
+                  src={require("assets/img/web.png")}
                 ></img>
               </a>
               <Button
@@ -56,7 +56,7 @@ function Examples() {
                 <img
                   alt="..."
                   className="img-raised"
-                  src={require("assets/img/landing.jpg")}
+                  src={require("assets/img/web.png")}
                 ></img>
               </a>
               <Button

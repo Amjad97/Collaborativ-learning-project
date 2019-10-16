@@ -12,15 +12,15 @@ function DarkFooter() {
           <ul>
             <li>
               <a
-                href="https://www.creative-tim.com?ref=nukr-dark-footer"
+                href="/"
                 target="_blank"
               >
-                Creative Tim
+                Share with me
               </a>
             </li>
             <li>
               <a
-                href="http://presentation.creative-tim.com?ref=nukr-dark-footer"
+                href="/"
                 target="_blank"
               >
                 About Us
@@ -28,7 +28,7 @@ function DarkFooter() {
             </li>
             <li>
               <a
-                href="http://blog.creative-tim.com?ref=nukr-dark-footer"
+                href="/"
                 target="_blank"
               >
                 Blog
@@ -39,17 +39,17 @@ function DarkFooter() {
         <div className="copyright" id="copyright">
           © {new Date().getFullYear()}, Designed by{" "}
           <a
-            href="https://www.invisionapp.com?ref=nukr-dark-footer"
+            href="https://www.facebook.com/mesto.husein"
             target="_blank"
           >
-            Invision
+            MESTO
           </a>
           . Coded by{" "}
           <a
-            href="https://www.creative-tim.com?ref=nukr-dark-footer"
+            href="https://www.facebook.com/profile.php?id=100005548268234"
             target="_blank"
           >
-            Creative Tim
+            AMJAD
           </a>
           .
         </div>
