@@ -26,18 +26,27 @@ import "assets/demo/demo.css";
 import "assets/demo/nucleo-icons-page-styles.css";
 // pages for this kit
 import Home from "views/Home/Home.js";
-import NucleoIcons from "views/NucleoIcons.js";
-import LoginPage from "views/examples/LoginPage.js";
-import LandingPage from "views/examples/LandingPage.js";
-import ProfilePage from "views/examples/ProfilePage.js";
-import SignInSide from "views/examples/LoginEx.js";
+//import NucleoIcons from "views/NucleoIcons.js";
+import LoginPage from "views/LoginPage/LoginPage.js";
+//import LandingPage from "views/examples/LandingPage.js";
+//import ProfilePage from "views/examples/ProfilePage.js";
+//import SignInSide from "views/examples/LoginEx.js";
 
 ReactDOM.render(
   <BrowserRouter>
     <Switch>
       <Switch>
         <Route path="/home" render={props => <Home {...props} />} />
-        <Route
+        <Route path="/login-page" render={props => <LoginPage {...props} />} />
+        <Redirect to="/home" />
+        <Redirect from="/" to="/home" />
+      </Switch>
+    </Switch>
+  </BrowserRouter>,
+  document.getElementById("root")
+);
+/*
+<Route
           path="/nucleo-icons"
           render={props => <NucleoIcons {...props} />}
         />
@@ -49,11 +58,5 @@ ReactDOM.render(
           path="/profile-page"
           render={props => <ProfilePage {...props} />}
         />
-        <Route path="/login-page" render={props => <LoginPage {...props} />} />
-        <Redirect to="/home" />
-        <Redirect from="/" to="/home" />
-      </Switch>
-    </Switch>
-  </BrowserRouter>,
-  document.getElementById("root")
-);
+        
+*/

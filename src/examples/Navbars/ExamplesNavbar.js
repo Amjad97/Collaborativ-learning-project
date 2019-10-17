@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 // reactstrap components
 import {
-  Button,
   Collapse,
   DropdownToggle,
   DropdownMenu,
@@ -17,7 +16,7 @@ import {
   UncontrolledTooltip
 } from "reactstrap";
 
-function IndexNavbar() {
+function ExamplesNavbar() {
   const [navbarColor, setNavbarColor] = React.useState("navbar-transparent");
   const [collapseOpen, setCollapseOpen] = React.useState(false);
   React.useEffect(() => {
@@ -50,7 +49,7 @@ function IndexNavbar() {
           }}
         />
       ) : null}
-      <Navbar className={"fixed-top " + navbarColor} expand="lg" color="info">
+      <Navbar className={"fixed-top " + navbarColor} color="info" expand="lg">
         <Container>
           <div className="navbar-translate">
             <NavbarBrand
@@ -58,8 +57,11 @@ function IndexNavbar() {
               target="_blank"
               id="navbar-brand"
             >
-              Share with me
+              Share With me
             </NavbarBrand>
+            <UncontrolledTooltip target="#navbar-brand">
+              Designed and Coded by MESTO & Amjad
+            </UncontrolledTooltip>
             <button
               className="navbar-toggler navbar-toggler"
               onClick={() => {
@@ -81,36 +83,13 @@ function IndexNavbar() {
           >
             <Nav navbar>
               <NavItem>
-                <NavLink
-                  href="#pablo"
-                  onClick={e => {
-                    e.preventDefault();
-                    document
-                      .getElementById("download-section")
-                      .scrollIntoView();
-                  }}
-                >
-                  <i className="now-ui-icons users_circle-08"></i>
-                  <p>Sign in</p>
+                <NavLink to="/index" tag={Link}>
+                  Back to Home
                 </NavLink>
               </NavItem>
               <NavItem>
-              <NavLink
-                  href="#pablo"
-                  onClick={e => {
-                    e.preventDefault();
-                    document
-                      .getElementById("download-section")
-                      .scrollIntoView();
-                  }}
-                >
-                  <i className="now-ui-icons users_circle-08"></i>
-                  <p>Regester</p>
-                </NavLink>
-                </NavItem>
-              <NavItem>
                 <NavLink
-                  href="https://twitter.com/"
+                  href="https://twitter.com/CreativeTim?ref=creativetim"
                   target="_blank"
                   id="twitter-tooltip"
                 >
@@ -123,7 +102,7 @@ function IndexNavbar() {
               </NavItem>
               <NavItem>
                 <NavLink
-                  href="https://www.facebook.com/"
+                  href="https://www.facebook.com/CreativeTim?ref=creativetim"
                   target="_blank"
                   id="facebook-tooltip"
                 >
@@ -136,7 +115,7 @@ function IndexNavbar() {
               </NavItem>
               <NavItem>
                 <NavLink
-                  href="https://www.instagram.com/"
+                  href="https://www.instagram.com/CreativeTimOfficial?ref=creativetim"
                   target="_blank"
                   id="instagram-tooltip"
                 >
@@ -155,4 +134,4 @@ function IndexNavbar() {
   );
 }
 
-export default IndexNavbar;
+export default ExamplesNavbar;
