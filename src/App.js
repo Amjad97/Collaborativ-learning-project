@@ -8,10 +8,9 @@ import "assets/demo/demo.css";
 import "assets/demo/nucleo-icons-page-styles.css";
 // pages for this kit
 import Home from "views/Home/Home"
-import NucleoIcons from "views/NucleoIcons.js";
-import LoginPage from "views/examples/LoginPage.js";
-import LandingPage from "views/examples/LandingPage.js";
-import ProfilePage from "views/examples/ProfilePage.js";
+import LoginPage from "views/LoginPage/LoginPage.js";
+import LandingPage from "views/LandingPage/LandingPage.js";
+import ProfilePage from "views/ProfilePage/ProfilePage.js";
 import history from './history';
 
 export default function App() {
@@ -20,10 +19,6 @@ export default function App() {
       <Switch>
         <Switch>
           <Route path="/home" render={props => <Home {...props} />} />
-          <Route
-            path="/nucleo-icons"
-            render={props => <NucleoIcons {...props} />}
-          />
           <Route
             path="/landing-page"
             render={props => <LandingPage {...props} />}
