@@ -34,6 +34,11 @@ function Header() {
         ></div>
         <Container>
           <div className="content-center brand">
+          <img
+              alt="..."
+              className="n-logo"
+              src={require("assets/img/now-logo.png")}
+            ></img>
             <h1 className="h1-seo">SHARE WITH ME.</h1>
             <h3>An organized communty to learn.</h3>
             <Container className = "text-center">

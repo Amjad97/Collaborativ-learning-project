@@ -51,52 +51,16 @@ function ExamplesNavbar() {
       ) : null}
       <Navbar className={"fixed-top " + navbarColor} color="info" expand="lg">
         <Container>
-          <UncontrolledDropdown className="button-dropdown">
-            <DropdownToggle
-              caret
-              data-toggle="dropdown"
-              href="#pablo"
-              id="navbarDropdown"
-              tag="a"
-              onClick={e => e.preventDefault()}
-            >
-              <span className="button-bar"></span>
-              <span className="button-bar"></span>
-              <span className="button-bar"></span>
-            </DropdownToggle>
-            <DropdownMenu aria-labelledby="navbarDropdown">
-              <DropdownItem header tag="a">
-                Dropdown header
-              </DropdownItem>
-              <DropdownItem href="#pablo" onClick={e => e.preventDefault()}>
-                Action
-              </DropdownItem>
-              <DropdownItem href="#pablo" onClick={e => e.preventDefault()}>
-                Another action
-              </DropdownItem>
-              <DropdownItem href="#pablo" onClick={e => e.preventDefault()}>
-                Something else here
-              </DropdownItem>
-              <DropdownItem divider></DropdownItem>
-              <DropdownItem href="#pablo" onClick={e => e.preventDefault()}>
-                Separated link
-              </DropdownItem>
-              <DropdownItem divider></DropdownItem>
-              <DropdownItem href="#pablo" onClick={e => e.preventDefault()}>
-                One more separated link
-              </DropdownItem>
-            </DropdownMenu>
-          </UncontrolledDropdown>
           <div className="navbar-translate">
             <NavbarBrand
-              href="https://demos.creative-tim.com/now-ui-kit-react/index?ref=nukr-examples-navbar"
+              href="/"
               target="_blank"
               id="navbar-brand"
             >
-              Now Ui Kit
+              Share With me
             </NavbarBrand>
             <UncontrolledTooltip target="#navbar-brand">
-              Designed by Invision. Coded by Creative Tim
+              Designed and Coded by MESTO & Amjad
             </UncontrolledTooltip>
             <button
               className="navbar-toggler navbar-toggler"
@@ -120,12 +84,7 @@ function ExamplesNavbar() {
             <Nav navbar>
               <NavItem>
                 <NavLink to="/index" tag={Link}>
-                  Back to Kit
-                </NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="https://github.com/creativetimofficial/now-ui-kit-react/issues?ref=creativetim">
-                  Have an issue?
+                  Back to Home
                 </NavLink>
               </NavItem>
               <NavItem>
