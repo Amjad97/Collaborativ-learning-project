@@ -3,7 +3,8 @@ import React from "react";
 
 // reactstrap components
 import { Container ,Button,Row } from "reactstrap";
-// core components
+
+import histoty from '../../../../history';
 
 function Header() {
   let pageHeader = React.createRef();
@@ -21,6 +22,10 @@ function Header() {
       };
     }
   });
+
+  const toLoginPage = () => {
+    histoty.push('/login-page')
+  }
 
   return (
     <>
@@ -43,7 +48,7 @@ function Header() {
             <h3>An organized communty to learn.</h3>
             <Container className = "text-center">
             <Row className ="justify-content-md-center sharing-area text-center" style = {{marginTop : '0px'}}>
-            <Button className="btn-round" color="white" size = "lg" type="button" style ={{margin : '15px 10px 0px'}} >
+            <Button className="btn-round" color="white" size = "lg" type="button" style ={{margin : '15px 10px 0px'}} onClick={toLoginPage}>
                 Sign in
               </Button>
               <Button className="btn-round" color="success" size = "lg" type="button" style ={{margin : '15px 10px 0px'}} >

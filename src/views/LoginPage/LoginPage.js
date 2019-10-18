@@ -19,8 +19,8 @@ import {
 } from "reactstrap";
 
 // core components
-import ExamplesNavbar from "examples/Navbars/ExamplesNavbar.js";
-import Footer from "components/Footer/Footer.js";
+import NavBar from "shared/components/Navbars/NavBar";
+import Footer from "shared/components/Footer/Footer";
 
 const useStyles = makeStyles(styles);
 
@@ -41,7 +41,7 @@ function LoginPage(props) {
   });
   return (
     <>
-      <ExamplesNavbar />
+      <NavBar />
       <div className="page-header clear-filter" filter-color="blue">
         <div
           className="page-header-image"

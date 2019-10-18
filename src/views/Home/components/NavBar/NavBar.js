@@ -51,7 +51,6 @@ function NavBar() {
           <div className="navbar-translate">
             <NavbarBrand
               href="/"
-              target="_blank"
               id="navbar-brand"
             >
               Share with me

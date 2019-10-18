@@ -10,6 +10,7 @@ import "assets/demo/nucleo-icons-page-styles.css";
 import Home from "views/Home/Home"
 import LoginPage from "views/LoginPage/LoginPage.js";
 import LandingPage from "views/LandingPage/LandingPage.js";
+import SignUpPage from "views/RegisterPage/RegisterPage";
 import ProfilePage from "views/ProfilePage/ProfilePage.js";
 import history from './history';
 
@@ -31,7 +32,10 @@ export default function App() {
             path="/login-page"
             render={props => <LoginPage {...props} />}
           />
-          <Redirect to="/home" />
+          <Route
+            path="/signup-page"
+            render={props => <SignUpPage {...props} />}
+          />
           <Redirect from="/" to="/home" />
         </Switch>
       </Switch>

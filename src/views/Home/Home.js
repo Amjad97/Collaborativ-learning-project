@@ -12,7 +12,7 @@ import Categories from "./components/Categories/Categories";
 import Contact from "./components/Contact/Contact";
 
 // shared components
-import Footer from "components/Footer/Footer.js";
+import Footer from "shared/components/Footer/Footer.js";
 
 
 function Home() {

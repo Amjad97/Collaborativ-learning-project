@@ -12,7 +12,7 @@ import {
   UncontrolledTooltip
 } from "reactstrap";
 
-function ExamplesNavbar() {
+function NavBar() {
   const [navbarColor, setNavbarColor] = React.useState("navbar-transparent");
   const [collapseOpen, setCollapseOpen] = React.useState(false);
   React.useEffect(() => {
@@ -50,14 +50,10 @@ function ExamplesNavbar() {
           <div className="navbar-translate">
             <NavbarBrand
               href="/"
-              target="_blank"
               id="navbar-brand"
             >
               Share With me
             </NavbarBrand>
-            <UncontrolledTooltip target="#navbar-brand">
-              Designed and Coded by MESTO & Amjad
-            </UncontrolledTooltip>
             <button
               className="navbar-toggler navbar-toggler"
               onClick={() => {
@@ -130,4 +126,4 @@ function ExamplesNavbar() {
   );
 }
 
-export default ExamplesNavbar;
+export default NavBar;
