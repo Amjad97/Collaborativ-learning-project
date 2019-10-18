@@ -1,13 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
+
 // reactstrap components
 import {
-  Button,
   Collapse,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  UncontrolledDropdown,
   NavbarBrand,
   Navbar,
   NavItem,
@@ -16,6 +11,7 @@ import {
   Container,
   UncontrolledTooltip
 } from "reactstrap";
+import history from '../../../../history';
 
 function NavBar() {
   const [navbarColor, setNavbarColor] = React.useState("navbar-transparent");
@@ -60,19 +56,6 @@ function NavBar() {
             >
               Share with me
             </NavbarBrand>
-            <button
-              className="navbar-toggler navbar-toggler"
-              onClick={() => {
-                document.documentElement.classList.toggle("nav-open");
-                setCollapseOpen(!collapseOpen);
-              }}
-              aria-expanded={collapseOpen}
-              type="button"
-            >
-              <span className="navbar-toggler-bar top-bar"></span>
-              <span className="navbar-toggler-bar middle-bar"></span>
-              <span className="navbar-toggler-bar bottom-bar"></span>
-            </button>
           </div>
           <Collapse
             className="justify-content-end"
@@ -85,9 +68,7 @@ function NavBar() {
                   href="#pablo"
                   onClick={e => {
                     e.preventDefault();
-                    document
-                      .getElementById("download-section")
-                      .scrollIntoView();
+                    history.push('/login-page');
                   }}
                 >
                   <i className="now-ui-icons users_circle-08"></i>

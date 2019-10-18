@@ -2,7 +2,7 @@
 import React from "react";
 
 // reactstrap components
-import { Container ,Button,Row,Col } from "reactstrap";
+import { Container ,Button,Row } from "reactstrap";
 // core components
 
 function Header() {

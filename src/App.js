@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import { Router, Route, Switch, Redirect } from "react-router-dom";
 
 // styles for this kit
 import "assets/css/bootstrap.min.css";
@@ -12,10 +12,11 @@ import NucleoIcons from "views/NucleoIcons.js";
 import LoginPage from "views/examples/LoginPage.js";
 import LandingPage from "views/examples/LandingPage.js";
 import ProfilePage from "views/examples/ProfilePage.js";
+import history from './history';
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <Router history={history}>
       <Switch>
         <Switch>
           <Route path="/home" render={props => <Home {...props} />} />
@@ -39,6 +40,6 @@ export default function App() {
           <Redirect from="/" to="/home" />
         </Switch>
       </Switch>
-    </BrowserRouter>
+    </Router>
   );
 }
