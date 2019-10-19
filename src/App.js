@@ -12,6 +12,7 @@ import LoginPage from "views/LoginPage/LoginPage.js";
 import LandingPage from "views/LandingPage/LandingPage.js";
 import SignUpPage from "views/RegisterPage/RegisterPage";
 import ProfilePage from "views/ProfilePage/ProfilePage.js";
+import Icons from "shared/NucleoIcons"
 import history from './history';
 
 export default function App() {
@@ -35,6 +36,10 @@ export default function App() {
           <Route
             path="/signup-page"
             render={props => <SignUpPage {...props} />}
+          />
+          <Route
+            path="/icons"
+            render={props => <Icons {...props} />}
           />
           <Redirect from="/" to="/home" />
         </Switch>

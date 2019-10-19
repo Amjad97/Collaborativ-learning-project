@@ -31,7 +31,7 @@ function SignUp() {
           backgroundImage: "url(" + require("assets/img/bg11.jpg") + ")",
           backgroundSize: "cover",
           backgroundPosition: "top center",
-          minHeight: "700px"
+          minHeight: "636px", 
         }}
       >
         <Container>
