@@ -22,6 +22,8 @@ import {
 import NavBar from "shared/components/Navbars/NavBar";
 import Footer from "shared/components/Footer/Footer";
 
+import history from "../../history"
+
 const useStyles = makeStyles(styles);
 
 function LoginPage(props) {
@@ -55,11 +57,8 @@ function LoginPage(props) {
               <Card className="card-login card-plain">
                 <Form action="" className="form" method="">
                   <CardHeader className="text-center">
-                    <div className="logo-container">
-                      <img
-                        alt="..."
-                        src={require("assets/img/now-logo.png")}
-                      ></img>
+                    <div style={{display: "flex", justifyContent: "center"}}>
+                      <h2 style={{width: "fit-content", textAlign:"center"}}>LOGIN</h2>
                     </div>
                   </CardHeader>
                   <div className={classes.socialAuth}>
@@ -97,7 +96,7 @@ function LoginPage(props) {
                     >
                       <InputGroupAddon addonType="prepend">
                         <InputGroupText>
-                          <i className="now-ui-icons users_circle-08"></i>
+                          <i className="now-ui-icons ui-1_email-85"></i>
                         </InputGroupText>
                       </InputGroupAddon>
                       <Input
@@ -115,7 +114,7 @@ function LoginPage(props) {
                     >
                       <InputGroupAddon addonType="prepend">
                         <InputGroupText>
-                          <i className="now-ui-icons text_caps-small"></i>
+                          <i className="now-ui-icons ui-1_lock-circle-open"></i>
                         </InputGroupText>
                       </InputGroupAddon>
                       <Input
@@ -141,8 +140,10 @@ function LoginPage(props) {
                       <h6>
                         <a
                           className="link"
-                          href="#pablo"
-                          onClick={e => e.preventDefault()}
+                          href="/signup-page"
+                          onClick={e => {
+                            e.preventDefault()
+                            history.push("/signup-page")}}
                         >
                           Create Account
                         </a>

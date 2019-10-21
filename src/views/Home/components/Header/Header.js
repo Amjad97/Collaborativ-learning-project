@@ -27,6 +27,10 @@ function Header() {
     histoty.push('/login-page')
   }
 
+  const toSignupPage = () => {
+    histoty.push('/signup-page')
+  }
+
   return (
     <>
       <div className="page-header clear-filter">
@@ -51,7 +55,7 @@ function Header() {
             <Button className="btn-round" color="white" size = "lg" type="button" style ={{margin : '15px 10px 0px'}} onClick={toLoginPage}>
                 Sign in
               </Button>
-              <Button className="btn-round" color="success" size = "lg" type="button" style ={{margin : '15px 10px 0px'}} >
+              <Button className="btn-round" color="success" size = "lg" type="button" style ={{margin : '15px 10px 0px'}} onClick={toSignupPage}>
                 Register
               </Button>
           </Row>

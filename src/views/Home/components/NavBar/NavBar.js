@@ -79,9 +79,7 @@ function NavBar() {
                   href="#pablo"
                   onClick={e => {
                     e.preventDefault();
-                    document
-                      .getElementById("download-section")
-                      .scrollIntoView();
+                    history.push('/signup-page');
                   }}
                 >
                   <i className="now-ui-icons users_circle-08"></i>
