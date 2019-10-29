@@ -44,11 +44,11 @@ function SignUp(props) {
   return (
     <>
       <NavBar />
-      <div className="page-header clear-filter" filter-color="blue">
+      <div className="page-header clear-filter">
         <div
           className="page-header-image"
           style={{
-            backgroundImage: "url(" + require("assets/img/login.jpg") + ")"
+            backgroundImage: "url(" + require("assets/img/bg.jpeg") + ")"
           }}
         ></div>
         <div className="content">
@@ -57,11 +57,7 @@ function SignUp(props) {
               <Card className="card-login card-plain">
                 <Form action="" className="form" method="">
                   <CardHeader className="text-center">
-                    <div style={{ display: "flex", justifyContent: "center" }}>
-                      <h2 style={{ width: "fit-content", textAlign: "center" }}>
-                        SIGNUP
-                      </h2>
-                    </div>
+                    <h2 style={{marginBottom: 10}}>SIGNUP</h2>
                   </CardHeader>
                   <div className={classes.socialAuth}>
                     <Button

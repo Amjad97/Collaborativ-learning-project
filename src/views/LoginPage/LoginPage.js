@@ -22,7 +22,7 @@ import {
 import NavBar from "shared/components/Navbars/NavBar";
 import Footer from "shared/components/Footer/Footer";
 
-import history from "../../history"
+import history from "../../history";
 
 const useStyles = makeStyles(styles);
 
@@ -44,50 +44,48 @@ function LoginPage(props) {
   return (
     <>
       <NavBar />
-      <div className="page-header clear-filter" filter-color="blue">
+      <div className="page-header clear-filter">
         <div
           className="page-header-image"
           style={{
-            backgroundImage: "url(" + require("assets/img/login.jpg") + ")"
+            backgroundImage: "url(" + require("assets/img/bg.jpeg") + ")"
           }}
         ></div>
         <div className="content">
-          <Container className = {classes.container}>
+          <Container className={classes.container}>
             <Col className="ml-auto mr-auto" md="4">
               <Card className="card-login card-plain">
                 <Form action="" className="form" method="">
                   <CardHeader className="text-center">
-                    <div style={{display: "flex", justifyContent: "center"}}>
-                      <h2 style={{width: "fit-content", textAlign:"center"}}>LOGIN</h2>
-                    </div>
+                    <h2 style={{ marginBottom: 10 }}>LOGIN</h2>
                   </CardHeader>
                   <div className={classes.socialAuth}>
-              <Button
-                className="btn-icon btn-round"
-                color="info"
-                href="#pablo"
-                onClick={e => e.preventDefault()}
-              >
-                <i className="fab fa-facebook-square"></i>
-              </Button>
-              <Button
-                className="btn-icon btn-round"
-                color="info"
-                href="#pablo"
-                onClick={e => e.preventDefault()}
-              >
-                <i className="fab fa-twitter"></i>
-              </Button>
-              <Button
-                className="btn-icon btn-round"
-                color="info"
-                href="#pablo"
-                onClick={e => e.preventDefault()}
-              >
-                <i className="fab fa-google-plus"></i>
-              </Button>
-            </div>
-                  <CardBody>
+                    <Button
+                      className="btn-icon btn-round"
+                      color="info"
+                      href="#pablo"
+                      onClick={e => e.preventDefault()}
+                    >
+                      <i className="fab fa-facebook-square"></i>
+                    </Button>
+                    <Button
+                      className="btn-icon btn-round"
+                      color="info"
+                      href="#pablo"
+                      onClick={e => e.preventDefault()}
+                    >
+                      <i className="fab fa-twitter"></i>
+                    </Button>
+                    <Button
+                      className="btn-icon btn-round"
+                      color="info"
+                      href="#pablo"
+                      onClick={e => e.preventDefault()}
+                    >
+                      <i className="fab fa-google-plus"></i>
+                    </Button>
+                  </div>
+                  <CardBody style={{padding: '2.25rem 0'}}>
                     <InputGroup
                       className={
                         "no-border input-lg" +
@@ -142,8 +140,9 @@ function LoginPage(props) {
                           className="link"
                           href="/signup-page"
                           onClick={e => {
-                            e.preventDefault()
-                            history.push("/signup-page")}}
+                            e.preventDefault();
+                            history.push("/signup-page");
+                          }}
                         >
                           Create Account
                         </a>
@@ -166,7 +165,7 @@ function LoginPage(props) {
             </Col>
           </Container>
         </div>
-        <Footer color ="transpernt" />
+        <Footer color="transpernt" />
       </div>
     </>
   );

@@ -37,7 +37,7 @@ function Header() {
         <div
           className="page-header-image"
           style={{
-            backgroundImage: "url(" + require("assets/img/header.jpg") + ")"
+            backgroundImage: "url(" + require("assets/img/bg.jpeg") + ")"
           }}
           ref={pageHeader}
         ></div>
@@ -52,10 +52,10 @@ function Header() {
             <h3>An organized communty to learn.</h3>
             <Container className = "text-center">
             <Row className ="justify-content-md-center sharing-area text-center" style = {{marginTop : '0px'}}>
-            <Button className="btn-round" color="white" size = "lg" type="button" style ={{margin : '15px 10px 0px'}} onClick={toLoginPage}>
+            <Button className="btn-round" size = "lg" type="button" style ={{margin : '15px 10px 0px', backgroundColor:'#87B7CB', color: '#1B1E23' }} onClick={toLoginPage}>
                 Sign in
               </Button>
-              <Button className="btn-round" color="success" size = "lg" type="button" style ={{margin : '15px 10px 0px'}} onClick={toSignupPage}>
+              <Button className="btn-round" size = "lg" type="button" style ={{margin : '15px 10px 0px', backgroundColor:'#D6EBEC', color: '#1B1E23' }} onClick={toSignupPage}>
                 Register
               </Button>
           </Row>
