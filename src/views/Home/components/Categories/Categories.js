@@ -14,7 +14,7 @@ function Categories() {
         <Container className="text-center">
           <Row>
             <div className="col">
-              <a href="examples/landing-page.html" target="_blank">
+              <a href="/landing-page">
                 <img
                   alt="..."
                   className="img-raised"
@@ -33,7 +33,7 @@ function Categories() {
               </Button>
             </div>
             <div className="col">
-              <a href="examples/profile-page.html" target="_blank">
+              <a href="/landing-page">
                 <img
                   alt="..."
                   className="img-raised"
@@ -52,11 +52,11 @@ function Categories() {
               </Button>
             </div>
             <div className="col">
-              <a href="examples/landing-page.html" target="_blank">
+              <a href="/landing-page">
                 <img
                   alt="..."
                   className="img-raised"
-                  src={require("assets/img/web.png")}
+                  src={require("assets/img/mobile_development.jpg")}
                 ></img>
               </a>
               <Button

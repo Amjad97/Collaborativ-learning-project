@@ -14,7 +14,7 @@ function About() {
             <Row>
               <Col className="ml-auto mr-auto text-center" md="8">
                 <h2 className="title">Who we are?</h2>
-                <h5 className="description">
+                <h5 className="description" style={{color: "#000"}}>
                   According to the National Oceanic and Atmospheric
                   Administration, Ted, Scambos, NSIDClead scentist, puts the
                   potentially record low maximum sea ice extent tihs year down
