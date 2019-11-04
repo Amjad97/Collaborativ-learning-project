@@ -83,7 +83,7 @@ function NavBar() {
                   }}
                 >
                   <i className="now-ui-icons users_circle-08"></i>
-                  <p>Regester</p>
+                  <p>Sign up</p>
                 </NavLink>
                 </NavItem>
               <NavItem>

@@ -56,7 +56,7 @@ function Header() {
                 Sign in
               </Button>
               <Button className="btn-round" size = "lg" type="button" style ={{margin : '15px 10px 0px', backgroundColor:'#D6EBEC', color: '#1B1E23' }} onClick={toSignupPage}>
-                Register
+                Sign up
               </Button>
           </Row>
           </Container>

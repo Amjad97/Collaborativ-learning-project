@@ -17,6 +17,7 @@ import {
   Container,
   Col
 } from "reactstrap";
+import { AvForm, AvField } from "availity-reactstrap-validation";
 
 // core components
 import NavBar from "shared/components/Navbars/NavBar";
@@ -85,36 +86,30 @@ function LoginPage(props) {
                       <i className="fab fa-google-plus"></i>
                     </Button>
                   </div>
-                  <CardBody style={{padding: '2.25rem 0'}}>
-                    <InputGroup
-                      className={
-                        "no-border input-lg" +
-                        (firstFocus ? " input-group-focus" : "")
-                      }
-                    >
-                      <InputGroupAddon addonType="prepend">
-                        <InputGroupText>
-                          <i className="now-ui-icons ui-1_email-85"></i>
-                        </InputGroupText>
-                      </InputGroupAddon>
-                      <Input
-                        placeholder="Email"
-                        type="email"
-                        onFocus={() => setFirstFocus(true)}
-                        onBlur={() => setFirstFocus(false)}
-                      ></Input>
-                    </InputGroup>
+                  <CardBody style={{ padding: "2.25rem 0" }}>
+                    <AvForm>
+                      <InputGroup
+                        className={
+                          "no-border input-lg" +
+                          (firstFocus ? " input-group-focus" : "")
+                        }
+                      >
+                        <AvField
+                          errorMessage="Invalid email"
+                          name="Email"
+                          placeholder="Email"
+                          type="email"
+                          onFocus={() => setFirstFocus(true)}
+                          onBlur={() => setFirstFocus(false)}
+                        ></AvField>
+                      </InputGroup>
+                    </AvForm>
                     <InputGroup
                       className={
                         "no-border input-lg" +
                         (lastFocus ? " input-group-focus" : "")
                       }
                     >
-                      <InputGroupAddon addonType="prepend">
-                        <InputGroupText>
-                          <i className="now-ui-icons ui-1_lock-circle-open"></i>
-                        </InputGroupText>
-                      </InputGroupAddon>
                       <Input
                         placeholder="Password"
                         type="password"
@@ -172,3 +167,10 @@ function LoginPage(props) {
 }
 
 export default LoginPage;
+/*
+<InputGroupAddon addonType="prepend">
+  <InputGroupText>
+    <i className="now-ui-icons ui-1_lock-circle-open"></i>
+  </InputGroupText>
+</InputGroupAddon>
+*/

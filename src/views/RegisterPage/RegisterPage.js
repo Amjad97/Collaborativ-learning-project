@@ -17,6 +17,7 @@ import {
   Container,
   Col
 } from "reactstrap";
+import { AvForm, AvField } from "availity-reactstrap-validation";
 
 // core components
 import NavBar from "shared/components/Navbars/NavBar";
@@ -92,11 +93,6 @@ function SignUp(props) {
                         (firstFocus ? " input-group-focus" : "")
                       }
                     >
-                      <InputGroupAddon addonType="prepend">
-                        <InputGroupText>
-                          <i className="now-ui-icons users_single-02"></i>
-                        </InputGroupText>
-                      </InputGroupAddon>
                       <Input
                         placeholder="First Name"
                         type="text"
@@ -110,11 +106,6 @@ function SignUp(props) {
                         (lastFocus ? " input-group-focus" : "")
                       }
                     >
-                      <InputGroupAddon addonType="prepend">
-                        <InputGroupText>
-                          <i className="now-ui-icons users_single-02"></i>
-                        </InputGroupText>
-                      </InputGroupAddon>
                       <Input
                         placeholder="Last Name"
                         type="text"
@@ -122,35 +113,29 @@ function SignUp(props) {
                         onBlur={() => setLastFocus(false)}
                       ></Input>
                     </InputGroup>
-                    <InputGroup
-                      className={
-                        "no-border input-lg" +
-                        (emailFocus ? " input-group-focus" : "")
-                      }
-                    >
-                      <InputGroupAddon addonType="prepend">
-                        <InputGroupText>
-                          <i className="now-ui-icons ui-1_email-85"></i>
-                        </InputGroupText>
-                      </InputGroupAddon>
-                      <Input
-                        placeholder="Email"
-                        type="email"
-                        onFocus={() => setEmailFocus(true)}
-                        onBlur={() => setEmailFocus(false)}
-                      ></Input>
-                    </InputGroup>
+                    <AvForm>
+                      <InputGroup
+                        className={
+                          "no-border input-lg" +
+                          (emailFocus ? " input-group-focus" : "")
+                        }
+                      >
+                        <AvField
+                          errorMessage="Invalid email"
+                          name="Email"
+                          placeholder="Email"
+                          type="email"
+                          onFocus={() => setEmailFocus(true)}
+                          onBlur={() => setEmailFocus(false)}
+                        ></AvField>
+                      </InputGroup>
+                    </AvForm>
                     <InputGroup
                       className={
                         "no-border input-lg" +
                         (passwordFocus ? " input-group-focus" : "")
                       }
                     >
-                      <InputGroupAddon addonType="prepend">
-                        <InputGroupText>
-                          <i className="now-ui-icons ui-1_lock-circle-open"></i>
-                        </InputGroupText>
-                      </InputGroupAddon>
                       <Input
                         placeholder="Password"
                         type="password"
