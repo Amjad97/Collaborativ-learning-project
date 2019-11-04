@@ -11,8 +11,6 @@ import {
   CardFooter,
   Form,
   Input,
-  InputGroupAddon,
-  InputGroupText,
   InputGroup,
   Container,
   Col
@@ -33,13 +31,8 @@ function LoginPage(props) {
   const [lastFocus, setLastFocus] = React.useState(false);
   React.useEffect(() => {
     document.body.classList.add("login-page");
-    document.body.classList.add("sidebar-collapse");
-    document.documentElement.classList.remove("nav-open");
-    window.scrollTo(0, 0);
-    document.body.scrollTop = 0;
     return function cleanup() {
       document.body.classList.remove("login-page");
-      document.body.classList.remove("sidebar-collapse");
     };
   });
   return (
@@ -130,29 +123,30 @@ function LoginPage(props) {
                       Log in
                     </Button>
                     <div className="pull-left">
-                      <h6>
-                        <a
-                          className="link"
-                          href="/signup-page"
-                          onClick={e => {
-                            e.preventDefault();
-                            history.push("/signup-page");
-                          }}
-                        >
-                          Create Account
-                        </a>
-                      </h6>
+                      <a
+                        style={{ fontSize: "medium" }}
+                        className="link"
+                        href="/signup-page"
+                        onClick={e => {
+                          e.preventDefault();
+                          history.push("/signup-page");
+                        }}
+                      >
+                        Create Account
+                      </a>
                     </div>
                     <div className="pull-right">
-                      <h6>
-                        <a
-                          className="link"
-                          href="#pablo"
-                          onClick={e => e.preventDefault()}
-                        >
-                          Forgot password?
-                        </a>
-                      </h6>
+                      <a
+                        style={{ fontSize: "medium" }}
+                        className="link"
+                        href="/forgot-password"
+                        onClick={e => {
+                          e.preventDefault();
+                          history.push("/forgot-password");
+                        }}
+                      >
+                        Forgot password?
+                      </a>
                     </div>
                   </CardFooter>
                 </Form>

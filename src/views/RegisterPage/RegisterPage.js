@@ -11,8 +11,6 @@ import {
   CardFooter,
   Form,
   Input,
-  InputGroupAddon,
-  InputGroupText,
   InputGroup,
   Container,
   Col
@@ -22,6 +20,7 @@ import { AvForm, AvField } from "availity-reactstrap-validation";
 // core components
 import NavBar from "shared/components/Navbars/NavBar";
 import Footer from "shared/components/Footer/Footer";
+import history from "../../history";
 
 const useStyles = makeStyles(styles);
 
@@ -33,13 +32,8 @@ function SignUp(props) {
   const [passwordFocus, setPasswordFocus] = React.useState(false);
   React.useEffect(() => {
     document.body.classList.add("login-page");
-    document.body.classList.add("sidebar-collapse");
-    document.documentElement.classList.remove("nav-open");
-    window.scrollTo(0, 0);
-    document.body.scrollTop = 0;
     return function cleanup() {
       document.body.classList.remove("login-page");
-      document.body.classList.remove("sidebar-collapse");
     };
   });
   return (
@@ -58,7 +52,7 @@ function SignUp(props) {
               <Card className="card-login card-plain">
                 <Form action="" className="form" method="">
                   <CardHeader className="text-center">
-                    <h2 style={{marginBottom: 10}}>SIGNUP</h2>
+                    <h2 style={{ marginBottom: 10 }}>SIGNUP</h2>
                   </CardHeader>
                   <div className={classes.socialAuth}>
                     <Button
@@ -155,6 +149,22 @@ function SignUp(props) {
                     >
                       Sign up
                     </Button>
+                    <div className="pull-center">
+                      Aleady have an account?{" "}
+                      <span>
+                        <a
+                          style={{ fontSize: "medium" }}
+                          className="link"
+                          href="/login-page"
+                          onClick={e => {
+                            e.preventDefault();
+                            history.push("/login-page");
+                          }}
+                        >
+                          Login
+                        </a>
+                      </span>
+                    </div>
                   </CardFooter>
                 </Form>
               </Card>

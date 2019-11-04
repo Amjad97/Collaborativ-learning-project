@@ -7,7 +7,6 @@ const appStyle = theme => ({
     },
     container:{
         marginTop: '-60px',
-        display: 'absolute',
         top: '40%',
         right: '25%',
     }

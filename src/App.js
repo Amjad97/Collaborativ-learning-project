@@ -10,6 +10,7 @@ import "assets/demo/nucleo-icons-page-styles.css";
 import Home from "views/Home/Home"
 import LoginPage from "views/LoginPage/LoginPage.js";
 import LandingPage from "views/LandingPage/LandingPage.js";
+import ForgotPassPage from "views/ForgotPassPage/ForgotPassPage";
 import SignUpPage from "views/RegisterPage/RegisterPage";
 import ProfilePage from "views/ProfilePage/ProfilePage.js";
 import Icons from "shared/NucleoIcons"
@@ -32,6 +33,10 @@ export default function App() {
           <Route
             path="/login-page"
             render={props => <LoginPage {...props} />}
+          />
+          <Route
+            path="/forgot-password"
+            render={props => <ForgotPassPage {...props} />}
           />
           <Route
             path="/signup-page"
