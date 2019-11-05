@@ -8,11 +8,12 @@ import "assets/demo/demo.css";
 import "assets/demo/nucleo-icons-page-styles.css";
 // pages for this kit
 import Home from "views/Home/Home"
-import LoginPage from "views/LoginPage/LoginPage.js";
-import LandingPage from "views/LandingPage/LandingPage.js";
+import LoginPage from "views/LoginPage/LoginPage";
+import LandingPage from "views/LandingPage/LandingPage";
+import CategoryPage from "views/CategoryPage/CategoryPage";
 import ForgotPassPage from "views/ForgotPassPage/ForgotPassPage";
 import SignUpPage from "views/RegisterPage/RegisterPage";
-import ProfilePage from "views/ProfilePage/ProfilePage.js";
+import ProfilePage from "views/ProfilePage/ProfilePage";
 import Icons from "shared/NucleoIcons"
 import history from './history';
 
@@ -25,6 +26,10 @@ export default function App() {
           <Route
             path="/landing-page"
             render={props => <LandingPage {...props} />}
+          />
+          <Route
+            path="/category-page"
+            render={props => <CategoryPage {...props} />}
           />
           <Route
             path="/profile-page"
