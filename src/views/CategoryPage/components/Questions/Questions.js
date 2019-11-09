@@ -9,7 +9,19 @@ import {
 } from "@material-ui/core";
 import image from "assets/img/default-avatar.png";
 
+import QuestionDialog from "./components/QuestionDialog"; 
+
 function Questions() {
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   return (
     <>
       <div style={{ padding: "50px 0px" }}>
@@ -26,9 +38,11 @@ function Questions() {
             variant="contained"
             color="primary"
             style={{ height: "max-content" }}
+            onClick={handleClickOpen}
           >
             Ask Question
           </Button>
+          <QuestionDialog open={open} handleClose={handleClose}/>
         </div>
         <div style={{ padding: "0px 40px" }}>
           <List>

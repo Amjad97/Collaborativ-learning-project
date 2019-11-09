@@ -1,9 +1,26 @@
 import React from "react";
 // core components
-import { List, ListItem, ListItemText, Divider, Button } from "@material-ui/core";
+import {
+  List,
+  ListItem,
+  ListItemText,
+  Divider,
+  Button
+} from "@material-ui/core";
 import image from "assets/img/default-avatar.png";
 
+import ResourceDialog from "./components/ResourceDialog";
+
 function Resources() {
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
   return (
     <>
       <div
@@ -23,9 +40,11 @@ function Resources() {
             variant="contained"
             color="primary"
             style={{ height: "max-content" }}
+            onClick={handleClickOpen}
           >
             Add Resource
           </Button>
+          <ResourceDialog open={open} handleClose={handleClose}/>
         </div>
         <div style={{ padding: "0px 40px" }}>
           <List>
