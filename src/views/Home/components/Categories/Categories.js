@@ -1,8 +1,7 @@
 import React from "react";
 // reactstrap components
 import { Button, Container, Row } from "reactstrap";
-
-// core components
+import history from "../../../../history";
 
 function Categories() {
   return (
@@ -12,56 +11,74 @@ function Categories() {
         <div className="section section-examples" data-background-color="white">
           <Container className="text-center">
             <Row>
-              <div className="col">
-                <a href="/category-page">
-                  <img
-                    alt="..."
-                    className="img-raised"
-                    src={require("assets/img/english2.png")}
-                  ></img>
-                  <Button
-                    className="btn-round"
-                    color="default"
-                    outline
-                    style={{ backgroundColor: "#2c2c2c", marginTop: 30 }}
-                  >
-                    Learn more
-                  </Button>
-                </a>
+              <div
+                className="col"
+                onClick={() =>
+                  history.push({
+                    pathname: "/category-page",
+                    image: require("assets/img/english2.png")
+                  })
+                }
+              >
+                <img
+                  alt="..."
+                  className="img-raised"
+                  src={require("assets/img/english2.png")}
+                ></img>
+                <Button
+                  className="btn-round"
+                  color="default"
+                  outline
+                  style={{ backgroundColor: "#2c2c2c", marginTop: 30 }}
+                >
+                  Learn more
+                </Button>
               </div>
-              <div className="col">
-                <a href="/category-page">
-                  <img
-                    alt="..."
-                    className="img-raised"
-                    src={require("assets/img/web.png")}
-                  ></img>
-                  <Button
-                    className="btn-round"
-                    color="default"
-                    outline
-                    style={{ backgroundColor: "#2c2c2c", marginTop: 30 }}
-                  >
-                    Learn more
-                  </Button>
-                </a>
+              <div
+                className="col"
+                onClick={() =>
+                  history.push({
+                    pathname: "/category-page",
+                    image: require("assets/img/web.png")
+                  })
+                }
+              >
+                <img
+                  alt="..."
+                  className="img-raised"
+                  src={require("assets/img/web.png")}
+                ></img>
+                <Button
+                  className="btn-round"
+                  color="default"
+                  outline
+                  style={{ backgroundColor: "#2c2c2c", marginTop: 30 }}
+                >
+                  Learn more
+                </Button>
               </div>
-              <div className="col">
-                <a href="/category-page">
-                  <img
-                    alt="..."
-                    className="img-raised"
-                    src={require("assets/img/mobile_development.jpg")}
-                  ></img>
-                  <Button
-                    className="btn-round"
-                    color="default"
-                    outline
-                    style={{ backgroundColor: "#2c2c2c", marginTop: 30 }}
-                  >
-                    Learn more
-                  </Button>
-                </a>
+              <div
+                className="col"
+                onClick={() =>
+                  history.push({
+                    pathname: "/category-page",
+                    image: require("assets/img/mobile_development.jpg")
+                  })
+                }
+              >
+                <img
+                  alt="..."
+                  className="img-raised"
+                  src={require("assets/img/mobile_development.jpg")}
+                ></img>
+                <Button
+                  className="btn-round"
+                  color="default"
+                  outline
+                  style={{ backgroundColor: "#2c2c2c", marginTop: 30 }}
+                >
+                  Learn more
+                </Button>
               </div>
             </Row>
           </Container>

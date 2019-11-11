@@ -1,8 +1,9 @@
 import React from "react";
+import defaultBackground from "assets/img/english2.png"; 
 
 // core components
 
-function CategoryPageHeader() {
+function CategoryPageHeader({ background = defaultBackground }) {
   let pageHeader = React.createRef();
 
   React.useEffect(() => {
@@ -24,7 +25,7 @@ function CategoryPageHeader() {
         <div
           className="page-header-image"
           style={{
-            backgroundImage: "url(" + require("assets/img/web.png") + ")"
+            backgroundImage: "url(" + background + ")"
           }}
           ref={pageHeader}
         ></div>

@@ -167,9 +167,6 @@ html.nucleo-icons-page-styles {
 /* --------------------------------
  Smart fixed navigation
  -------------------------------- */
-.nucleo-icons-page-styles {
-  /* mobile first */
-}
 .nucleo-icons-page-styles #cd-nav ul {
   position: fixed;
   width: 90%;

@@ -119,24 +119,50 @@ function SignUp(props) {
                           name="Email"
                           placeholder="Email"
                           type="email"
+                          validate={{
+                            required: {
+                              value: true,
+                              errorMessage: "Please enter an email"
+                            }
+                          }}
                           onFocus={() => setEmailFocus(true)}
                           onBlur={() => setEmailFocus(false)}
                         ></AvField>
                       </InputGroup>
                     </AvForm>
-                    <InputGroup
-                      className={
-                        "no-border input-lg" +
-                        (passwordFocus ? " input-group-focus" : "")
-                      }
-                    >
-                      <Input
-                        placeholder="Password"
-                        type="password"
-                        onFocus={() => setPasswordFocus(true)}
-                        onBlur={() => setPasswordFocus(false)}
-                      ></Input>
-                    </InputGroup>
+                    <AvForm>
+                      <InputGroup
+                        className={
+                          "no-border input-lg" +
+                          (passwordFocus ? " input-group-focus" : "")
+                        }
+                      >
+                        <AvField
+                          name="password"
+                          placeholder="Password"
+                          type="password"
+                          validate={{
+                            required: {
+                              value: true,
+                              errorMessage: "Please enter a password"
+                            },
+                            // Regex for a password that is 8 digits long, with at least 1 number, 1 capital letter and /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/
+                            pattern: {
+                              value:
+                                "/^.*(?=.{8,})((?=.*[!@#$%^&*()-_=+{};:,<.>]){1})(?=.*d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/",
+                              errorMessage:
+                                "Password 8 digits long at least and contains at least 1 special character, one number and one capital letter"
+                            }
+                          }}
+                          validationErrors={{
+                            matchRegexp:
+                              "Password 8 digits long at least and contains at least 1 special character, one number and one capital letter"
+                          }}
+                          onFocus={() => setPasswordFocus(true)}
+                          onBlur={() => setPasswordFocus(false)}
+                        ></AvField>
+                      </InputGroup>
+                    </AvForm>
                   </CardBody>
                   <CardFooter className="text-center">
                     <Button

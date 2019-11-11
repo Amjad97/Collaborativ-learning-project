@@ -4,21 +4,16 @@ import {
   DialogTitle,
   DialogContent,
   DialogActions,
-  TextField,
-  Button,
-  Select,
-  MenuItem,
-  FormControl,
-  InputLabel
+  Button
 } from "@material-ui/core";
+import {
+  AvForm,
+  AvField,
+  AvRadioGroup,
+  AvRadio
+} from "availity-reactstrap-validation";
 
 function QuestionDialog({ open, handleClose }) {
-  const [category, setCategory] = React.useState("");
-
-  const handleChange = event => {
-    setCategory(event.target.value);
-  };
-
   return (
     <Dialog open={open} onClose={handleClose}>
       <DialogTitle
@@ -27,35 +22,33 @@ function QuestionDialog({ open, handleClose }) {
       >
         Ask Question
       </DialogTitle>
-      <DialogContent style={{ width: 500 }}>
-        <TextField
-          margin="dense"
-          id="question_title"
-          label="Question title"
-          type="text"
-          fullWidth
-        />
-        <TextField
-          margin="dense"
-          id="question_description"
-          label="Question Description"
-          type="text"
-          fullWidth
-          multiline={true}
-        />
-        <FormControl style={{minWidth: 200}}>
-        <InputLabel id="demo-simple-select-label">Category</InputLabel>
-        <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value={category}
-          onChange={handleChange}
-        >
-          <MenuItem value="English">English</MenuItem>
-          <MenuItem value="Web Development">Web Development</MenuItem>
-          <MenuItem value="Mobile Development">Mobile Development</MenuItem>
-        </Select>
-      </FormControl>
+      <DialogContent style={{ width: 600 }}>
+        <AvForm>
+          <AvField
+            errorMessage="This Fiels is required"
+            name="question_title"
+            placeholder="Question title"
+            type="text"
+            required
+          />
+          <AvField
+            errorMessage="This Fiels is required"
+            name="question_description"
+            placeholder="Question Description"
+            type="text"
+            required
+          />
+          <AvRadioGroup
+            inline
+            name="category"
+            label="category"
+            required
+          >
+            <AvRadio label="English" value="English" />
+            <AvRadio label="Web development" value="Web development" />
+            <AvRadio label="Mobile development" value="Mobile development" />
+          </AvRadioGroup>
+        </AvForm>
       </DialogContent>
       <DialogActions>
         <Button onClick={handleClose} color="primary">

@@ -9,7 +9,7 @@ import {
 } from "@material-ui/core";
 import image from "assets/img/default-avatar.png";
 
-import QuestionDialog from "./components/QuestionDialog"; 
+import QuestionDialog from "./components/QuestionDialog";
 
 function Questions() {
   const [open, setOpen] = React.useState(false);
@@ -42,7 +42,7 @@ function Questions() {
           >
             Ask Question
           </Button>
-          <QuestionDialog open={open} handleClose={handleClose}/>
+          <QuestionDialog open={open} handleClose={handleClose} />
         </div>
         <div style={{ padding: "0px 40px" }}>
           <List>
@@ -234,7 +234,8 @@ function Questions() {
                     width: "fit-content",
                     margin: 5,
                     borderRadius: 10,
-                    color: "white"
+                    color: "white",
+                    fontSize: 12
                   }}
                 >
                   Web Development
