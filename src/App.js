@@ -11,11 +11,11 @@ import Home from "views/Home/Home";
 import LoginPage from "views/LoginPage/LoginPage";
 import LandingPage from "views/LandingPage/LandingPage";
 import CategoryPage from "views/CategoryPage/CategoryPage";
+import QuestionPage from "views/QuestionPage/QuestionPage";
 import ForgotPassPage from "views/ForgotPassPage/ForgotPassPage";
 import ResetPassPage from "views/ResetPassPage/ResetPassPage";
 import SignUpPage from "views/RegisterPage/RegisterPage";
 import ProfilePage from "views/ProfilePage/ProfilePage";
-import Icons from "shared/NucleoIcons";
 import history from "./history";
 
 export default function App() {
@@ -30,6 +30,10 @@ export default function App() {
         <Route
           path="/category-page"
           render={props => <CategoryPage {...props} />}
+        />
+        <Route
+          path="/question-page"
+          render={props => <QuestionPage {...props} />}
         />
         <Route
           path="/profile-page"
@@ -48,7 +52,6 @@ export default function App() {
           path="/signup-page"
           render={props => <SignUpPage {...props} />}
         />
-        <Route path="/icons" render={props => <Icons {...props} />} />
         <Redirect from="/" to="/home" />
       </Switch>
     </Router>

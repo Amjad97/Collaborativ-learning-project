@@ -1,7 +1,7 @@
 import React from "react";
 // reactstrap components
 import { Button, Container, Row } from "reactstrap";
-import history from "../../../../history";
+import history from "../../../history";
 
 function Categories() {
   return (

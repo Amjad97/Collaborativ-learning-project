@@ -8,7 +8,7 @@ import React from "react";
 import NavBar from "./components/NavBar/NavBar";
 import Header from "./components/Header/Header";
 import About from "./components/About/About";
-import Categories from "./components/Categories/Categories";
+import Categories from "shared/components//Categories/Categories";
 import Contact from "./components/Contact/Contact";
 
 // shared components

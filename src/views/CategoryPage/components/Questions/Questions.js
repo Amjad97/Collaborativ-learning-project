@@ -7,6 +7,7 @@ import {
   Divider,
   Button
 } from "@material-ui/core";
+import history from "../../../../history";
 import image from "assets/img/default-avatar.png";
 
 import QuestionDialog from "./components/QuestionDialog";
@@ -23,8 +24,10 @@ function Questions() {
   };
 
   return (
-    <>
-      <div style={{ padding: "50px 0px" }}>
+      <div
+        style={{ padding: "50px 0px" }}
+        onClick={() => history.push("/question-page")}
+      >
         <div
           style={{
             display: "flex",
@@ -269,7 +272,6 @@ function Questions() {
           </List>
         </div>
       </div>
-    </>
   );
 }
 
