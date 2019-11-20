@@ -11,6 +11,11 @@ const useStyles = makeStyles(styles);
 function QuestionDetails() {
   const classes = useStyles();
 
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+    document.body.scrollTop = 0;
+  });
+
   return (
     <div className={classes.root}>
       <Grid container spacing={3}>
