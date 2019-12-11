@@ -5,7 +5,6 @@ import {
   ListItem,
   ListItemText,
   Divider,
-  Button
 } from "@material-ui/core";
 import image from "assets/img/default-avatar.png";
 
@@ -36,14 +35,9 @@ function Resources() {
           }}
         >
           <h2 className="title">Resources</h2>
-          <Button
-            variant="contained"
-            color="primary"
-            style={{ height: "max-content" }}
-            onClick={handleClickOpen}
-          >
-            Add Resource
-          </Button>
+          <button className="ui button primary" onClick={handleClickOpen}>
+          Add Resource
+        </button>
           <ResourceDialog open={open} handleClose={handleClose}/>
         </div>
         <div style={{ padding: "0px 40px" }}>

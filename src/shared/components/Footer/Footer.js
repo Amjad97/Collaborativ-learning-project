@@ -21,12 +21,6 @@ function Footer({ color }) {
             </li>
           </ul>
         </nav>
-        <div className="copyright" id="copyright">
-          © {new Date().getFullYear()}, Designed and coded by{" "}
-          <a href="https://www.facebook.com/mesto.husein" target="_blank">
-            MESTO & Amjad
-          </a>
-        </div>
       </Container>
     </footer>
   );

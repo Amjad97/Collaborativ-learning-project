@@ -4,6 +4,7 @@ import { Grid, Paper, makeStyles } from "@material-ui/core";
 import Question from "./Question";
 import Answers from "./Answers";
 import AddAnswer from "./AddAnswer";
+import RelatedQuestion from "./RelatedQuestion";
 import styles from "../style/style";
 
 const useStyles = makeStyles(styles);
@@ -31,6 +32,7 @@ function QuestionDetails() {
         <Grid item xs={4}>
           <Paper className={classes.paper}>
             <h3>Related Questions</h3>
+            <RelatedQuestion/>
           </Paper>
         </Grid>
       </Grid>
