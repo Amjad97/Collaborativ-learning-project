@@ -6,11 +6,11 @@ import {
   camelCase
 } from "lodash";
 
-import getUserRequeste from "./UserRequeste";
-import getCategoryRequeste from "./CategoryRequeste";
-import getResourceRequeste from "./ResourceRequeste";
-import getQuestionRequeste from "./QuestionRequeste";
-import getAnswerRequeste from "./AnswerRequeste";
+import getUserRequests from "./UserRequests";
+import getCategoryRequests from "./CategoryRequests";
+import getResourceRequests from "./ResourceRequests";
+import getQuestionRequests from "./QuestionRequests";
+import getAnswerRequests from "./AnswerRequests";
 
 // make the Axios requests cancelable
 makeCancelable(axios, { debug: true });
@@ -84,11 +84,11 @@ const requests = (config) => {
   const requestInstance = new Request(baseUrl);
   return {
     requestInstance,
-    UserApiRequests: getUserRequeste(requestInstance, baseUrl),
-    CategoryApiRequests: getCategoryRequeste(requestInstance, baseUrl),
-    ResourceApiRequests: getResourceRequeste(requestInstance, baseUrl),
-    QuestionApiRequests: getQuestionRequeste(requestInstance, baseUrl),
-    AnswerApiRequests: getAnswerRequeste(requestInstance, baseUrl),
+    UserApiRequests: getUserRequests(requestInstance, baseUrl),
+    CategoryApiRequests: getCategoryRequests(requestInstance, baseUrl),
+    ResourceApiRequests: getResourceRequests(requestInstance, baseUrl),
+    QuestionApiRequests: getQuestionRequests(requestInstance, baseUrl),
+    AnswerApiRequests: getAnswerRequests(requestInstance, baseUrl),
   };
 };
 

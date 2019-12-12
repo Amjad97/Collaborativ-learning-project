@@ -1,4 +1,5 @@
 import React from "react";
+import { inject, observer } from "mobx-react";
 
 import { Divider, makeStyles } from "@material-ui/core";
 import image from "assets/img/default-avatar.png";
@@ -6,8 +7,10 @@ import styles from "../style/style";
 
 const useStyles = makeStyles(styles);
 
-function Answers() {
+function Answers(props) {
   const classes = useStyles();
+
+  //const { answers } = props.store.categoriesStore.categories.questions;
 
   return (
     <div style={{ display: "flex", marginTop: 30 }}>
@@ -28,4 +31,4 @@ function Answers() {
   );
 }
 
-export default Answers;
+export default inject("store")(observer(Answers));

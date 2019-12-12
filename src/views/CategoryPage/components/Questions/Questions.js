@@ -1,4 +1,5 @@
 import React from "react";
+import { inject, observer } from "mobx-react";
 // core components
 import { List, ListItem, ListItemText, Divider } from "@material-ui/core";
 import history from "../../../../history";
@@ -6,7 +7,7 @@ import image from "assets/img/default-avatar.png";
 
 import QuestionDialog from "./components/QuestionDialog";
 
-function Questions() {
+function Questions(props) {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -16,6 +17,8 @@ function Questions() {
   const handleClose = () => {
     setOpen(false);
   };
+
+  const { allQuestion } = props.store.categoriesStore.categories;
 
   return (
     <div style={{ padding: "50px 0px" }}>
@@ -184,4 +187,4 @@ function Questions() {
   );
 }
 
-export default Questions;
+export default inject("store")(observer(Questions));

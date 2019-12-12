@@ -1,9 +1,20 @@
 import React from "react";
+import { inject, observer } from "mobx-react";
 // reactstrap components
 import { Button, Container, Row } from "reactstrap";
 import history from "../../../history";
 
-function Categories() {
+function Categories(props) {
+  const {
+    fetchCategories,
+    categories
+  } = props.store.categoriesStore.categories;
+
+  const loadCategories = () => {
+    fetchCategories();
+  };
+  const categoriesToRender = categories;
+
   return (
     <>
       <div className="ml-auto mr-auto text-center" style={{ paddingTop: 30 }}>
@@ -88,4 +99,4 @@ function Categories() {
   );
 }
 
-export default Categories;
+export default inject("store")(observer(Categories));

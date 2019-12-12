@@ -1,16 +1,12 @@
 import React from "react";
+import { inject, observer } from "mobx-react";
 // core components
-import {
-  List,
-  ListItem,
-  ListItemText,
-  Divider,
-} from "@material-ui/core";
+import { List, ListItem, ListItemText, Divider } from "@material-ui/core";
 import image from "assets/img/default-avatar.png";
 
 import ResourceDialog from "./components/ResourceDialog";
 
-function Resources() {
+function Resources(props) {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -20,6 +16,9 @@ function Resources() {
   const handleClose = () => {
     setOpen(false);
   };
+
+  const { allResources } = props.store.categoriesStore.categories;
+
   return (
     <>
       <div
@@ -36,9 +35,9 @@ function Resources() {
         >
           <h2 className="title">Resources</h2>
           <button className="ui button primary" onClick={handleClickOpen}>
-          Add Resource
-        </button>
-          <ResourceDialog open={open} handleClose={handleClose}/>
+            Add Resource
+          </button>
+          <ResourceDialog open={open} handleClose={handleClose} />
         </div>
         <div style={{ padding: "0px 40px" }}>
           <List>
@@ -88,4 +87,4 @@ function Resources() {
   );
 }
 
-export default Resources;
+export default inject("store")(observer(Resources));

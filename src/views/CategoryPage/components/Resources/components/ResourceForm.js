@@ -1,4 +1,5 @@
 import React from "react";
+import { inject, observer } from "mobx-react";
 
 import { AvForm, AvRadio } from "availity-reactstrap-validation";
 import Formsy from "formsy-react";
@@ -138,4 +139,4 @@ function ResourceForm({ handleClose }) {
   );
 }
 
-export default ResourceForm;
+export default inject("store")(observer(ResourceForm));

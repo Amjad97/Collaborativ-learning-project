@@ -1,4 +1,5 @@
 import React from "react";
+import { Provider } from "mobx-react";
 import { Router, Route, Switch, Redirect } from "react-router-dom";
 
 // styles for this kit
@@ -17,43 +18,49 @@ import ResetPassPage from "views/ResetPassPage/ResetPassPage";
 import SignUpPage from "views/RegisterPage/RegisterPage";
 import ProfilePage from "views/ProfilePage/ProfilePage";
 import history from "./history";
+import store from "./shared/store";
 
 export default function App() {
   return (
-    <Router history={history}>
-      <Switch>
-        <Route path="/home" render={props => <Home {...props} />} />
-        <Route
-          path="/landing-page"
-          render={props => <LandingPage {...props} />}
-        />
-        <Route
-          path="/category-page"
-          render={props => <CategoryPage {...props} />}
-        />
-        <Route
-          path="/question-page"
-          render={props => <QuestionPage {...props} />}
-        />
-        <Route
-          path="/profile-page"
-          render={props => <ProfilePage {...props} />}
-        />
-        <Route path="/login-page" render={props => <LoginPage {...props} />} />
-        <Route
-          path="/forgot-password"
-          render={props => <ForgotPassPage {...props} />}
-        />
-        <Route
-          path="/reset-password"
-          render={props => <ResetPassPage {...props} />}
-        />
-        <Route
-          path="/signup-page"
-          render={props => <SignUpPage {...props} />}
-        />
-        <Redirect from="/" to="/home" />
-      </Switch>
-    </Router>
+    <Provider store={store}>
+      <Router history={history}>
+        <Switch>
+          <Route path="/home" render={props => <Home {...props} />} />
+          <Route
+            path="/landing-page"
+            render={props => <LandingPage {...props} />}
+          />
+          <Route
+            path="/category-page"
+            render={props => <CategoryPage {...props} />}
+          />
+          <Route
+            path="/question-page"
+            render={props => <QuestionPage {...props} />}
+          />
+          <Route
+            path="/profile-page"
+            render={props => <ProfilePage {...props} />}
+          />
+          <Route
+            path="/login-page"
+            render={props => <LoginPage {...props} />}
+          />
+          <Route
+            path="/forgot-password"
+            render={props => <ForgotPassPage {...props} />}
+          />
+          <Route
+            path="/reset-password"
+            render={props => <ResetPassPage {...props} />}
+          />
+          <Route
+            path="/signup-page"
+            render={props => <SignUpPage {...props} />}
+          />
+          <Redirect from="/" to="/home" />
+        </Switch>
+      </Router>
+    </Provider>
   );
 }

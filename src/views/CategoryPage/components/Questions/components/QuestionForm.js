@@ -1,4 +1,6 @@
 import React from "react";
+import { inject, observer } from "mobx-react";
+
 import { AvForm, AvRadio } from "availity-reactstrap-validation";
 import Formsy from "formsy-react";
 import CustomButton from "shared/components/CustomButton/CustomButton";
@@ -120,4 +122,4 @@ function QuestionForm({ handleClose }) {
   );
 }
 
-export default QuestionForm;
+export default inject("store")(observer(QuestionForm));
