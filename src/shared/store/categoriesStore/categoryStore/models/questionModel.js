@@ -2,6 +2,8 @@ import { types, flow } from "mobx-state-tree";
 
 import Answer from "./answerModel";
 import AnswersService from "../services/answers.service";
+import UtilFunctions from "../../../../utils/UtilFunctions";
+import { pick } from "lodash";
 
 const questionStore = types
   .model({
@@ -29,7 +31,20 @@ const questionStore = types
       } catch (error) {
         console.log(error);
       }
-    })
+    }),
+    addAnswer: flow(function* addAnswer(payload) {
+      try {
+        yield AnswersService.addAnswer(self.id, payload);
+        self.fetchAnswers();
+      } catch (error) {
+        console.log(error);
+      }
+    }),
+    toAddPayload: () => {
+      return UtilFunctions.toSnakeCase(
+        pick(self, ["accountId", "categoryId", "title", "description"])
+      );
+    }
   }));
 
 export default questionStore;

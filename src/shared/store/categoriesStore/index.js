@@ -15,6 +15,14 @@ const categoriesStore = types
       } catch (error) {
         console.log(error);
       }
+    }),
+    addCategory: flow(function* addCategory(payload) {
+      try {
+        yield CategoryService.addCategory(payload);
+        self.fetchCategories();
+      } catch (error) {
+        console.log(error);
+      }
     })
   }));
 
