@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import moment from 'moment';
 import { Divider, makeStyles } from "@material-ui/core";
 
 import styles from "../style/style";
@@ -12,7 +13,7 @@ function Question({ question, numOfAnswers }) {
   return (
     <div>
       <h3 className={classes.header}>{question.question}</h3>
-      <span>{question.createdAt}</span>
+      <span>{moment(question.createdAt).format('MMMM Do YYYY, h:mm a')}</span>
       <div className={classes.category}>English</div>
       <h4 className={classes.header}>{numAnswers}</h4>
       <Divider />

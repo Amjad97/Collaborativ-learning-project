@@ -29,9 +29,9 @@ function CategoryPage(props) {
       await fetchCategory(categoryId);
       await category.fetchResources(categoryId);
       await category.fetchQuestions(categoryId);
+      await setCategoryDate(category);
     }
     getData(categoryId);
-    setCategoryDate(category);
     setQuestions(category.questions);
     setResources(category.resources);
     setCategoryName(categoryData.name);

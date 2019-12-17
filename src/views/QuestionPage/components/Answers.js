@@ -1,4 +1,5 @@
 import React from "react";
+import moment from 'moment';
 import { inject, observer } from "mobx-react";
 
 import { Divider, makeStyles } from "@material-ui/core";
@@ -19,7 +20,7 @@ function Answers({ answer }) {
       />
       <div>
         <p className={classes.answer}>{answer.answer}</p>
-        <span>{answer.created_at}</span>
+        <span>{moment(answer.createdAt).format('MMMM Do YYYY, h:mm a')}</span>
         <Divider style={{ marginTop: 15 }} />
       </div>
     </div>

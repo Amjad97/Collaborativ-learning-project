@@ -6,7 +6,7 @@ import CategoryService from "./categoryStore/services/categories.service";
 const categoriesStore = types
   .model({
     categories: types.array(category, []),
-    category: types.maybeNull(types.optional(category, {})),
+    category: types.maybeNull(types.optional(category, {}))
   })
   .actions(self => ({
     fetchCategories: flow(function* fetchCategories() {
