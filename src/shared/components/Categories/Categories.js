@@ -1,19 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { inject, observer } from "mobx-react";
 // reactstrap components
 import { Button, Container, Row } from "reactstrap";
 import history from "../../../history";
 
 function Categories(props) {
-  const {
-    fetchCategories,
-    categories
-  } = props.store.categoriesStore.categories;
-
-  const loadCategories = () => {
+  useEffect(() => {
+    const { fetchCategories } = props.store.categoriesStore;
     fetchCategories();
-  };
-  const categoriesToRender = categories;
+  });
+
+  const { categories } = props.store.categoriesStore;
 
   return (
     <>
@@ -22,75 +19,40 @@ function Categories(props) {
         <div className="section section-examples" data-background-color="white">
           <Container className="text-center">
             <Row>
-              <div
-                className="col"
-                onClick={() =>
-                  history.push({
-                    pathname: "/category-page",
-                    image: require("assets/img/english2.png")
-                  })
-                }
-              >
-                <img
-                  alt="..."
-                  className="img-raised"
-                  src={require("assets/img/english2.png")}
-                ></img>
-                <Button
-                  className="btn-round"
-                  color="default"
-                  outline
-                  style={{ backgroundColor: "#2c2c2c", marginTop: 30 }}
+              {categories.map(category => (
+                <div
+                  className="col"
+                  onClick={() =>
+                    history.push({
+                      pathname: `/category/${category.id}`,
+                      image: require("assets/img/english2.png"),
+                    })
+                  }
+                  key={category.id}
                 >
-                  Learn more
-                </Button>
-              </div>
-              <div
-                className="col"
-                onClick={() =>
-                  history.push({
-                    pathname: "/category-page",
-                    image: require("assets/img/web.png")
-                  })
-                }
-              >
-                <img
-                  alt="..."
-                  className="img-raised"
-                  src={require("assets/img/web.png")}
-                ></img>
-                <Button
-                  className="btn-round"
-                  color="default"
-                  outline
-                  style={{ backgroundColor: "#2c2c2c", marginTop: 30 }}
-                >
-                  Learn more
-                </Button>
-              </div>
-              <div
-                className="col"
-                onClick={() =>
-                  history.push({
-                    pathname: "/category-page",
-                    image: require("assets/img/mobile_development.jpg")
-                  })
-                }
-              >
-                <img
-                  alt="..."
-                  className="img-raised"
-                  src={require("assets/img/mobile_development.jpg")}
-                ></img>
-                <Button
-                  className="btn-round"
-                  color="default"
-                  outline
-                  style={{ backgroundColor: "#2c2c2c", marginTop: 30 }}
-                >
-                  Learn more
-                </Button>
-              </div>
+                  <div style={{ display: "inline-grid" }}>
+                    <img
+                      alt="..."
+                      className="img-raised"
+                      src={require("assets/img/english2.png")}
+                      style={{ width: 540, height: 304 }}
+                    />
+                    <Button
+                      className="btn-round"
+                      color="default"
+                      outline
+                      style={{
+                        backgroundColor: "#2c2c2c",
+                        marginTop: 30,
+                        width: 200,
+                        justifySelf: "center"
+                      }}
+                    >
+                      Learn more
+                    </Button>
+                  </div>
+                </div>
+              ))}
             </Row>
           </Container>
         </div>

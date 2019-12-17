@@ -67,7 +67,7 @@ function NavBar() {
                   href="#pablo"
                   onClick={e => {
                     e.preventDefault();
-                    history.push('/login-page');
+                    history.push('/login');
                   }}
                 >
                   <i className="now-ui-icons users_circle-08"></i>
@@ -79,7 +79,7 @@ function NavBar() {
                   href="#pablo"
                   onClick={e => {
                     e.preventDefault();
-                    history.push('/signup-page');
+                    history.push('/signup');
                   }}
                 >
                   <i className="now-ui-icons users_circle-08"></i>

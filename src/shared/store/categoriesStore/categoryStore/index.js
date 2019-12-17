@@ -1,7 +1,7 @@
 import { types, flow } from "mobx-state-tree";
 
-import resources from "./models/resourceModel";
-import questions from "./models/questionModel";
+import resource from "./models/resourceModel";
+import question from "./models/questionModel";
 
 import ResourcesService from "./services/resources.service";
 import QuestionsService from "./services/questions.service";
@@ -11,42 +11,43 @@ import { pick } from "lodash";
 
 const categoryStore = types
   .model({
-    id: types.maybeNull(types.optional(types.string, "")),
-    title: types.optional(types.string, ""),
-    resources: types.array(resources),
-    questions: types.array(questions)
+    id: types.optional(types.number, 0),
+    name: types.optional(types.string, ""),
+    description: types.optional(types.string, ""),
+    createdAt: types.optional(types.string, ""),
+    updatedAt: types.optional(types.string, ""),
+    resources: types.array(resource, []),
+    questions: types.array(question, []),
+    question: types.maybeNull(types.optional(question, {}))
   })
-  .views(self => ({
-    get gategoryTitle() {
-      return self.title;
-    },
-    get allResources() {
-      return self.resources;
-    },
-    get allQuestion() {
-      return self.questions;
-    }
-  }))
   .actions(self => ({
-    fetchResources: flow(function* fetchResources() {
+    fetchResources: flow(function* fetchResources(categoryId) {
       try {
-        const response = yield ResourcesService.getResources(self.id);
-        self.resources = [...response.data];
+        const response = yield ResourcesService.getResources(categoryId);
+        self.resources = response;
       } catch (error) {
         console.log(error);
       }
     }),
-    fetchQuestions: flow(function* fetchQuestions() {
+    fetchQuestions: flow(function* fetchQuestions(categoryId) {
       try {
-        const response = yield QuestionsService.getQuestions(self.id);
-        self.resources = [...response.data];
+        const response = yield QuestionsService.getQuestions(categoryId);
+        self.questions = response;
+      } catch (error) {
+        console.log(error);
+      }
+    }),
+    fetchQuestion: flow(function* fetchQuestions(questionId) {
+      try {
+        const response = yield QuestionsService.getQuestion(questionId);
+        self.question = response;
       } catch (error) {
         console.log(error);
       }
     }),
     addResource: flow(function* addResource(payload) {
       try {
-        yield ResourcesService.addResource(self.id, payload);
+        yield ResourcesService.addResource(payload);
         self.fetchResources();
       } catch (error) {
         console.log(error);
@@ -54,14 +55,14 @@ const categoryStore = types
     }),
     addQuestion: flow(function* addQuestion(payload) {
       try {
-        yield QuestionsService.addQuestion(self.id, payload);
+        yield QuestionsService.addQuestion(payload);
         self.fetchQuestions();
       } catch (error) {
         console.log(error);
       }
     }),
     toAddPayload: () => {
-      return UtilFunctions.toSnakeCase(pick(self, ["title"]));
+      return UtilFunctions.toSnakeCase(pick(self, ["name", "description"]));
     }
   }));
 

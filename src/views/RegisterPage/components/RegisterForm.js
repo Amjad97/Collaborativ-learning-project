@@ -158,10 +158,10 @@ function RegisterForm() {
             <a
               style={{ fontSize: "medium" }}
               className="link"
-              href="/login-page"
+              href="/login"
               onClick={e => {
                 e.preventDefault();
-                history.push("/login-page");
+                history.push("/login");
               }}
             >
               Login

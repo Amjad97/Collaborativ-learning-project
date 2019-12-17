@@ -108,10 +108,10 @@ function LoginForm() {
             <a
               style={{ fontSize: "medium" }}
               className="link"
-              href="/signup-page"
+              href="/signup"
               onClick={e => {
                 e.preventDefault();
-                history.push("/signup-page");
+                history.push("/signup");
               }}
             >
               Create Account

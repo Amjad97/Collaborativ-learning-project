@@ -14,7 +14,7 @@ function Examples() {
         <Container className="text-center">
           <Row>
             <div className="col">
-              <a href="examples/landing-page.html" target="_blank">
+              <a href="examples/landing.html" target="_blank">
                 <img
                   alt="..."
                   className="img-raised"
@@ -24,7 +24,7 @@ function Examples() {
               <Button
                 className="btn-round"
                 color="default"
-                to="/landing-page"
+                to="/landing"
                 outline
                 tag={Link}
                 style={{backgroundColor:"#2c2c2c"}}
@@ -52,7 +52,7 @@ function Examples() {
               </Button>
             </div>
             <div className="col">
-              <a href="examples/landing-page.html" target="_blank">
+              <a href="examples/landing.html" target="_blank">
                 <img
                   alt="..."
                   className="img-raised"
@@ -62,7 +62,7 @@ function Examples() {
               <Button
                 className="btn-round"
                 color="default"
-                to="/landing-page"
+                to="/landing"
                 outline
                 tag={Link}
                 style={{backgroundColor:"#2c2c2c"}}

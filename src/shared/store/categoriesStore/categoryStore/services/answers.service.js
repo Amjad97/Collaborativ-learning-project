@@ -5,7 +5,7 @@ const AnswersService = {
   getAnswers: questionId =>
     apiRequests.AnswerApiRequests.getAnswers(questionId),
   // add answer
-  addAnswer: (questionId, answerData) =>
-    apiRequests.AnswerApiRequests.addAnswer(questionId, answerData)
+  addAnswer: (answerData) =>
+    apiRequests.AnswerApiRequests.addAnswer(answerData)
 };
 export default AnswersService;

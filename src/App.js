@@ -27,23 +27,23 @@ export default function App() {
         <Switch>
           <Route path="/home" render={props => <Home {...props} />} />
           <Route
-            path="/landing-page"
+            path="/landing"
             render={props => <LandingPage {...props} />}
           />
           <Route
-            path="/category-page"
+            path="/category/:id"
             render={props => <CategoryPage {...props} />}
           />
           <Route
-            path="/question-page"
+            path="/question/:id"
             render={props => <QuestionPage {...props} />}
           />
           <Route
-            path="/profile-page"
+            path="/profile/:id"
             render={props => <ProfilePage {...props} />}
           />
           <Route
-            path="/login-page"
+            path="/login"
             render={props => <LoginPage {...props} />}
           />
           <Route
@@ -55,7 +55,7 @@ export default function App() {
             render={props => <ResetPassPage {...props} />}
           />
           <Route
-            path="/signup-page"
+            path="/signup"
             render={props => <SignUpPage {...props} />}
           />
           <Redirect from="/" to="/home" />

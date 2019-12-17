@@ -7,10 +7,8 @@ import styles from "../style/style";
 
 const useStyles = makeStyles(styles);
 
-function Answers(props) {
+function Answers({ answer }) {
   const classes = useStyles();
-
-  //const { answers } = props.store.categoriesStore.categories.questions;
 
   return (
     <div style={{ display: "flex", marginTop: 30 }}>
@@ -20,11 +18,8 @@ function Answers(props) {
         alt="avatar"
       />
       <div>
-        <p className={classes.answer}>
-          Google can't explain this to you, as you said, but Google would be so
-          happy if they invented React. Here is the React project.
-        </p>
-        <span>Wednesday, November 20, 2019, 8:32 PM</span>
+        <p className={classes.answer}>{answer.answer}</p>
+        <span>{answer.created_at}</span>
         <Divider style={{ marginTop: 15 }} />
       </div>
     </div>

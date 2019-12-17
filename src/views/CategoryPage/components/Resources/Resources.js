@@ -6,7 +6,7 @@ import image from "assets/img/default-avatar.png";
 
 import ResourceDialog from "./components/ResourceDialog";
 
-function Resources(props) {
+function Resources({ resources }) {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -16,8 +16,6 @@ function Resources(props) {
   const handleClose = () => {
     setOpen(false);
   };
-
-  const { allResources } = props.store.categoriesStore.categories;
 
   return (
     <>
@@ -41,45 +39,50 @@ function Resources(props) {
         </div>
         <div style={{ padding: "0px 40px" }}>
           <List>
-            <ListItem style={{ flex: 1 }}>
-              <div style={{ flex: 0.95 }}>
-                <ListItemText
-                  primary="The Complete Node.js Developer Course"
-                  secondary="Learn Node.js by building real-world applications with Node, Express, MongoDB, Jest, and more!"
-                />
-                <a
-                  href="https://www.udemy.com/course/the-complete-nodejs-developer-course-2/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  https://www.udemy.com/course/the-complete-nodejs-developer-course-2/
-                </a>
-              </div>
-              <div
-                style={{
-                  flex: 0.05,
-                  display: "grid",
-                  justifyContent: "center"
-                }}
-              >
-                <div>
-                  <img
-                    src={image}
-                    style={{ width: "35px", height: "35px", margin: 10 }}
-                    alt="avatar"
-                  />
+            {resources &&
+              resources.map(resource => (
+                <div key={resource.id}>
+                  <ListItem style={{ flex: 1 }}>
+                    <div style={{ flex: 0.95 }}>
+                      <ListItemText
+                        primary={resource.title}
+                        secondary={resource.description}
+                      />
+                      <a
+                        href="https://www.udemy.com/course/the-complete-nodejs-developer-course-2/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {resource.link}
+                      </a>
+                    </div>
+                    <div
+                      style={{
+                        flex: 0.05,
+                        display: "grid",
+                        justifyContent: "center"
+                      }}
+                    >
+                      <div>
+                        <img
+                          src={image}
+                          style={{ width: "35px", height: "35px", margin: 10 }}
+                          alt="avatar"
+                        />
+                      </div>
+                      <div
+                        style={{
+                          fontSize: "10px",
+                          color: "grey"
+                        }}
+                      >
+                        JOHN DOE
+                      </div>
+                    </div>
+                  </ListItem>
+                  <Divider />
                 </div>
-                <div
-                  style={{
-                    fontSize: "10px",
-                    color: "grey"
-                  }}
-                >
-                  JOHN DOE
-                </div>
-              </div>
-            </ListItem>
-            <Divider />
+              ))}
           </List>
         </div>
       </div>

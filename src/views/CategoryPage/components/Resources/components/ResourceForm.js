@@ -1,17 +1,15 @@
 import React from "react";
 import { inject, observer } from "mobx-react";
 
-import { AvForm, AvRadio } from "availity-reactstrap-validation";
+import { AvForm } from "availity-reactstrap-validation";
 import Formsy from "formsy-react";
 import CustomButton from "shared/components/CustomButton/CustomButton";
 import Input from "shared/components/Input/Input";
-import RadioInput from "shared/components/RadioInput/RadioInput";
 
 function ResourceForm({ handleClose }) {
   const [resourceTitle, setResourceTitle] = React.useState("");
   const [resourceDescription, setResourceDescription] = React.useState("");
   const [resourceLink, setResourceLink] = React.useState("");
-  const [category, setCategory] = React.useState("");
   const [canSubmit, setCanSubmit] = React.useState(false);
   const [disableControls, setDisableControls] = React.useState(false);
 
@@ -22,7 +20,6 @@ function ResourceForm({ handleClose }) {
     setResourceTitle("");
     setResourceDescription("");
     setResourceLink("");
-    setCategory("");
   };
   return (
     <Formsy
@@ -76,36 +73,6 @@ function ResourceForm({ handleClose }) {
           onChange={e => setResourceLink(e.target.value)}
           required
         />
-        <RadioInput
-          inline
-          name="category"
-          label="category"
-          required
-          validations="isExisty"
-          value={category}
-          validate={{
-            required: {
-              value: true,
-              errorMessage: "This field is required"
-            }
-          }}
-        >
-          <AvRadio
-            label="English"
-            value="English"
-            onChange={e => setCategory(e.target.value)}
-          />
-          <AvRadio
-            label="Web development"
-            value="Web development"
-            onChange={e => setCategory(e.target.value)}
-          />
-          <AvRadio
-            label="Mobile development"
-            value="Mobile development"
-            onChange={e => setCategory(e.target.value)}
-          />
-        </RadioInput>
       </AvForm>
       <div
         style={{

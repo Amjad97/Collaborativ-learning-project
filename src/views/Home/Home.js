@@ -1,8 +1,5 @@
 import React from "react";
-
-// reactstrap components
-// import {
-// } from "reactstrap";
+import { inject, observer } from "mobx-react";
 
 // core components
 import NavBar from "./components/NavBar/NavBar";
@@ -14,8 +11,7 @@ import Contact from "./components/Contact/Contact";
 // shared components
 import Footer from "shared/components/Footer/Footer.js";
 
-
-function Home() {
+function Home(props) {
   React.useEffect(() => {
     document.body.classList.add("index-page");
     document.body.classList.add("sidebar-collapse");
@@ -27,6 +23,7 @@ function Home() {
       document.body.classList.remove("sidebar-collapse");
     };
   });
+
   return (
     <>
       <NavBar />
@@ -37,10 +34,10 @@ function Home() {
           <Categories />
           <Contact />
         </div>
-        <Footer color="black"/>
+        <Footer color="black" />
       </div>
     </>
   );
 }
 
-export default Home;
+export default inject("store")(observer(Home));

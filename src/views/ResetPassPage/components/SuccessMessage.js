@@ -42,7 +42,7 @@ const SuccessMessage = ({ handleClick = () => {} }) => {
                     color="info"
                     onClick={e => {
                       e.preventDefault();
-                      history.push("/login-page");
+                      history.push("/login");
                     }}
                     size="lg"
                   >

@@ -24,11 +24,11 @@ function Header() {
   });
 
   const toLoginPage = () => {
-    histoty.push('/login-page')
+    histoty.push('/login')
   }
 
   const toSignupPage = () => {
-    histoty.push('/signup-page')
+    histoty.push('/signup')
   }
 
   return (

@@ -1,16 +1,10 @@
 import React from "react";
 import { inject, observer } from "mobx-react";
 
-import { AvForm, AvRadio } from "availity-reactstrap-validation";
-import Formsy from "formsy-react";
 import CustomButton from "shared/components/CustomButton/CustomButton";
-import Input from "shared/components/Input/Input";
-import RadioInput from "shared/components/RadioInput/RadioInput";
 
 function QuestionForm({ handleClose }) {
-  const [questionTitle, setQuestionTitle] = React.useState("");
-  const [questionDescription, setQuestionDescription] = React.useState("");
-  const [category, setCategory] = React.useState("");
+  const [question, setQuestion] = React.useState("");
   const [canSubmit, setCanSubmit] = React.useState(false);
   const [disableControls, setDisableControls] = React.useState(false);
 
@@ -18,79 +12,27 @@ function QuestionForm({ handleClose }) {
     event.preventDefault();
     event.stopPropagation();
     handleClose();
-    setQuestionTitle("");
-    setQuestionDescription("");
-    setCategory("");
+    setQuestion("");
+  };
+
+  const handleCanSubmit = event => {
+    setQuestion(event.target.value);
+    if (question.length > 0) {
+      setCanSubmit(true);
+    } else {
+      setCanSubmit(false);
+    }
   };
 
   return (
-    <Formsy
-      onValidSubmit={handleSubmit}
-      onValid={() => setCanSubmit(true)}
-      onInvalid={() => setCanSubmit(false)}
-    >
-      <AvForm>
-        <Input
-          name="resourceTitle"
-          placeholder="Resource Title"
-          type="text"
-          value={questionTitle}
-          validations="isExisty"
-          validate={{
-            required: {
-              value: true,
-              errorMessage: "This field is required"
-            }
-          }}
-          onChange={e => setQuestionTitle(e.target.value)}
-          required
+    <div className="ui form">
+      <div className="field">
+        <textarea
+          value={question}
+          placeholder="Question"
+          onChange={e => handleCanSubmit(e)}
         />
-        <Input
-          name="resourceDescription"
-          placeholder="Resource Description"
-          type="text"
-          value={questionDescription}
-          validations="isExisty"
-          validate={{
-            required: {
-              value: true,
-              errorMessage: "This field is required"
-            }
-          }}
-          onChange={e => setQuestionDescription(e.target.value)}
-          required
-        />
-        <RadioInput
-          inline
-          name="category"
-          label="category"
-          required
-          validations="isExisty"
-          value={category}
-          validate={{
-            required: {
-              value: true,
-              errorMessage: "This field is required"
-            }
-          }}
-        >
-          <AvRadio
-            label="English"
-            value="English"
-            onChange={e => setCategory(e.target.value)}
-          />
-          <AvRadio
-            label="Web development"
-            value="Web development"
-            onChange={e => setCategory(e.target.value)}
-          />
-          <AvRadio
-            label="Mobile development"
-            value="Mobile development"
-            onChange={e => setCategory(e.target.value)}
-          />
-        </RadioInput>
-      </AvForm>
+      </div>
       <div
         style={{
           display: "flex",
@@ -102,8 +44,7 @@ function QuestionForm({ handleClose }) {
         <CustomButton
           onClick={() => {
             handleClose();
-            setQuestionTitle("");
-            setQuestionDescription("");
+            setQuestion("");
           }}
           style={{ width: 120, marginRight: 10 }}
         >
@@ -118,7 +59,7 @@ function QuestionForm({ handleClose }) {
           Ask
         </CustomButton>
       </div>
-    </Formsy>
+    </div>
   );
 }
 
