@@ -3,7 +3,7 @@ import { inject, observer } from "mobx-react";
 
 import CustomButton from "shared/components/CustomButton/CustomButton";
 
-function QuestionForm({ handleClose }) {
+function QuestionForm({ handleClose, addQuestion }) {
   const [question, setQuestion] = React.useState("");
   const [canSubmit, setCanSubmit] = React.useState(false);
   const [disableControls, setDisableControls] = React.useState(false);
@@ -11,8 +11,17 @@ function QuestionForm({ handleClose }) {
   const handleSubmit = event => {
     event.preventDefault();
     event.stopPropagation();
-    handleClose();
-    setQuestion("");
+    setDisableControls(true);
+    addQuestion &&
+      addQuestion({
+        user: 1,
+        category: 2,
+        question: question
+      }).finally(() => {
+        setDisableControls(false);
+        handleClose();
+        setQuestion("");
+      });
   };
 
   const handleCanSubmit = event => {

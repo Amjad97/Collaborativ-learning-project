@@ -6,7 +6,7 @@ import Formsy from "formsy-react";
 import CustomButton from "shared/components/CustomButton/CustomButton";
 import Input from "shared/components/Input/Input";
 
-function ResourceForm({ handleClose }) {
+function ResourceForm({ store, handleClose, addResource }) {
   const [resourceTitle, setResourceTitle] = React.useState("");
   const [resourceDescription, setResourceDescription] = React.useState("");
   const [resourceLink, setResourceLink] = React.useState("");
@@ -16,10 +16,21 @@ function ResourceForm({ handleClose }) {
   const handleSubmit = event => {
     event.preventDefault();
     event.stopPropagation();
-    handleClose();
-    setResourceTitle("");
-    setResourceDescription("");
-    setResourceLink("");
+    setDisableControls(true);
+    addResource &&
+      addResource({
+        user: 1,
+        category: 2,
+        title: resourceTitle,
+        description: resourceDescription,
+        link: resourceLink
+      }).finally(() => {
+        setDisableControls(false);
+        handleClose();
+        setResourceTitle("");
+        setResourceDescription("");
+        setResourceLink("");
+      });
   };
   return (
     <Formsy
@@ -60,7 +71,7 @@ function ResourceForm({ handleClose }) {
         />
         <Input
           name="resourceLink"
-          placeholder="Resource Title"
+          placeholder="Resource link"
           type="text"
           value={resourceLink}
           validations="isExisty"

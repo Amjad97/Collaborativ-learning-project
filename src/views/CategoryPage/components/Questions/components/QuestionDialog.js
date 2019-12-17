@@ -1,12 +1,8 @@
 import React from "react";
-import {
-  Dialog,
-  DialogTitle,
-  DialogContent,
-} from "@material-ui/core";
+import { Dialog, DialogTitle, DialogContent } from "@material-ui/core";
 import QuestionForm from "./QuestionForm";
 
-function QuestionDialog({ open, handleClose }) {
+function QuestionDialog({ open, handleClose, addQuestion }) {
   return (
     <Dialog open={open} onClose={handleClose}>
       <DialogTitle
@@ -16,7 +12,7 @@ function QuestionDialog({ open, handleClose }) {
         Ask Question
       </DialogTitle>
       <DialogContent style={{ width: 600 }}>
-        <QuestionForm handleClose={handleClose} />
+        <QuestionForm addQuestion={addQuestion} handleClose={handleClose} />
       </DialogContent>
     </Dialog>
   );

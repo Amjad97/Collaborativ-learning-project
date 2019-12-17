@@ -7,7 +7,7 @@ const QuestionRequests = (requestInstance, baseUrl) => ({
   getQuestion: questionId =>
     requestInstance.get(`${baseUrl}/questions/${questionId}`),
   addQuestion: questionData =>
-    requestInstance.post(`${baseUrl}/questions`, questionData)
+    requestInstance.post(`${baseUrl}/questions/`, questionData)
 });
 
 export default QuestionRequests;

@@ -1,5 +1,5 @@
 import React from "react";
-import moment from 'moment';
+import moment from "moment";
 import { inject, observer } from "mobx-react";
 
 import { Divider, makeStyles } from "@material-ui/core";
@@ -18,9 +18,9 @@ function Answers({ answer }) {
         style={{ width: "35px", height: "35px", margin: 10 }}
         alt="avatar"
       />
-      <div>
+      <div style={{ width: "100%" }}>
         <p className={classes.answer}>{answer.answer}</p>
-        <span>{moment(answer.createdAt).format('MMMM Do YYYY, h:mm a')}</span>
+        <span>{moment(answer.createdAt).format("MMMM Do YYYY, h:mm a")}</span>
         <Divider style={{ marginTop: 15 }} />
       </div>
     </div>

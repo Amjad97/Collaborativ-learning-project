@@ -1,16 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { inject, observer } from "mobx-react";
 import { ListItem, ListItemText, Divider } from "@material-ui/core";
 import image from "assets/img/default-avatar.png";
 import history from "../../../../../history";
 
 function Question({ questionItem, categoryName, store }) {
-  const [answers, setAnswers] = useState([]);
-
   useEffect(() => {
     const {
       category: {
-        question,
         question: { fetchAnswers }
       }
     } = store.categoriesStore;
@@ -19,8 +16,12 @@ function Question({ questionItem, categoryName, store }) {
       await fetchAnswers(questionId);
     }
     getData(questionId);
-    setAnswers(question.answers);
-  }, [questionItem.answers, questionItem.id, store.categoriesStore]);
+  }, [questionItem, store.categoriesStore]);
+  const {
+    category: {
+      question: { numOfAnswers }
+    }
+  } = store.categoriesStore;
   return (
     <div key={questionItem.id}>
       <ListItem style={{ flex: 1 }}>
@@ -58,7 +59,7 @@ function Question({ questionItem, categoryName, store }) {
           <div>
             <div style={{ textAlign: "center" }}>{questionItem.votes}</div>
             <div style={{ textAlign: "center" }}>votes</div>
-            <div style={{ textAlign: "center" }}>{answers.length}</div>
+            <div style={{ textAlign: "center" }}>0</div>
             <div style={{ textAlign: "center" }}>answers</div>
           </div>
         </div>

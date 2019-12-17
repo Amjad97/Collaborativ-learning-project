@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { inject, observer } from "mobx-react";
 // core components
 import { List } from "@material-ui/core";
@@ -6,7 +6,7 @@ import Question from "./components/Question";
 
 import QuestionDialog from "./components/QuestionDialog";
 
-function Questions({ questions, categoryName }) {
+function Questions({ questions, categoryName, addQuestion }) {
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
@@ -30,7 +30,11 @@ function Questions({ questions, categoryName }) {
         <button className="ui button primary" onClick={handleClickOpen}>
           Ask Question
         </button>
-        <QuestionDialog open={open} handleClose={handleClose} />
+        <QuestionDialog
+          open={open}
+          handleClose={handleClose}
+          addQuestion={addQuestion}
+        />
       </div>
       <div style={{ padding: "0px 40px" }}>
         <List>

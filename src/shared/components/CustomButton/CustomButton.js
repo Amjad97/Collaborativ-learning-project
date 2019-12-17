@@ -13,7 +13,7 @@ function CustomButton({ style, children, isLoading, disabled, onClick }) {
         boxShadow: 'unset',
         color: textColor,
         backgroundColor,
-        borderRadius: 30,
+        borderRadius: 10,
         minWidth: 50,
         width: "-webkit-fill-available",
         height: 48,

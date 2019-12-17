@@ -6,7 +6,7 @@ const ResourceRequests = (requestInstance, baseUrl) => ({
     requestInstance.get(`${baseUrl}/resources/category/${categoryId}`),
   addResource: (resourceData) =>
     requestInstance.post(
-      `${baseUrl}/resources`,
+      `${baseUrl}/resources/`,
       resourceData
     )
 });

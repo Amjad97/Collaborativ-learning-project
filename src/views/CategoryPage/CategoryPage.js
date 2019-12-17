@@ -47,8 +47,15 @@ function CategoryPage(props) {
       <NavBar />
       <div className="wrapper">
         <CategoryPageHeader background={image} />
-        <Resources resources={resources} />
-        <Questions questions={questions} categoryName={categoryName} />
+        <Resources
+          resources={resources}
+          addResource={categoryData.addResource}
+        />
+        <Questions
+          questions={questions}
+          categoryName={categoryName}
+          addQuestion={categoryData.addQuestion}
+        />
         <Footer />
       </div>
     </>

@@ -6,9 +6,6 @@ import question from "./models/questionModel";
 import ResourcesService from "./services/resources.service";
 import QuestionsService from "./services/questions.service";
 
-import UtilFunctions from "../../../utils/UtilFunctions";
-import { pick } from "lodash";
-
 const categoryStore = types
   .model({
     id: types.optional(types.number, 0),
@@ -48,7 +45,7 @@ const categoryStore = types
     addResource: flow(function* addResource(payload) {
       try {
         yield ResourcesService.addResource(payload);
-        self.fetchResources();
+        self.fetchResources(payload.category);
       } catch (error) {
         console.log(error);
       }
@@ -56,14 +53,11 @@ const categoryStore = types
     addQuestion: flow(function* addQuestion(payload) {
       try {
         yield QuestionsService.addQuestion(payload);
-        self.fetchQuestions();
+        self.fetchQuestions(payload.category);
       } catch (error) {
         console.log(error);
       }
-    }),
-    toAddPayload: () => {
-      return UtilFunctions.toSnakeCase(pick(self, ["name", "description"]));
-    }
+    })
   }));
 
 export default categoryStore;

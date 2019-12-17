@@ -6,7 +6,7 @@ import image from "assets/img/default-avatar.png";
 
 import ResourceDialog from "./components/ResourceDialog";
 
-function Resources({ resources }) {
+function Resources({ resources, addResource }) {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -16,7 +16,6 @@ function Resources({ resources }) {
   const handleClose = () => {
     setOpen(false);
   };
-
   return (
     <>
       <div
@@ -35,7 +34,11 @@ function Resources({ resources }) {
           <button className="ui button primary" onClick={handleClickOpen}>
             Add Resource
           </button>
-          <ResourceDialog open={open} handleClose={handleClose} />
+          <ResourceDialog
+            addResource={addResource}
+            open={open}
+            handleClose={handleClose}
+          />
         </div>
         <div style={{ padding: "0px 40px" }}>
           <List>

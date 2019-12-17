@@ -30,7 +30,7 @@ function QuestionDetails({ question, answers }) {
               answers.map(answer => (
                 <Answers key={answer.id} answer={answer} />
               ))}
-            <AddAnswer />
+            <AddAnswer addAnswer={question.addAnswer} questionId={question.id}/>
           </Paper>
         </Grid>
         <Grid item xs={4}>

@@ -1,13 +1,8 @@
 import React from "react";
-import {
-  Dialog,
-  DialogTitle,
-  DialogContent,
-} from "@material-ui/core";
+import { Dialog, DialogTitle, DialogContent } from "@material-ui/core";
 import ResourceForm from "./ResourceForm";
 
-function ResourceDialog({ open, handleClose }) {
-  
+function ResourceDialog({ open, handleClose, addResource }) {
   return (
     <Dialog open={open} onClose={handleClose}>
       <DialogTitle
@@ -17,7 +12,7 @@ function ResourceDialog({ open, handleClose }) {
         Add Resource
       </DialogTitle>
       <DialogContent style={{ width: 600 }}>
-        <ResourceForm handleClose={handleClose} />
+        <ResourceForm addResource={addResource} handleClose={handleClose} />
       </DialogContent>
     </Dialog>
   );
