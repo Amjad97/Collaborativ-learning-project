@@ -10,7 +10,8 @@ import Questions from "./components/Questions/Questions";
 
 import history from "../../history";
 
-function LandingPage(props) {
+function CategoryPage(props) {
+  const [categoryData, setCategoryDate] = useState({});
   const [questions, setQuestions] = useState([]);
   const [resources, setResources] = useState([]);
   const [categoryName, setCategoryName] = useState("");
@@ -30,15 +31,16 @@ function LandingPage(props) {
       await category.fetchQuestions(categoryId);
     }
     getData(categoryId);
+    setCategoryDate(category);
     setQuestions(category.questions);
     setResources(category.resources);
-    setCategoryName(category.name);
+    setCategoryName(categoryData.name);
 
     return function cleanup() {
       document.body.classList.remove("landing-page");
       document.body.classList.remove("sidebar-collapse");
     };
-  }, [props.store.categoriesStore, props.match.params.id]);
+  }, [categoryData, props.store.categoriesStore, props.match.params.id]);
   const image = history.location.image;
   return (
     <>
@@ -53,4 +55,4 @@ function LandingPage(props) {
   );
 }
 
-export default inject("store")(observer(LandingPage));
+export default inject("store")(observer(CategoryPage));
