@@ -1,34 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { inject, observer } from "mobx-react";
 
 // core components
-import NavBar from "shared/components/Navbars/QuestionNavBar";
+import NavBar from "shared/components/Navbars/NavBar";
 import QuestionDetails from "./components/QuestionDetails";
 
-function QuestionPage(props) {
-  const [question, setQuestion] = useState({});
-  const [answers, setAnswers] = useState([]);
-  useEffect(() => {
-    const {
-      category: {
-        fetchQuestion,
-        question,
-        question: { fetchAnswers }
-      }
-    } = props.store.categoriesStore;
-    const questionId = props.match.params.id;
-    async function getData(questionId) {
-      await fetchQuestion(questionId);
-      await fetchAnswers(questionId);
-    }
-    getData(questionId);
-    setQuestion(question);
-    setAnswers(question.answers);
-  }, [props.store.categoriesStore, props.match.params.id]);
+// shared components
+import Footer from "shared/components/Footer/Footer.js";
+
+function QuestionPage() {
   return (
     <div>
       <NavBar />
-      <QuestionDetails question={question} answers={answers} />
+      <QuestionDetails />
+      <Footer color="#4174FF" />
     </div>
   );
 }

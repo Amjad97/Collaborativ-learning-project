@@ -5,6 +5,7 @@ import CustomButton from "shared/components/CustomButton/CustomButton";
 
 function QuestionForm({ handleClose, addQuestion }) {
   const [question, setQuestion] = React.useState("");
+  const [questionDetails, setQuestionDetails] = React.useState("");
   const [canSubmit, setCanSubmit] = React.useState(false);
   const [disableControls, setDisableControls] = React.useState(false);
 
@@ -12,34 +13,22 @@ function QuestionForm({ handleClose, addQuestion }) {
     event.preventDefault();
     event.stopPropagation();
     setDisableControls(true);
-    addQuestion &&
-      addQuestion({
-        user: 1,
-        category: 2,
-        question: question
-      }).finally(() => {
-        setDisableControls(false);
-        handleClose();
-        setQuestion("");
-      });
-  };
-
-  const handleCanSubmit = event => {
-    setQuestion(event.target.value);
-    if (question.length > 0) {
-      setCanSubmit(true);
-    } else {
-      setCanSubmit(false);
-    }
   };
 
   return (
     <div className="ui form">
       <div className="field">
-        <textarea
+        <input
           value={question}
           placeholder="Question"
-          onChange={e => handleCanSubmit(e)}
+          onChange={e => setQuestion(e.target.value)}
+        />
+      </div>
+      <div className="field">
+        <textarea
+          value={questionDetails}
+          placeholder="More Details.."
+          onChange={e => setQuestionDetails(e.target.value)}
         />
       </div>
       <div
@@ -51,21 +40,12 @@ function QuestionForm({ handleClose, addQuestion }) {
         }}
       >
         <CustomButton
-          onClick={() => {
-            handleClose();
-            setQuestion("");
-          }}
-          style={{ width: 120, marginRight: 10 }}
-        >
-          Close
-        </CustomButton>
-        <CustomButton
           isLoading={disableControls}
           disabled={!canSubmit}
           onClick={handleSubmit}
           style={{ width: 120 }}
         >
-          Ask
+          Post
         </CustomButton>
       </div>
     </div>

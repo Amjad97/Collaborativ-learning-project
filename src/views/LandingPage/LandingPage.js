@@ -4,7 +4,6 @@ import React from "react";
 import NavBar from "shared/components/Navbars/NavBar.js";
 import LandingPageHeader from "shared/components/Headers/LandingPageHeader.js";
 import Footer from "shared/components/Footer/Footer.js";
-import Categories from "shared/components//Categories/Categories";
 import Questions from "./components/Questions/Questions";
 
 function LandingPage() {
@@ -22,7 +21,6 @@ function LandingPage() {
       <NavBar />
       <div className="wrapper">
         <LandingPageHeader />
-        <Categories />
         <Questions />
         <Footer />
       </div>

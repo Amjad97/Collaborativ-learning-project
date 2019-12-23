@@ -10,13 +10,13 @@ function Contact() {
     <>
       <div
         className="section section-download"
-        data-background-color="black"
+        style={{ backgroundColor: "#4174FF" }}
         id="download-section"
       >
         <Container>
           <Row className="justify-content-md-center sharing-area text-center">
             <Col className="text-center" lg="8" md="12">
-              <h3>Thank you for supporting us!</h3>
+              <h3 style={{color:'#FFF'}}>Thank you for supporting us!</h3>
             </Col>
             <Col className="text-center" lg="8" md="12">
               <Button

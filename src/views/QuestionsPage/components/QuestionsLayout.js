@@ -1,26 +1,21 @@
-import React, { useEffect, useState } from "react";
-import { inject, observer } from "mobx-react";
-
-import { Grid, Paper, makeStyles, Divider, Avatar } from "@material-ui/core";
-import Question from "./Question";
-import Answers from "./Answers";
-import userImage from "assets/img/default-avatar.png";
+import React, { useState, useEffect } from "react";
+import { Grid, Paper, makeStyles, Avatar } from "@material-ui/core";
 import QuestionDialog from "shared/components/QuestionDialog/QuestionDialog";
-import RelatedQuestion from "./RelatedQuestion";
-import styles from "../style/style";
-import AddAnswer from "./AddAnswer";
+import CategorySection from "shared/components/CategorySection/CategorySection";
+import Question from "./Question";
+import userImage from "assets/img/default-avatar.png";
+import style from "../style/style";
 
-const useStyles = makeStyles(styles);
+const useStyle = makeStyles(style);
 
-function QuestionDetails() {
-  const classes = useStyles();
+function QuestionsLayout() {
+  const classes = useStyle();
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
     document.body.scrollTop = 0;
   });
-
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -46,25 +41,17 @@ function QuestionDetails() {
           </div>
           <QuestionDialog open={open} handleClose={handleClose} />
         </Paper>
-        <div className={classes.mainText}>Question</div>
+        <div className={classes.mainText}>TOP Questions</div>
         <div style={{ marginTop: 20 }}>
           <Question />
-        </div>
-        <div className={classes.mainText}>Answers</div>
-        <div style={{ marginTop: 20 }}>
-          <Paper style={{ padding: 20 }}>
-            <AddAnswer />
-            <Answers />
-          </Paper>
+          <Question />
         </div>
       </Grid>
       <Grid item xs={4}>
-        <div className={classes.RelatedQuestionText}>Related Questions</div>
-        <Divider />
-        <RelatedQuestion />
+        <CategorySection />
       </Grid>
     </Grid>
   );
 }
 
-export default inject("store")(observer(QuestionDetails));
+export default QuestionsLayout;

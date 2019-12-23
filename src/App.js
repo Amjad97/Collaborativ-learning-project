@@ -11,8 +11,9 @@ import "assets/demo/nucleo-icons-page-styles.css";
 import Home from "views/Home/Home";
 import LoginPage from "views/LoginPage/LoginPage";
 import LandingPage from "views/LandingPage/LandingPage";
-import CategoryPage from "views/CategoryPage/CategoryPage";
 import QuestionPage from "views/QuestionPage/QuestionPage";
+import QuestionsPage from "views/QuestionsPage/QuestionsPage";
+import ResourcesPage from "views/ResourcesPage/ResourcesPage";
 import ForgotPassPage from "views/ForgotPassPage/ForgotPassPage";
 import ResetPassPage from "views/ResetPassPage/ResetPassPage";
 import SignUpPage from "views/RegisterPage/RegisterPage";
@@ -26,26 +27,24 @@ export default function App() {
       <Router history={history}>
         <Switch>
           <Route path="/home" render={props => <Home {...props} />} />
+          <Route path="/landing" render={props => <LandingPage {...props} />} />
           <Route
-            path="/landing"
-            render={props => <LandingPage {...props} />}
+            path="/questions"
+            render={props => <QuestionsPage {...props} />}
           />
           <Route
-            path="/category/:id"
-            render={props => <CategoryPage {...props} />}
+            path="/resources/:id"
+            render={props => <ResourcesPage {...props} />}
           />
           <Route
-            path="/question/:id"
+            path="/question"
             render={props => <QuestionPage {...props} />}
           />
           <Route
             path="/profile/:id"
             render={props => <ProfilePage {...props} />}
           />
-          <Route
-            path="/login"
-            render={props => <LoginPage {...props} />}
-          />
+          <Route path="/login" render={props => <LoginPage {...props} />} />
           <Route
             path="/forgot-password"
             render={props => <ForgotPassPage {...props} />}
@@ -54,10 +53,7 @@ export default function App() {
             path="/reset-password"
             render={props => <ResetPassPage {...props} />}
           />
-          <Route
-            path="/signup"
-            render={props => <SignUpPage {...props} />}
-          />
+          <Route path="/signup" render={props => <SignUpPage {...props} />} />
           <Redirect from="/" to="/home" />
         </Switch>
       </Router>

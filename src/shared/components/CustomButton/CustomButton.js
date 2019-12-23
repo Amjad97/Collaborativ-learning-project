@@ -10,7 +10,6 @@ function CustomButton({ style, children, isLoading, disabled, onClick }) {
     <Button
       onClick={onClick}
       style={{
-        boxShadow: 'unset',
         color: textColor,
         backgroundColor,
         borderRadius: 10,

@@ -1,10 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import classNames from "classnames";
-import history from "../../../history";
-
+import history from "../../../history"
 // reactstrap components
-import { Navbar } from "reactstrap";
+import { Navbar, NavLink } from "reactstrap";
 
 import styles from "../styles/style";
 const useStyles = makeStyles(styles);
@@ -18,12 +18,7 @@ function NavBar() {
         expand="lg"
       >
         <span className={classes.navBarContainer}>
-          <div
-            className={classes.navBarText}
-            onClick={() => history.push("/home")}
-          >
-            SHARE WITH ME
-          </div>
+          <div className={classes.navBarText} onClick={() => history.push('/home')}>SHARE WITH ME</div>
           <div className={classNames("ui icon input", classes.navBarInput)}>
             <input
               type="text"
@@ -32,8 +27,13 @@ function NavBar() {
             <i className={classNames("search icon", classes.navBarIcon)} />
           </div>
           <div className={classes.navBarItem}>CATEGORIES</div>
-          <div className={classes.navBarItem}>QUESTIONS</div>
-          <div className={classes.navBarItem}>RESOURCES</div>
+          <div className={classes.navBarItem}>ABOUT</div>
+          <NavLink to="/login" tag={Link} className={classes.navBarButtons}>
+            LOGIN
+          </NavLink>
+          <NavLink to="/signup" tag={Link} className={classes.navBarButtons}>
+            SIGNUP
+          </NavLink>
         </span>
       </Navbar>
     </>

@@ -1,14 +1,13 @@
 import React from "react";
-import moment from "moment";
-import { makeStyles, Paper, Avatar } from "@material-ui/core";
+import { Paper, makeStyles, Avatar } from "@material-ui/core";
 import userImage from "assets/img/default-avatar.png";
+import style from "../style/style";
+import history from "../../../history";
 
-import styles from "../style/style";
-import { inject, observer } from "mobx-react";
-const useStyles = makeStyles(styles);
+const useStyle = makeStyles(style);
 
-function Question({ question, numOfAnswers }) {
-  const classes = useStyles();
+function Question() {
+  const classes = useStyle();
 
   return (
     <Paper style={{ padding: 20 }}>
@@ -31,8 +30,23 @@ function Question({ question, numOfAnswers }) {
         afford anything. It’s the only developed country that treats its
         citizens like shiz. I can only afford to eat shiz to ….
       </div>
+      <div
+        class="ui animated button"
+        tabindex="0"
+        style={{ backgroundColor: "#4174FF", marginTop: 15 }}
+        onClick={() => {
+          history.push("question");
+        }}
+      >
+        <div class="visible content" style={{ color: "#FFF" }}>
+          See Answers
+        </div>
+        <div class="hidden content">
+          <i class="right arrow icon" style={{ color: "#FFF" }} />
+        </div>
+      </div>
     </Paper>
   );
 }
 
-export default inject("store")(observer(Question));
+export default Question;

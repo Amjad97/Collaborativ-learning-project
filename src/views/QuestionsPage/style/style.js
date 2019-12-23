@@ -16,14 +16,15 @@ const appStyle = () => ({
   categoriesList: {
     marginTop: 10
   },
-  RelatedQuestionText: {
+  categoryText: {
     color: "#707070",
     marginLeft: 10,
     fontSize: 22
   },
-  RelatedQuestionItems: {
-    color: "#4174FF",
-    cursor: "pointer"
+  categoryItem: {
+    padding: 10,
+    cursor: "pointer",
+    color: "#707070"
   },
   questionForm: {
     padding: 20,
@@ -38,21 +39,6 @@ const appStyle = () => ({
   questionFormSubTitle: {
     color: "#707070",
     marginTop: 15
-  },
-  answerForm: {
-    display: "-webkit-inline-box"
-  },
-  answerInput: {
-    marginLeft: "30px !important",
-    marginRight: "30px !important",
-    width: 550
-  },
-  answersSection: {
-    margin: "0px 30px"
-  },
-  answerText: {
-    color: "#555554",
-    marginTop: 10
   }
 });
 

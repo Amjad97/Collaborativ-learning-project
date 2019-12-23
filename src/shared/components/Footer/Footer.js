@@ -6,8 +6,8 @@ import { Container } from "reactstrap";
 
 function Footer({ color }) {
   return (
-    <footer className="footer" data-background-color={color}>
-      <Container>
+    <footer className="footer" style={{backgroundColor:color}}>
+      <Container style={{color:"#FFF"}}>
         <nav>
           <ul>
             <li>
