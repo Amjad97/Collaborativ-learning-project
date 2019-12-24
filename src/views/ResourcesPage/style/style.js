@@ -39,6 +39,11 @@ const appStyle = () => ({
   resourceFormSubTitle: {
     color: "#707070",
     marginTop: 15
+  },
+  expandIcon: {
+    color: `#4174FF`,
+    fontWeight: "bolder",
+    fontSize: "22px"
   }
 });
 

@@ -44,6 +44,8 @@ function ResourcesLayout() {
         <div className={classes.mainText}>TOP Resources</div>
         <div style={{ marginTop: 20 }}>
           <Resource />
+          <Resource />
+          <Resource />
         </div>
       </Grid>
       <Grid item xs={4}>

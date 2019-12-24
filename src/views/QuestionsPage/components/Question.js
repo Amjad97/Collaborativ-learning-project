@@ -10,7 +10,7 @@ function Question() {
   const classes = useStyle();
 
   return (
-    <Paper style={{ padding: 20 }}>
+    <Paper style={{ padding: 20, marginTop: 20 }}>
       <div className={classes.questionFormTitle}>
         Why do people explain a link between obesity and poverty by saying that
         fast?
