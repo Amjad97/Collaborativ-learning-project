@@ -31,18 +31,25 @@ function Question() {
         citizens like shiz. I can only afford to eat shiz to ….
       </div>
       <div
-        class="ui animated button"
-        tabindex="0"
-        style={{ backgroundColor: "#4174FF", marginTop: 15 }}
-        onClick={() => {
-          history.push("question");
+        style={{
+          display: "flex",
+          justifyContent: "flex-end"
         }}
       >
-        <div class="visible content" style={{ color: "#FFF" }}>
-          See Answers
-        </div>
-        <div class="hidden content">
-          <i class="right arrow icon" style={{ color: "#FFF" }} />
+        <div
+          class="ui animated button"
+          tabindex="0"
+          style={{ backgroundColor: "#4174FF", marginTop: 15 }}
+          onClick={() => {
+            history.push("question");
+          }}
+        >
+          <div class="visible content" style={{ color: "#FFF" }}>
+            See Answers
+          </div>
+          <div class="hidden content">
+            <i class="right arrow icon" style={{ color: "#FFF" }} />
+          </div>
         </div>
       </div>
     </Paper>

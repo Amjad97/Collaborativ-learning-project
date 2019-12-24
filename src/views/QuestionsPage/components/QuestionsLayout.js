@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Grid, Paper, makeStyles, Avatar } from "@material-ui/core";
 import QuestionDialog from "shared/components/QuestionDialog/QuestionDialog";
-import CategorySection from "shared/components/CategorySection/CategorySection";
+import CategorySection from "./CategorySection/CategorySection";
 import Question from "./Question";
 import userImage from "assets/img/default-avatar.png";
 import style from "../style/style";

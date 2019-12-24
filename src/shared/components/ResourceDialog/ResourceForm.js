@@ -7,6 +7,7 @@ function ResourceForm({ handleClose }) {
   const [title, setTitle] = React.useState("");
   const [resourceLink, setResourceLink] = React.useState("");
   const [resourceDetails, setResourceDetails] = React.useState("");
+  const [resourcePlatform, setResourcePlatform] = React.useState("");
   const [canSubmit, setCanSubmit] = React.useState(false);
   const [disableControls, setDisableControls] = React.useState(false);
 
@@ -41,12 +42,12 @@ function ResourceForm({ handleClose }) {
             <option value="3">Design</option>
           </select>
         </div>
-        <div style={{ width: "50%", paddingLeft: 5 }}>
-          <select class="ui dropdown">
-            <option value="">Platform</option>
-            <option value="0">Youtube</option>
-            <option value="1">Udemy</option>
-          </select>
+        <div className="field" style={{ width: "50%", paddingLeft: 5 }}>
+          <input
+            value={resourcePlatform}
+            placeholder="Platform"
+            onChange={e => setResourcePlatform(e.target.value)}
+          />
         </div>
       </div>
       <div className="field">

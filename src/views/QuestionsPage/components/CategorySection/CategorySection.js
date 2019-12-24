@@ -1,7 +1,7 @@
 import React from "react";
 import { Paper, makeStyles, Divider } from "@material-ui/core";
 
-import style from "../styles/style";
+import style from "../../style/style";
 
 const useStyle = makeStyles(style);
 

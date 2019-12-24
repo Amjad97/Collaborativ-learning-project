@@ -1,4 +1,5 @@
 import React from "react";
+import CategorySlider from "./CategoriesSlider";
 
 function Header() {
   return (
@@ -9,7 +10,8 @@ function Header() {
           backgroundImage:
             "url(" + require("assets/img/categpries_bg.png") + ")"
         }}
-      ></div>
+      />
+      <CategorySlider />
     </div>
   );
 }
