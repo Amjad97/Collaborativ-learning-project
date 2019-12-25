@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { inject, observer } from "mobx-react";
 import { Divider } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
@@ -12,14 +12,10 @@ import resourceImage from "assets/img/resources.png";
 import styles from "./styles/style";
 const useStyles = makeStyles(styles);
 
-function Categories(props) {
-  useEffect(() => {
-    const { fetchCategories } = props.store.categoriesStore;
-    fetchCategories();
-  });
+function Categories({ categories }) {
   const classes = useStyles();
-
-  //const { categories } = props.store.categoriesStore;
+  const [Selected, setSelected] = useState("Programming");
+  const [categoryId, setCategoryId] = useState(1);
 
   return (
     <>
@@ -31,23 +27,33 @@ function Categories(props) {
         <div className={classes.section} data-background-color="white">
           <div className="text-center">
             <span style={{ display: "inline-flex" }}>
-              <div className={classes.categoryTitle}>Programming</div>
-              <div className={classes.divider}>|</div>
-
-              <div className={classes.categoryTitles}>English learning</div>
-              <div className={classes.divider}>|</div>
-
-              <div className={classes.categoryTitle}>Marketing</div>
-              <div className={classes.divider}>|</div>
-
-              <div className={classes.categoryTitle}>Design</div>
+              {categories.map(category => (
+                <div style={{ display: "flex" }}>
+                  <div
+                    className={
+                      Selected === category.name
+                        ? classes.categoryTitleSelected
+                        : classes.categoryTitle
+                    }
+                    onClick={() => {
+                      setSelected(category.name);
+                      setCategoryId(category.id);
+                    }}
+                  >
+                    {category.name}
+                  </div>
+                  {categories[categories.length - 1] !== category && (
+                    <div className={classes.divider}>|</div>
+                  )}
+                </div>
+              ))}
             </span>
           </div>
           <Divider className={classes.mainDivider} />
           <span className={classes.questionResourcesSection}>
             <div
               style={{ cursor: "pointer" }}
-              onClick={() => history.push("/questions")}
+              onClick={() => history.push(`/questions/${categoryId}`)}
             >
               <img src={questionImage} alt="question" className={classes.img} />
               <div className={classes.questionResourcesTexts}>Questions</div>
@@ -58,7 +64,7 @@ function Categories(props) {
             />
             <div
               style={{ cursor: "pointer" }}
-              onClick={() => history.push("/resources/1")}
+              onClick={() => history.push(`/resources/${categoryId}`)}
             >
               <img src={resourceImage} alt="resource" className={classes.img} />
               <div className={classes.questionResourcesTexts}>Resources</div>

@@ -1,12 +1,8 @@
 import React from "react";
 import { withStyles } from "@material-ui/core";
-import {
-  Dialog,
-  Typography,
-  IconButton
-} from "@material-ui/core";
+import { Dialog, Typography, IconButton } from "@material-ui/core";
 import MuiDialogTitle from "@material-ui/core/DialogTitle";
-import MuiDialogContent from '@material-ui/core/DialogContent';
+import MuiDialogContent from "@material-ui/core/DialogContent";
 import CloseIcon from "@material-ui/icons/Close";
 import ResourceForm from "./ResourceForm";
 
@@ -52,14 +48,14 @@ const DialogContent = withStyles(theme => ({
   }
 }))(MuiDialogContent);
 
-function ResourceDialog({ open, handleClose }) {
+function ResourceDialog({ open, handleClose, categories }) {
   return (
-    <Dialog open={open} onClose={handleClose}>
+    <Dialog disableBackdropClick open={open} onClose={handleClose}>
       <DialogTitle id="form-dialog-title" onClose={handleClose}>
         What's your resource ?
       </DialogTitle>
       <DialogContent style={{ width: 600 }} dividers>
-        <ResourceForm handleClose={handleClose} />
+        <ResourceForm handleClose={handleClose} categories={categories} />
       </DialogContent>
     </Dialog>
   );

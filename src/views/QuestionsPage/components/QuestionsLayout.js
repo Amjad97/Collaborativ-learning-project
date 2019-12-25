@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { inject, observer } from "mobx-react";
 import { Grid, Paper, makeStyles, Avatar } from "@material-ui/core";
 import QuestionDialog from "shared/components/QuestionDialog/QuestionDialog";
 import CategorySection from "./CategorySection/CategorySection";
@@ -8,7 +9,7 @@ import style from "../style/style";
 
 const useStyle = makeStyles(style);
 
-function QuestionsLayout() {
+function QuestionsLayout({ categories, categoryId }) {
   const classes = useStyle();
   const [open, setOpen] = useState(false);
 
@@ -48,10 +49,10 @@ function QuestionsLayout() {
         </div>
       </Grid>
       <Grid item xs={4}>
-        <CategorySection />
+        <CategorySection categories={categories} categoryId={categoryId} />
       </Grid>
     </Grid>
   );
 }
 
-export default QuestionsLayout;
+export default inject("store")(observer(QuestionsLayout));

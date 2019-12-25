@@ -26,6 +26,11 @@ const appStyle = () => ({
     cursor: "pointer",
     color: "#707070"
   },
+  categoryItemSelected: {
+    padding: 10,
+    cursor: "pointer",
+    color: "#4174FF"
+  },
   resourceForm: {
     padding: 20,
     cursor: "pointer",

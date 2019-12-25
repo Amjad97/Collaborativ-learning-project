@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { inject, observer } from "mobx-react";
 
 // core components
@@ -10,14 +10,20 @@ import Contact from "./components/Contact/Contact";
 // shared components
 import Footer from "shared/components/Footer/Footer.js";
 
-function Home() {
+function Home(props) {
+  useEffect(() => {
+    const { fetchCategories } = props.store.categoriesStore;
+    fetchCategories();
+  });
+  const path = props.match.path;
+  const { categories } = props.store.categoriesStore;
   return (
     <>
-      <NavBar />
+      <NavBar path={path} />
       <div className="wrapper">
-        <Header />
+        <Header categories={categories} />
         <div className="main">
-          <Categories />
+          <Categories categories={categories} />
           <Contact />
         </div>
         <Footer color="#4174FF" />

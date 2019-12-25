@@ -1,11 +1,13 @@
 import React from "react";
 import { inject, observer } from "mobx-react";
+import { Dropdown } from "semantic-ui-react";
 
 import CustomButton from "shared/components/CustomButton/CustomButton";
 
-function ResourceForm({ handleClose }) {
+function ResourceForm({ handleClose, categories }) {
   const [title, setTitle] = React.useState("");
   const [resourceLink, setResourceLink] = React.useState("");
+  const [resourceCategory, setResourceCategory] = React.useState("");
   const [resourceDetails, setResourceDetails] = React.useState("");
   const [resourcePlatform, setResourcePlatform] = React.useState("");
   const [canSubmit, setCanSubmit] = React.useState(false);
@@ -15,6 +17,16 @@ function ResourceForm({ handleClose }) {
     event.preventDefault();
     event.stopPropagation();
     setDisableControls(true);
+  };
+
+  const categoriesName = categories.map(category => ({
+    key: category.id,
+    text: category.name,
+    value: category.name
+  }));
+
+  const onDropDownChange = (value, text) => {
+    setResourceCategory(text.value);
   };
 
   return (
@@ -34,13 +46,15 @@ function ResourceForm({ handleClose }) {
         }}
       >
         <div style={{ width: "50%", paddingRight: 5 }}>
-          <select class="ui dropdown">
-            <option value="">Category</option>
-            <option value="0">Programming</option>
-            <option value="1">English Learnign</option>
-            <option value="2">Marketing</option>
-            <option value="3">Design</option>
-          </select>
+          <Dropdown
+            id="CategoryDropDown"
+            placeholder="Category"
+            search
+            selection
+            options={categoriesName}
+            onChange={onDropDownChange}
+            style={{ width: "-webkit-fill-available" }}
+          />
         </div>
         <div className="field" style={{ width: "50%", paddingLeft: 5 }}>
           <input

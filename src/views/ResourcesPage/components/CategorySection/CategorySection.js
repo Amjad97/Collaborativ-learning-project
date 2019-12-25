@@ -1,29 +1,36 @@
 import React from "react";
+import { inject, observer } from "mobx-react";
 import { Paper, makeStyles, Divider } from "@material-ui/core";
-
+import history from "../../../../history";
 import style from "../../style/style";
 
 const useStyle = makeStyles(style);
 
-function CategorySection(params) {
+function CategorySection({ categories, categoryId }) {
   const classes = useStyle();
 
   return (
     <>
       <div className={classes.categoryText}>CATEGORIES</div>
       <Paper className={classes.categoriesList}>
-        <div className={classes.categoryItem}>Programming</div>
-        <Divider />
-        <div className={classes.categoryItem} style={{ color: "#4174FF" }}>
-          English Learning
-        </div>
-        <Divider />
-        <div className={classes.categoryItem}>Marketing</div>
-        <Divider />
-        <div className={classes.categoryItem}>Design</div>
+        {categories.map(category => (
+          <div>
+            <div
+              className={
+                categoryId == category.id
+                  ? classes.categoryItemSelected
+                  : classes.categoryItem
+              }
+              onClick={() => history.push(`/resources/${category.id}`)}
+            >
+              {category.name}
+            </div>
+            <Divider />
+          </div>
+        ))}
       </Paper>
     </>
   );
 }
 
-export default CategorySection;
+export default inject("store")(observer(CategorySection));

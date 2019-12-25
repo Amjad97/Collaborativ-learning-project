@@ -1,7 +1,7 @@
 import React from "react";
 import CategorySlider from "./CategoriesSlider";
 
-function Header() {
+function Header({ categories }) {
   return (
     <div className="page-header" style={{ marginTop: 55.5 }}>
       <div
@@ -11,7 +11,7 @@ function Header() {
             "url(" + require("assets/img/categpries_bg.png") + ")"
         }}
       />
-      <CategorySlider />
+      <CategorySlider categories={categories} />
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { inject, observer } from "mobx-react";
 import { Grid, Paper, makeStyles, Avatar } from "@material-ui/core";
 import ResourceDialog from "shared/components/ResourceDialog/ResourceDialog";
 import Resource from "./Resource";
@@ -8,7 +9,7 @@ import style from "../style/style";
 
 const useStyle = makeStyles(style);
 
-function ResourcesLayout() {
+function ResourcesLayout({ categories, categoryId }) {
   const classes = useStyle();
   const [open, setOpen] = useState(false);
 
@@ -39,7 +40,11 @@ function ResourcesLayout() {
               </div>
             </div>
           </div>
-          <ResourceDialog open={open} handleClose={handleClose} />
+          <ResourceDialog
+            open={open}
+            handleClose={handleClose}
+            categories={categories}
+          />
         </Paper>
         <div className={classes.mainText}>TOP Resources</div>
         <div style={{ marginTop: 20 }}>
@@ -49,10 +54,10 @@ function ResourcesLayout() {
         </div>
       </Grid>
       <Grid item xs={4}>
-        <CategorySection />
+        <CategorySection categories={categories} categoryId={categoryId} />
       </Grid>
     </Grid>
   );
 }
 
-export default ResourcesLayout;
+export default inject("store")(observer(ResourcesLayout));

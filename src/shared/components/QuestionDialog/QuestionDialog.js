@@ -1,12 +1,8 @@
 import React from "react";
 import { withStyles } from "@material-ui/core";
-import {
-  Dialog,
-  Typography,
-  IconButton
-} from "@material-ui/core";
+import { Dialog, Typography, IconButton } from "@material-ui/core";
 import MuiDialogTitle from "@material-ui/core/DialogTitle";
-import MuiDialogContent from '@material-ui/core/DialogContent';
+import MuiDialogContent from "@material-ui/core/DialogContent";
 import CloseIcon from "@material-ui/icons/Close";
 import QuestionForm from "./QuestionForm";
 
@@ -54,7 +50,7 @@ const DialogContent = withStyles(theme => ({
 
 function QuestionDialog({ open, handleClose, addQuestion }) {
   return (
-    <Dialog open={open} onClose={handleClose}>
+    <Dialog disableBackdropClick open={open} onClose={handleClose}>
       <DialogTitle id="form-dialog-title" onClose={handleClose}>
         What's your question ?
       </DialogTitle>

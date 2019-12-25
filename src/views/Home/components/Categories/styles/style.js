@@ -18,7 +18,7 @@ const appStyle = () => ({
     fontSize: 24,
     cursor: "pointer"
   },
-  categoryTitles: {
+  categoryTitleSelected: {
     color: "#4174FF",
     fontSize: 24,
     fontWeight: "bold",

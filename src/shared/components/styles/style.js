@@ -30,6 +30,12 @@ const appStyle = theme => ({
     marginLeft: 45,
     cursor: "pointer"
   },
+  navBarItemSelected: {
+    color: "#4174FF",
+    fontWeight: "500",
+    marginLeft: 45,
+    cursor: "pointer"
+  },
   navBarIcon: {
     color: "#4174FF"
   },

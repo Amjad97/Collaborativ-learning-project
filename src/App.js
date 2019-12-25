@@ -29,7 +29,7 @@ export default function App() {
           <Route path="/home" render={props => <Home {...props} />} />
           <Route path="/landing" render={props => <LandingPage {...props} />} />
           <Route
-            path="/questions"
+            path="/questions/:id"
             render={props => <QuestionsPage {...props} />}
           />
           <Route

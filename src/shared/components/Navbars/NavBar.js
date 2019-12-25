@@ -9,7 +9,7 @@ import { Navbar } from "reactstrap";
 import styles from "../styles/style";
 const useStyles = makeStyles(styles);
 
-function NavBar() {
+function NavBar({ categoryId, path }) {
   const classes = useStyles();
   return (
     <>
@@ -31,9 +31,32 @@ function NavBar() {
             />
             <i className={classNames("search icon", classes.navBarIcon)} />
           </div>
-          <div className={classes.navBarItem}>CATEGORIES</div>
-          <div className={classes.navBarItem}>QUESTIONS</div>
-          <div className={classes.navBarItem}>RESOURCES</div>
+          <div
+            className={classes.navBarItem}
+            onClick={() => history.push("/home")}
+          >
+            CATEGORIES
+          </div>
+          <div
+            className={
+              path.includes("questions")
+                ? classes.navBarItemSelected
+                : classes.navBarItem
+            }
+            onClick={() => history.push(`/questions/${categoryId}`)}
+          >
+            QUESTIONS
+          </div>
+          <div
+            className={
+              path.includes("resources")
+                ? classes.navBarItemSelected
+                : classes.navBarItem
+            }
+            onClick={() => history.push(`/resources/${categoryId}`)}
+          >
+            RESOURCES
+          </div>
         </span>
       </Navbar>
     </>
