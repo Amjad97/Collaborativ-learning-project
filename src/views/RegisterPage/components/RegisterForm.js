@@ -127,41 +127,85 @@ function RegisterForm(props) {
                 required
               ></Input>
             </InputGroup>
-            <InputGroup
-              className={
-                "no-border input-lg" +
-                (passwordFocus ? " input-group-focus" : "")
-              }
+            <div
+              style={{
+                display: "inline-flex",
+                width: "-webkit-fill-available"
+              }}
             >
-              <Input
-                name="password"
-                placeholder="Password"
-                type="password"
-                onChange={e => {
-                  setPassword(e.target.value);
-                }}
-                validations={{
-                  // Regex for a password that is 8 digits long, with at least 1 number, 1 capital letter and /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/
-                  matchRegexp: /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/
-                }}
-                validate={{
-                  required: {
-                    value: true,
-                    errorMessage: "Please enter a password"
-                  },
-                  // Regex for a password that is 8 digits long, with at least 1 number, 1 capital letter and /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/
-                  pattern: {
-                    value: /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
-                    errorMessage:
-                      "Password 8 digits long at least and contains at least 1 special character, one number and one capital letter"
-                  }
-                }}
-                value={password}
-                onFocus={() => setPasswordFocus(true)}
-                onBlur={() => setPasswordFocus(false)}
-                required
-              ></Input>
-            </InputGroup>
+              <InputGroup
+                className={
+                  "no-border input-lg" +
+                  (passwordFocus ? " input-group-focus" : "")
+                }
+                style={{ width: "50%", marginRight: 5 }}
+              >
+                <Input
+                  name="password"
+                  placeholder="Password"
+                  type="password"
+                  onChange={e => {
+                    setPassword(e.target.value);
+                  }}
+                  validations={{
+                    // Regex for a password that is 8 digits long, with at least 1 number, 1 capital letter and /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/
+                    matchRegexp: /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/
+                  }}
+                  validate={{
+                    required: {
+                      value: true,
+                      errorMessage: "Please enter a password"
+                    },
+                    // Regex for a password that is 8 digits long, with at least 1 number, 1 capital letter and /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/
+                    pattern: {
+                      value: /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
+                      errorMessage:
+                        "Password 8 digits long at least and contains at least 1 special character, one number and one capital letter"
+                    }
+                  }}
+                  value={password}
+                  onFocus={() => setPasswordFocus(true)}
+                  onBlur={() => setPasswordFocus(false)}
+                  required
+                ></Input>
+              </InputGroup>
+              <InputGroup
+                className={
+                  "no-border input-lg" +
+                  (passwordFocus ? " input-group-focus" : "")
+                }
+                style={{ width: "50%", marginLeft: 5 }}
+              >
+                <Input
+                  name="password"
+                  placeholder="Confirm password"
+                  type="password"
+                  onChange={e => {
+                    setPassword(e.target.value);
+                  }}
+                  validations={{
+                    // Regex for a password that is 8 digits long, with at least 1 number, 1 capital letter and /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/
+                    matchRegexp: /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/
+                  }}
+                  validate={{
+                    required: {
+                      value: true,
+                      errorMessage: "Please enter a password"
+                    },
+                    // Regex for a password that is 8 digits long, with at least 1 number, 1 capital letter and /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/
+                    pattern: {
+                      value: /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
+                      errorMessage:
+                        "Password 8 digits long at least and contains at least 1 special character, one number and one capital letter"
+                    }
+                  }}
+                  value={password}
+                  onFocus={() => setPasswordFocus(true)}
+                  onBlur={() => setPasswordFocus(false)}
+                  required
+                ></Input>
+              </InputGroup>
+            </div>
           </AvForm>
           <div style={{ marginTop: 20 }}>
             <CustomButton
