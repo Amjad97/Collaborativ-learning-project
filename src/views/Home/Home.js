@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, createRef } from "react";
 import { inject, observer } from "mobx-react";
 
 // core components
@@ -17,12 +17,13 @@ function Home(props) {
   });
   const path = props.match.path;
   const { categories } = props.store.categoriesStore;
+  const categoryRef = createRef();
   return (
     <>
-      <NavBar path={path} />
+      <NavBar path={path} categoryRef={categoryRef} />
       <div className="wrapper">
         <Header categories={categories} />
-        <div className="main">
+        <div className="main" ref={categoryRef}>
           <Categories categories={categories} />
           <Contact />
         </div>

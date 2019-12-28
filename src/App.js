@@ -14,8 +14,6 @@ import SignUpPage from "views/RegisterPage/RegisterPage";
 import QuestionPage from "views/QuestionPage/QuestionPage";
 import QuestionsPage from "views/QuestionsPage/QuestionsPage";
 import ResourcesPage from "views/ResourcesPage/ResourcesPage";
-import ForgotPassPage from "views/ForgotPassPage/ForgotPassPage";
-import ResetPassPage from "views/ResetPassPage/ResetPassPage";
 import ProfilePage from "views/ProfilePage/ProfilePage";
 import history from "./history";
 import store from "./shared/store";
@@ -35,7 +33,7 @@ export default function App() {
             render={props => <ResourcesPage {...props} />}
           />
           <Route
-            path="/question"
+            path="/question/:id"
             render={props => <QuestionPage {...props} />}
           />
           <Route
@@ -43,14 +41,6 @@ export default function App() {
             render={props => <ProfilePage {...props} />}
           />
           <Route path="/login" render={props => <LoginPage {...props} />} />
-          <Route
-            path="/forgot-password"
-            render={props => <ForgotPassPage {...props} />}
-          />
-          <Route
-            path="/reset-password"
-            render={props => <ResetPassPage {...props} />}
-          />
           <Route path="/signup" render={props => <SignUpPage {...props} />} />
           <Redirect from="/" to="/home" />
         </Switch>

@@ -41,7 +41,7 @@ function Question() {
           tabindex="0"
           style={{ backgroundColor: "#4174FF", marginTop: 15 }}
           onClick={() => {
-            history.push("question");
+            history.push("/question");
           }}
         >
           <div class="visible content" style={{ color: "#FFF" }}>

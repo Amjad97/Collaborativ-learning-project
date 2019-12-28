@@ -42,7 +42,7 @@ function NavBar({ categoryId, path }) {
                 className={classes.navBarItem}
                 onClick={() => history.push("/home")}
               >
-                CATEGORIES
+                HOME
               </div>
               <div
                 className={

@@ -5,7 +5,7 @@ import { InputGroup } from "reactstrap";
 import Formsy from "formsy-react";
 import { Card, CardContent, Divider } from "@material-ui/core";
 import classNames from "classnames";
-import Input from "shared/components/Input/Input";
+import Input from "shared/components/Input/LoginInput";
 import CustomButton from "shared/components/CustomButton/CustomButton";
 import history from "../../../history";
 import { makeStyles } from "@material-ui/core/styles";

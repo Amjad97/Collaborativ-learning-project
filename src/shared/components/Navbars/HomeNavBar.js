@@ -9,8 +9,9 @@ import { Navbar, NavLink } from "reactstrap";
 import styles from "../styles/style";
 const useStyles = makeStyles(styles);
 
-function NavBar({ path }) {
+function NavBar({ path, categoryRef }) {
   const classes = useStyles();
+  console.log(categoryRef);
   return (
     <>
       <Navbar
@@ -20,7 +21,10 @@ function NavBar({ path }) {
         <span className={classes.navBarContainer}>
           <div
             className={classes.navBarText}
-            onClick={() => history.push("/home")}
+            onClick={() => {
+              history.push("/home");
+              window.scrollTo(0, 0);
+            }}
           >
             SHARE WITH ME
           </div>
@@ -37,6 +41,7 @@ function NavBar({ path }) {
                 ? classes.navBarItemSelected
                 : classes.navBarItem
             }
+            onClick={() => window.scrollTo(0, categoryRef.current.offsetTop)}
           >
             CATEGORIES
           </div>

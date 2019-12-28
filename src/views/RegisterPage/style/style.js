@@ -14,7 +14,9 @@ const appStyle = theme => ({
   },
   SignUpCard: {
     height: "100vh",
-    display: "flex"
+    display: "flex",
+    boxShadow: "0px 0px 3px grey",
+    backgroundColor: "#F3F3F3"
   },
   CardContent: {
     width: "70%"
