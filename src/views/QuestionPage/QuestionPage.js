@@ -4,14 +4,13 @@ import { inject, observer } from "mobx-react";
 // core components
 import NavBar from "shared/components/Navbars/NavBar";
 import QuestionDetails from "./components/QuestionDetails";
-
-// shared components
 import Footer from "shared/components/Footer/Footer.js";
 
-function QuestionPage() {
+function QuestionPage(props) {
+  const { path } = props.match;
   return (
     <div>
-      <NavBar />
+      <NavBar path={path} />
       <QuestionDetails />
       <Footer color="#4174FF" />
     </div>

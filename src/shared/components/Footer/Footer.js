@@ -1,13 +1,14 @@
-/*eslint-disable*/
 import React from "react";
-
+import classNames from "classnames";
 // reactstrap components
 import { Container } from "reactstrap";
-
-function Footer({ color }) {
+function Footer({ color, className }) {
   return (
-    <footer className="footer" style={{backgroundColor:color}}>
-      <Container style={{color:"#FFF"}}>
+    <footer
+      className={classNames("footer", className)}
+      style={{ backgroundColor: color }}
+    >
+      <Container style={{ color: "#FFF" }}>
         <nav>
           <ul>
             <li>

@@ -10,7 +10,7 @@ const appStyle = theme => ({
     color: "#4174FF",
     fontWeight: "bold",
     fontSize: 22,
-    marginLeft: 80,
+    marginLeft: 60,
     cursor: "pointer"
   },
   navBarInput: {

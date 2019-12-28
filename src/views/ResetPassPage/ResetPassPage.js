@@ -9,16 +9,10 @@ import Footer from "shared/components/Footer/Footer";
 import ResetForm from "./components/ResetForm";
 import SuccessMessage from "./components/SuccessMessage";
 
-function ResetPassPage() {
+function ResetPassPage(props) {
   const [resetSuccess, setRestSuccess] = React.useState(false);
   const [disableControls, setDisableControls] = React.useState(false);
-
-  React.useEffect(() => {
-    document.body.classList.add("login-page");
-    return function cleanup() {
-      document.body.classList.remove("login-page");
-    };
-  });
+  const { path } = props.match;
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -29,14 +23,8 @@ function ResetPassPage() {
 
   return (
     <>
-      <NavBar />
+      <NavBar path={path} />
       <div className="page-header clear-filter">
-        <div
-          className="page-header-image"
-          style={{
-            backgroundImage: "url(" + require("assets/img/bg.jpeg") + ")"
-          }}
-        ></div>
         {!resetSuccess ? (
           <ResetForm
             handleSubmit={handleSubmit}

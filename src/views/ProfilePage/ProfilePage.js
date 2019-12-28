@@ -16,7 +16,6 @@ import {
 
 // core components
 import NavBar from "shared/components/Navbars/NavBar.js";
-import ProfilePageHeader from "shared/components/Headers/ProfilePageHeader.js";
 import Footer from "shared/components/Footer/Footer.js";
 
 function ProfilePage() {
@@ -34,7 +33,6 @@ function ProfilePage() {
     <>
       <NavBar />
       <div className="wrapper">
-        <ProfilePageHeader />
         <div className="section">
           <Container>
             <div className="button-container">
@@ -123,29 +121,9 @@ function ProfilePage() {
                 <TabPane tabId="pills1">
                   <Col className="ml-auto mr-auto" md="10">
                     <Row className="collections">
+                      <Col md="6"></Col>
                       <Col md="6">
-                        <img
-                          alt="..."
-                          className="img-raised"
-                          src={require("assets/img/bg1.jpg")}
-                        ></img>
-                        <img
-                          alt="..."
-                          className="img-raised"
-                          src={require("assets/img/bg3.jpg")}
-                        ></img>
-                      </Col>
-                      <Col md="6">
-                        <img
-                          alt="..."
-                          className="img-raised"
-                          src={require("assets/img/bg8.jpg")}
-                        ></img>
-                        <img
-                          alt="..."
-                          className="img-raised"
-                          src={require("assets/img/bg7.jpg")}
-                        ></img>
+                        
                       </Col>
                     </Row>
                   </Col>
@@ -153,29 +131,9 @@ function ProfilePage() {
                 <TabPane tabId="pills2">
                   <Col className="ml-auto mr-auto" md="10">
                     <Row className="collections">
+                      <Col md="6"></Col>
                       <Col md="6">
-                        <img
-                          alt="..."
-                          className="img-raised"
-                          src={require("assets/img/bg6.jpg")}
-                        ></img>
-                        <img
-                          alt="..."
-                          className="img-raised"
-                          src={require("assets/img/bg11.jpg")}
-                        ></img>
-                      </Col>
-                      <Col md="6">
-                        <img
-                          alt="..."
-                          className="img-raised"
-                          src={require("assets/img/bg7.jpg")}
-                        ></img>
-                        <img
-                          alt="..."
-                          className="img-raised"
-                          src={require("assets/img/bg8.jpg")}
-                        ></img>
+                      
                       </Col>
                     </Row>
                   </Col>
@@ -183,30 +141,8 @@ function ProfilePage() {
                 <TabPane tabId="pills3">
                   <Col className="ml-auto mr-auto" md="10">
                     <Row className="collections">
-                      <Col md="6">
-                        <img
-                          alt="..."
-                          className="img-raised"
-                          src={require("assets/img/bg3.jpg")}
-                        ></img>
-                        <img
-                          alt="..."
-                          className="img-raised"
-                          src={require("assets/img/bg8.jpg")}
-                        ></img>
-                      </Col>
-                      <Col md="6">
-                        <img
-                          alt="..."
-                          className="img-raised"
-                          src={require("assets/img/bg7.jpg")}
-                        ></img>
-                        <img
-                          alt="..."
-                          className="img-raised"
-                          src={require("assets/img/bg6.jpg")}
-                        ></img>
-                      </Col>
+                      <Col md="6"></Col>
+                      <Col md="6"></Col>
                     </Row>
                   </Col>
                 </TabPane>

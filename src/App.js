@@ -10,13 +10,12 @@ import "assets/demo/nucleo-icons-page-styles.css";
 // pages for this kit
 import Home from "views/Home/Home";
 import LoginPage from "views/LoginPage/LoginPage";
-import LandingPage from "views/LandingPage/LandingPage";
+import SignUpPage from "views/RegisterPage/RegisterPage";
 import QuestionPage from "views/QuestionPage/QuestionPage";
 import QuestionsPage from "views/QuestionsPage/QuestionsPage";
 import ResourcesPage from "views/ResourcesPage/ResourcesPage";
 import ForgotPassPage from "views/ForgotPassPage/ForgotPassPage";
 import ResetPassPage from "views/ResetPassPage/ResetPassPage";
-import SignUpPage from "views/RegisterPage/RegisterPage";
 import ProfilePage from "views/ProfilePage/ProfilePage";
 import history from "./history";
 import store from "./shared/store";
@@ -27,7 +26,6 @@ export default function App() {
       <Router history={history}>
         <Switch>
           <Route path="/home" render={props => <Home {...props} />} />
-          <Route path="/landing" render={props => <LandingPage {...props} />} />
           <Route
             path="/questions/:id"
             render={props => <QuestionsPage {...props} />}

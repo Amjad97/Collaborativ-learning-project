@@ -3,13 +3,18 @@ import { AvForm } from "availity-reactstrap-validation";
 // reactstrap components
 import { InputGroup } from "reactstrap";
 import Formsy from "formsy-react";
-
+import { Card, CardContent, Divider } from "@material-ui/core";
+import classNames from "classnames";
 import Input from "shared/components/Input/Input";
 import CustomButton from "shared/components/CustomButton/CustomButton";
-
 import history from "../../../history";
+import { makeStyles } from "@material-ui/core/styles";
+import styles from "../style/style";
+
+const useStyles = makeStyles(styles);
 
 function LoginForm() {
+  const classes = useStyles();
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [canSubmit, setCanSubmit] = React.useState(false);
@@ -24,115 +29,115 @@ function LoginForm() {
   };
 
   return (
-    <Formsy
-      onValidSubmit={handleSubmit}
-      onValid={() => setCanSubmit(true)}
-      onInvalid={() => setCanSubmit(false)}
-    >
-      <AvForm>
-        <InputGroup
-          className={
-            "no-border input-lg" + (firstFocus ? " input-group-focus" : "")
-          }
+    <Card className={classes.LoginForm}>
+      <CardContent className={classes.CardContent}>
+        <div className={classes.LoginText}>Log in</div>
+        <Formsy
+          onValidSubmit={handleSubmit}
+          onValid={() => setCanSubmit(true)}
+          onInvalid={() => setCanSubmit(false)}
         >
-          <Input
-            name="Email"
-            placeholder="Email"
-            type="email"
-            validations="isEmail"
-            onChange={e => {
-              setEmail(e.target.value);
-            }}
-            validate={{
-              required: {
-                value: true,
-                errorMessage: "Please enter an email"
-              },
-              //
-              pattern: {
-                value: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/i,
-                errorMessage: "Invalid email"
+          <AvForm>
+            <InputGroup
+              className={
+                "no-border input-lg" + (firstFocus ? " input-group-focus" : "")
               }
-            }}
-            value={email}
-            onFocus={() => setFirstFocus(true)}
-            onBlur={() => setFirstFocus(false)}
-            required
-          ></Input>
-        </InputGroup>
-        <InputGroup
-          className={
-            "no-border input-lg" + (lastFocus ? " input-group-focus" : "")
-          }
-        >
-          <Input
-            name="password"
-            placeholder="Password"
-            type="password"
-            onChange={e => {
-              setPassword(e.target.value);
-            }}
-            validations={{
-              // Regex for a password that is 8 digits long, with at least 1 number, 1 capital letter and /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/
-              matchRegexp: /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/
-            }}
-            validate={{
-              required: {
-                value: true,
-                errorMessage: "Please enter a password"
-              },
-              // Regex for a password that is 8 digits long, with at least 1 number, 1 capital letter and /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/
-              pattern: {
-                value: /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
-                errorMessage:
-                  "Password 8 digits long at least and contains at least 1 special character, one number and one capital letter"
+            >
+              <Input
+                name="Email"
+                placeholder="Email"
+                type="email"
+                validations="isEmail"
+                onChange={e => {
+                  setEmail(e.target.value);
+                }}
+                validate={{
+                  required: {
+                    value: true,
+                    errorMessage: "Please enter an email"
+                  },
+                  //
+                  pattern: {
+                    value: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/i,
+                    errorMessage: "Invalid email"
+                  }
+                }}
+                value={email}
+                onFocus={() => setFirstFocus(true)}
+                onBlur={() => setFirstFocus(false)}
+                required
+              ></Input>
+            </InputGroup>
+            <InputGroup
+              className={
+                "no-border input-lg" + (lastFocus ? " input-group-focus" : "")
               }
-            }}
-            value={password}
-            onFocus={() => setLastFocus(true)}
-            onBlur={() => setLastFocus(false)}
-            required
-          ></Input>
-        </InputGroup>
-      </AvForm>
-      <div style={{ marginTop: 20 }}>
-        <CustomButton
-          disabled={!canSubmit}
-          isLoading={disableControls}
-          onClick={handleSubmit}
-        >
-          Log in
-        </CustomButton>
-        <div style={{ marginTop: 10 }}>
-          <div className="pull-left">
-            <a
-              style={{ fontSize: "medium" }}
-              className="link"
-              href="/signup"
-              onClick={e => {
-                e.preventDefault();
-                history.push("/signup");
-              }}
             >
-              Create Account
-            </a>
-          </div>
-          <div className="pull-right">
-            <a
-              style={{ fontSize: "medium" }}
-              className="link"
-              href="/forgot-password"
-              onClick={e => {
-                e.preventDefault();
-                history.push("/forgot-password");
-              }}
+              <Input
+                name="password"
+                placeholder="Password"
+                type="password"
+                onChange={e => {
+                  setPassword(e.target.value);
+                }}
+                validations={{
+                  // Regex for a password that is 8 digits long, with at least 1 number, 1 capital letter and /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/
+                  matchRegexp: /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/
+                }}
+                validate={{
+                  required: {
+                    value: true,
+                    errorMessage: "Please enter a password"
+                  },
+                  // Regex for a password that is 8 digits long, with at least 1 number, 1 capital letter and /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/
+                  pattern: {
+                    value: /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
+                    errorMessage:
+                      "Password 8 digits long at least and contains at least 1 special character, one number and one capital letter"
+                  }
+                }}
+                value={password}
+                onFocus={() => setLastFocus(true)}
+                onBlur={() => setLastFocus(false)}
+                required
+              ></Input>
+            </InputGroup>
+          </AvForm>
+          <div style={{ marginTop: 20 }}>
+            <CustomButton
+              //disabled={!canSubmit}
+              //isLoading={disableControls}
+              onClick={handleSubmit}
             >
-              Forgot password?
-            </a>
+              Log in
+            </CustomButton>
           </div>
-        </div>
-      </div>
-    </Formsy>
+          <span className={classes.NewContent}>
+            <Divider className={classes.divider} />
+            <div className={classes.newText}>
+              New to <span style={{ fontWeight: "bold" }}>Share With Me?</span>
+            </div>
+            <Divider className={classes.divider} />
+          </span>
+          <div style={{ marginTop: 10 }}>
+            <CustomButton onClick={() => history.push("/signup")}>
+              Sign up
+            </CustomButton>
+          </div>
+          <div style={{ marginTop: 10 }}>
+            <button
+              className={classNames(
+                "ui red google button",
+                classes.googleButton
+              )}
+            >
+              <i className="google icon" />
+              Sign In with google
+            </button>
+          </div>
+        </Formsy>
+      </CardContent>
+    </Card>
   );
 }
 

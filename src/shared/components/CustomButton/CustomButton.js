@@ -12,7 +12,7 @@ function CustomButton({ style, children, isLoading, disabled, onClick }) {
       style={{
         color: textColor,
         backgroundColor,
-        borderRadius: 10,
+        borderRadius: ".28571429rem",
         minWidth: 50,
         width: "-webkit-fill-available",
         height: 48,
