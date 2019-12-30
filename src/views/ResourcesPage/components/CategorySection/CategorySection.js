@@ -13,21 +13,22 @@ function CategorySection({ categories, categoryId }) {
     <>
       <div className={classes.categoryText}>CATEGORIES</div>
       <Paper className={classes.categoriesList}>
-        {categories.map(category => (
-          <div>
-            <div
-              className={
-                categoryId == category.id
-                  ? classes.categoryItemSelected
-                  : classes.categoryItem
-              }
-              onClick={() => history.push(`/resources/${category.id}`)}
-            >
-              {category.name}
+        {categories &&
+          categories.map(category => (
+            <div>
+              <div
+                className={
+                  Number(categoryId) === category.id
+                    ? classes.categoryItemSelected
+                    : classes.categoryItem
+                }
+                onClick={() => history.push(`/resources/${category.id}`)}
+              >
+                {category.name}
+              </div>
+              <Divider />
             </div>
-            <Divider />
-          </div>
-        ))}
+          ))}
       </Paper>
     </>
   );

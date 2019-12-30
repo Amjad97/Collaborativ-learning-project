@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { AvForm } from "availity-reactstrap-validation";
 // reactstrap components
 import { InputGroup } from "reactstrap";
 import Formsy from "formsy-react";
-import { Card, CardContent, Divider } from "@material-ui/core";
+import {
+  Card,
+  CardContent,
+  Divider,
+  Checkbox,
+  FormControlLabel
+} from "@material-ui/core";
 import classNames from "classnames";
 import Input from "shared/components/Input/LoginInput";
 import CustomButton from "shared/components/CustomButton/CustomButton";
@@ -15,12 +21,13 @@ const useStyles = makeStyles(styles);
 
 function LoginForm() {
   const classes = useStyles();
-  const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
-  const [canSubmit, setCanSubmit] = React.useState(false);
-  const [disableControls, setDisableControls] = React.useState(false);
-  const [firstFocus, setFirstFocus] = React.useState(false);
-  const [lastFocus, setLastFocus] = React.useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [rememberMe, setRememberMe] = useState(false);
+  const [canSubmit, setCanSubmit] = useState(false);
+  const [disableControls, setDisableControls] = useState(false);
+  const [firstFocus, setFirstFocus] = useState(false);
+  const [lastFocus, setLastFocus] = useState(false);
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -102,8 +109,20 @@ function LoginForm() {
                 required
               ></Input>
             </InputGroup>
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={rememberMe}
+                  onChange={() => setRememberMe(!rememberMe)}
+                  value="checkedB"
+                  style={{ color: "#4174FF" }}
+                />
+              }
+              label="Remember Me"
+              className={classes.RememberMe}
+            />
           </AvForm>
-          <div style={{ marginTop: 20 }}>
+          <div>
             <CustomButton
               //disabled={!canSubmit}
               //isLoading={disableControls}

@@ -2,6 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import classNames from "classnames";
 import history from "../../../history";
+import SearchBar from "../SearchBar/SearchBar";
 
 // reactstrap components
 import { Navbar } from "reactstrap";
@@ -30,40 +31,41 @@ function NavBar({ categoryId, path }) {
             SHARE WITH ME
           </div>
           {!isAuthPage && (
-            <span className={classes.navBarContainer}>
-              <div className={classNames("ui icon input", classes.navBarInput)}>
-                <input
-                  type="text"
-                  placeholder="Search for Questions and Resources "
-                />
-                <i className={classNames("search icon", classes.navBarIcon)} />
-              </div>
-              <div
-                className={classes.navBarItem}
-                onClick={() => history.push("/home")}
-              >
-                HOME
-              </div>
-              <div
-                className={
-                  (path && path.includes("questions")) ||
-                  path.includes("question")
-                    ? classes.navBarItemSelected
-                    : classes.navBarItem
-                }
-                onClick={() => history.push(`/questions/${categoryId}`)}
-              >
-                QUESTIONS
-              </div>
-              <div
-                className={
-                  path && path.includes("resources")
-                    ? classes.navBarItemSelected
-                    : classes.navBarItem
-                }
-                onClick={() => history.push(`/resources/${categoryId}`)}
-              >
-                RESOURCES
+            <div className={classNames("ui icon input", classes.navBarInput)}>
+              <SearchBar />
+              <i className={classNames("search icon", classes.navBarIcon)} />
+            </div>
+          )}
+          {!isAuthPage && (
+            <span className={classes.navBarItems}>
+              <div className={classes.navBarHeaderItem}>
+                <div
+                  className={classes.navBarItem}
+                  onClick={() => history.push("/home")}
+                >
+                  HOME
+                </div>
+                <div
+                  className={
+                    (path && path.includes("questions")) ||
+                    path.includes("question")
+                      ? classes.navBarItemSelected
+                      : classes.navBarItem
+                  }
+                  onClick={() => history.push(`/questions/${categoryId}`)}
+                >
+                  QUESTIONS
+                </div>
+                <div
+                  className={
+                    path && path.includes("resources")
+                      ? classes.navBarItemSelected
+                      : classes.navBarItem
+                  }
+                  onClick={() => history.push(`/resources/${categoryId}`)}
+                >
+                  RESOURCES
+                </div>
               </div>
             </span>
           )}

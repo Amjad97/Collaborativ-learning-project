@@ -4,7 +4,27 @@ const appStyle = theme => ({
     marginBottom: 0
   },
   navBarContainer: {
-    display: "contents"
+    display: "flex",
+    position: "relative",
+    flex: 1
+  },
+  navBarItems: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "flex-end",
+    flex: 1,
+    marginRight: "8%"
+  },
+  navBarHomeItems: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "flex-end",
+    flex: 1,
+    marginRight: "2%"
+  },
+  navBarHeaderItem: {
+    display: "flex",
+    alignItems: "center"
   },
   navBarText: {
     color: "#4174FF",
@@ -14,8 +34,9 @@ const appStyle = theme => ({
     cursor: "pointer"
   },
   navBarInput: {
-    marginLeft: 100,
-    width: 400
+    position: "absolute !important",
+    width: 400,
+    left: "30%"
   },
   navBarButtons: {
     backgroundColor: "#4174FF",
@@ -37,7 +58,8 @@ const appStyle = theme => ({
     cursor: "pointer"
   },
   navBarIcon: {
-    color: "#4174FF"
+    color: "#4174FF",
+    height: "40px !important"
   },
   categoriesList: {
     marginTop: 10

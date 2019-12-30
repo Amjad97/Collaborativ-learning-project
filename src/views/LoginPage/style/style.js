@@ -48,6 +48,11 @@ const appStyle = theme => ({
     width: "-webkit-fill-available",
     height: 48,
     margin: "0px !important"
+  },
+  RememberMe: {
+    display: "flex",
+    justifyContent: "center",
+    color: "grey"
   }
 });
 export default appStyle;
