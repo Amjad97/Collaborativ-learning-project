@@ -8,11 +8,11 @@ const question = types
     id: types.optional(types.number, 0),
     user: types.optional(types.number, 0),
     category: types.optional(types.number, 0),
-    question: types.optional(types.string, ""),
+    title: types.optional(types.string, ""),
+    description: types.optional(types.string, ""),
     createdAt: types.optional(types.string, ""),
     updatedAt: types.optional(types.string, ""),
-    answers: types.array(Answer),
-    numOfAnswers: types.optional(types.number, 0),
+    answers: types.array(Answer, []),
     votes: types.optional(types.number, 0)
   })
   .views(self => ({
@@ -25,7 +25,6 @@ const question = types
       try {
         const response = yield AnswersService.getAnswers(questionId);
         self.answers = response;
-        self.numOfAnswers = self.answers.length;
       } catch (error) {
         console.log(error);
       }

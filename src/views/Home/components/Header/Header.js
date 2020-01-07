@@ -3,7 +3,7 @@ import CategorySlider from "./CategoriesSlider";
 
 function Header({ categories }) {
   return (
-    <div className="page-header" style={{ marginTop: 55.5 }}>
+    <div className="page-header" style={{ marginTop: 53 }}>
       <div
         className="page-header-image"
         style={{

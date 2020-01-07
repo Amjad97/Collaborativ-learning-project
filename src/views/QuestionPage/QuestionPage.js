@@ -7,11 +7,14 @@ import QuestionDetails from "./components/QuestionDetails";
 import Footer from "shared/components/Footer/Footer.js";
 
 function QuestionPage(props) {
-  const { path } = props.match;
+  const {
+    path,
+    params: { id }
+  } = props.match;
   return (
     <div>
       <NavBar path={path} />
-      <QuestionDetails />
+      <QuestionDetails questionId={id} />
       <Footer color="#4174FF" />
     </div>
   );

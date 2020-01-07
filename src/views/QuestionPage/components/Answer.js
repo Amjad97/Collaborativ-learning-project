@@ -1,30 +1,30 @@
 import React from "react";
 import moment from "moment";
-import { makeStyles, Paper, Avatar } from "@material-ui/core";
-import userImage from "assets/img/default-avatar.png";
-
-import styles from "../style/style";
 import { inject, observer } from "mobx-react";
+import { makeStyles, Avatar, Divider } from "@material-ui/core";
+import userImage from "assets/img/default-avatar.png";
+import styles from "../style/style";
+
 const useStyles = makeStyles(styles);
 
-function Question({ question }) {
+function Answer({ answer }) {
   const classes = useStyles();
-  const { user, title, description, createdAt } = question;
+  const { user } = answer;
   return (
-    <Paper style={{ padding: 20 }}>
-      <div className={classes.questionFormTitle}>{title}</div>
+    <div className={classes.answersSection}>
       <div style={{ display: "flex", marginTop: 10 }}>
         <Avatar alt="Remy Sharp" src={userImage} />
         <div style={{ marginLeft: 10 }}>
           <div style={{ color: "#555554", fontWeight: "900" }}>Anonymous</div>
           <div style={{ color: "#555554", fontSize: 12 }}>
-            {moment(createdAt).format("MMMM Do YYYY, h:mm a")}
+            {moment(answer.createdAt).format("MMMM Do YYYY, h:mm a")}
           </div>
         </div>
       </div>
-      <div className={classes.questionFormSubTitle}>{description}</div>
-    </Paper>
+      <div className={classes.answerText}>{answer.answer}</div>
+      <Divider style={{ marginTop: 10 }} />
+    </div>
   );
 }
 
-export default inject("store")(observer(Question));
+export default inject("store")(observer(Answer));

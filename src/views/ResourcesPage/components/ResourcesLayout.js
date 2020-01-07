@@ -9,14 +9,25 @@ import style from "../style/style";
 
 const useStyle = makeStyles(style);
 
-function ResourcesLayout({ categories, categoryId }) {
+function ResourcesLayout({ categories, categoryId, store }) {
   const classes = useStyle();
   const [open, setOpen] = useState(false);
+  const [categoryData, setCategoryDate] = useState({});
+  const [resourcesData, setResourcesData] = useState([]);
+
+  const { fetchCategory, category } = store.categoriesStore;
 
   useEffect(() => {
     window.scrollTo(0, 0);
     document.body.scrollTop = 0;
-  });
+    async function getData(categoryId) {
+      await fetchCategory(categoryId);
+      await category.fetchResources(categoryId);
+      await setCategoryDate(category);
+      await setResourcesData(category.resources);
+    }
+    getData(categoryId);
+  }, [categoryId, category, fetchCategory]);
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -44,13 +55,14 @@ function ResourcesLayout({ categories, categoryId }) {
             open={open}
             handleClose={handleClose}
             categories={categories}
+            addResource={categoryData.addResource}
           />
         </Paper>
         <div className={classes.mainText}>TOP Resources</div>
         <div style={{ marginTop: 20 }}>
-          <Resource />
-          <Resource />
-          <Resource />
+          {resourcesData.map(resource => (
+            <Resource resource={resource} categories={categories} />
+          ))}
         </div>
       </Grid>
       <Grid item xs={4}>

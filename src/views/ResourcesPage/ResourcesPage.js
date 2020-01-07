@@ -17,12 +17,17 @@ function ResourcesPage(props) {
     path
   } = props.match;
 
-  const { categories } = props.store.categoriesStore;
+  const {
+    categories,
+  } = props.store.categoriesStore;
 
   return (
     <>
       <NavBar categoryId={id} path={path} />
-      <ResourcesLayout categories={categories} categoryId={id} />
+      <ResourcesLayout
+        categories={categories}
+        categoryId={id}
+      />
       <Footer color="#4174FF" />
     </>
   );

@@ -3,7 +3,7 @@ import { inject, observer } from "mobx-react";
 
 import { Grid, Paper, makeStyles, Divider, Avatar } from "@material-ui/core";
 import Question from "./Question";
-import Answers from "./Answers";
+import Answer from "./Answer";
 import userImage from "assets/img/default-avatar.png";
 import QuestionDialog from "shared/components/QuestionDialog/QuestionDialog";
 import RelatedQuestion from "./RelatedQuestion";
@@ -12,14 +12,30 @@ import AddAnswer from "./AddAnswer";
 
 const useStyles = makeStyles(styles);
 
-function QuestionDetails() {
+function QuestionDetails({ questionId, store }) {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
+  const [question, setQuestion] = useState({});
+  const [answers, setAnswers] = useState([]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
     document.body.scrollTop = 0;
-  });
+    const {
+      category: {
+        fetchQuestion,
+        question,
+        question: { fetchAnswers }
+      }
+    } = store.categoriesStore;
+    async function getData(questionId) {
+      await fetchQuestion(questionId);
+      await fetchAnswers(questionId);
+    }
+    getData(questionId);
+    setQuestion(question);
+    setAnswers(question.answers);
+  }, [store, questionId]);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -48,13 +64,18 @@ function QuestionDetails() {
         </Paper>
         <div className={classes.mainText}>Question</div>
         <div style={{ marginTop: 20 }}>
-          <Question />
+          <Question question={question} />
         </div>
         <div className={classes.mainText}>Answers</div>
         <div style={{ marginTop: 20 }}>
           <Paper style={{ padding: 20 }}>
-            <AddAnswer />
-            <Answers />
+            <AddAnswer
+              addAnswer={question.addAnswer}
+              questionId={question.id}
+            />
+            {answers.map(answer => (
+              <Answer answer={answer} />
+            ))}
           </Paper>
         </div>
       </Grid>

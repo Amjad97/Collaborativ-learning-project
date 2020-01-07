@@ -48,14 +48,18 @@ const DialogContent = withStyles(theme => ({
   }
 }))(MuiDialogContent);
 
-function ResourceDialog({ open, handleClose, categories }) {
+function ResourceDialog({ open, handleClose, categories, addResource }) {
   return (
     <Dialog disableBackdropClick open={open} onClose={handleClose}>
       <DialogTitle id="form-dialog-title" onClose={handleClose}>
         What's your resource ?
       </DialogTitle>
       <DialogContent style={{ width: 600 }} dividers>
-        <ResourceForm handleClose={handleClose} categories={categories} />
+        <ResourceForm
+          handleClose={handleClose}
+          categories={categories}
+          addResource={addResource}
+        />
       </DialogContent>
     </Dialog>
   );

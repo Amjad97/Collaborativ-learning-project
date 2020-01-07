@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { inject, observer } from "mobx-react";
+import moment from "moment";
 import {
   Card,
   ExpansionPanel,
@@ -13,8 +15,23 @@ import style from "../style/style";
 
 const useStyle = makeStyles(style);
 
-function Resource() {
+function Resource({ resource, categories }) {
   const classes = useStyle();
+  const [categoryName, setCategoryName] = useState("");
+  const {
+    user,
+    title,
+    description,
+    platform,
+    link,
+    category,
+    createdAt
+  } = resource;
+
+  useEffect(() => {
+    const categoryItem = categories.filter(item => item.id === category);
+    setCategoryName(categoryItem[0].name);
+  }, [category, categories]);
 
   return (
     <Card style={{ marginTop: 20 }}>
@@ -23,10 +40,7 @@ function Resource() {
           expandIcon={<ExpandMoreIcon className={classes.expandIcon} />}
         >
           <div style={{ marginBottom: 20 }}>
-            <div className={classes.resourceFormTitle}>
-              Why do people explain a link between obesity and poverty by saying
-              that fast?
-            </div>
+            <div className={classes.resourceFormTitle}>{title}</div>
             <div style={{ display: "flex", marginTop: 10 }}>
               <Avatar alt="Remy Sharp" src={userImage} />
               <div style={{ marginLeft: 10 }}>
@@ -34,7 +48,7 @@ function Resource() {
                   Anonymous
                 </div>
                 <div style={{ color: "#555554", fontSize: 12 }}>
-                  Nov 17, 2017
+                  {moment(createdAt).format("MMMM Do YYYY, h:mm a")}
                 </div>
               </div>
             </div>
@@ -48,34 +62,14 @@ function Resource() {
                 </div>
               </div>
               <div style={{ marginLeft: 20 }}>
-                <div style={{ color: "#555554" }}>English Learning</div>
-                <div style={{ color: "#555554" }}>Youtube</div>
+                <div style={{ color: "#555554" }}>{categoryName}</div>
+                <div style={{ color: "#555554" }}>{platform}</div>
               </div>
             </div>
           </div>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails style={{ display: "block" }}>
-          <div>
-            Ask yourself this questions “Why are the more White homeless than
-            Mexican homeless in the US?” Shouldn’t it be the other way around?
-            Especially since there is a huge percentage of illegals (who can’t
-            even work a normal job?) The American will say “I earn min. wage. I
-            can’t afford anything. It’s the only developed country that treats
-            its citizens like shiz. I can only afford to eat shiz to survive.”
-            The immigrant will say “Holly, there’s so many opportunities here.
-            What can I do to jump from $7.25 to $9? How can Americans afford to
-            always eat out? How do I see myself in the future and how hard do I
-            need to work to achieve it?” Ask yourself this questions “Why are
-            the more White homeless than Mexican homeless in the US?” Shouldn’t
-            it be the other way around? Especially since there is a huge
-            percentage of illegals (who can’t even work a normal job?) The
-            American will say “I earn min. wage. I can’t afford anything. It’s
-            the only developed country that treats its citizens like shiz. I can
-            only afford to eat shiz to survive.” The immigrant will say “Holly,
-            there’s so many opportunities here. What can I do to jump from $7.25
-            to $9? How can Americans afford to always eat out? How do I see
-            myself in the future and how hard do I need to work to achieve it?”
-          </div>
+          <div>{description}</div>
           <div
             style={{
               display: "flex",
@@ -86,6 +80,7 @@ function Resource() {
               class="ui animated button"
               tabindex="0"
               style={{ backgroundColor: "#4174FF", marginTop: 15 }}
+              onClick={() => window.open(link)}
             >
               <div class="visible content" style={{ color: "#FFF" }}>
                 Browse
@@ -101,4 +96,4 @@ function Resource() {
   );
 }
 
-export default Resource;
+export default inject("store")(observer(Resource));

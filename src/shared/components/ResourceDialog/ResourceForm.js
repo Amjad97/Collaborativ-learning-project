@@ -1,30 +1,47 @@
-import React from "react";
+import React, { useState } from "react";
 import { inject, observer } from "mobx-react";
 import Formsy from "formsy-react";
-import { AvForm } from "availity-reactstrap-validation";
 import Input from "shared/components/Input/Input";
 
 import CustomButton from "shared/components/CustomButton/CustomButton";
 
-function ResourceForm({ handleClose, categories }) {
-  const [title, setTitle] = React.useState("");
-  const [resourceLink, setResourceLink] = React.useState("");
-  const [resourceCategory, setResourceCategory] = React.useState("");
-  const [resourceDetails, setResourceDetails] = React.useState("");
-  const [resourcePlatform, setResourcePlatform] = React.useState("");
-  const [canSubmit, setCanSubmit] = React.useState(false);
-  const [disableControls, setDisableControls] = React.useState(false);
+function ResourceForm({ handleClose, categories, addResource }) {
+  const [resourceTitle, setResourceTitle] = useState("");
+  const [resourceLink, setResourceLink] = useState("");
+  const [resourceCategory, setResourceCategory] = useState("");
+  const [resourceDetails, setResourceDetails] = useState("");
+  const [resourcePlatform, setResourcePlatform] = useState("");
+  const [canSubmit, setCanSubmit] = useState(false);
+  const [disableControls, setDisableControls] = useState(false);
 
   const handleSubmit = event => {
     event.preventDefault();
     event.stopPropagation();
     setDisableControls(true);
+
+    addResource &&
+      addResource({
+        user: 1,
+        category: resourceCategory,
+        title: resourceTitle,
+        description: resourceDetails,
+        platform: resourcePlatform,
+        link: resourceLink
+      }).finally(() => {
+        setDisableControls(false);
+        handleClose();
+        setResourceTitle("");
+        setResourceDetails("");
+        setResourceLink("");
+        setResourcePlatform("");
+        setResourceCategory("");
+      });
   };
 
   const categoriesName = categories.map(category => ({
     key: category.id,
     text: category.name,
-    value: category.name
+    value: category.id
   }));
 
   const onDropDownChange = (value, text) => {
@@ -43,9 +60,9 @@ function ResourceForm({ handleClose, categories }) {
             name="title"
             type="text"
             validations="isExisty"
-            value={title}
+            value={resourceTitle}
             placeholder="Title"
-            onChange={e => setTitle(e.target.value)}
+            onChange={e => setResourceTitle(e.target.value)}
             required
             autoComplete="off"
           />

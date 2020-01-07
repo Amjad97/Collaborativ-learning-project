@@ -8,6 +8,7 @@ const resource = types.model({
   updatedAt: types.optional(types.string, ""),
   title: types.optional(types.string, ""),
   description: types.optional(types.string, ""),
+  platform: types.optional(types.string, ""),
   link: types.optional(types.string, ""),
   votes: types.optional(types.number, 0)
 });

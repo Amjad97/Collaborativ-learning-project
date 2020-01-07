@@ -17,6 +17,8 @@ function AddAnswer({ addAnswer, questionId }) {
         user: 1,
         question: questionId,
         answer: answer
+      }).finally(() => {
+        setAnswer("");
       });
   };
   return (

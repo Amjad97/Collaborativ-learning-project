@@ -48,14 +48,18 @@ const DialogContent = withStyles(theme => ({
   }
 }))(MuiDialogContent);
 
-function QuestionDialog({ open, handleClose, addQuestion }) {
+function QuestionDialog({ open, handleClose, addQuestion, categoryId }) {
   return (
     <Dialog disableBackdropClick open={open} onClose={handleClose}>
       <DialogTitle id="form-dialog-title" onClose={handleClose}>
         What's your question ?
       </DialogTitle>
       <DialogContent style={{ width: 600 }} dividers>
-        <QuestionForm addQuestion={addQuestion} handleClose={handleClose} />
+        <QuestionForm
+          categoryId={categoryId}
+          addQuestion={addQuestion}
+          handleClose={handleClose}
+        />
       </DialogContent>
     </Dialog>
   );

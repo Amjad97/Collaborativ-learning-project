@@ -9,14 +9,25 @@ import style from "../style/style";
 
 const useStyle = makeStyles(style);
 
-function QuestionsLayout({ categories, categoryId }) {
+function QuestionsLayout({ categories, categoryId, store }) {
   const classes = useStyle();
   const [open, setOpen] = useState(false);
+  const [categoryData, setCategoryDate] = useState({});
+  const [questionsData, setQuestionsData] = useState([]);
+
+  const { fetchCategory, category } = store.categoriesStore;
 
   useEffect(() => {
     window.scrollTo(0, 0);
     document.body.scrollTop = 0;
-  });
+    async function getData(categoryId) {
+      await fetchCategory(categoryId);
+      await category.fetchQuestions(categoryId);
+      await setCategoryDate(category);
+      await setQuestionsData(category.questions);
+    }
+    getData(categoryId);
+  }, [categoryId, category, fetchCategory]);
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -40,12 +51,18 @@ function QuestionsLayout({ categories, categoryId }) {
               </div>
             </div>
           </div>
-          <QuestionDialog open={open} handleClose={handleClose} />
+          <QuestionDialog
+            open={open}
+            handleClose={handleClose}
+            addQuestion={categoryData.addQuestion}
+            categoryId={categoryId}
+          />
         </Paper>
         <div className={classes.mainText}>TOP Questions</div>
         <div style={{ marginTop: 20 }}>
-          <Question />
-          <Question />
+          {questionsData.map(question => (
+            <Question question={question} />
+          ))}
         </div>
       </Grid>
       <Grid item xs={4}>

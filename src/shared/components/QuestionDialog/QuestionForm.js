@@ -1,12 +1,11 @@
 import React from "react";
 import { inject, observer } from "mobx-react";
 import Formsy from "formsy-react";
-import { AvForm } from "availity-reactstrap-validation";
 import Input from "shared/components/Input/Input";
 
 import CustomButton from "shared/components/CustomButton/CustomButton";
 
-function QuestionForm({ handleClose, addQuestion }) {
+function QuestionForm({ handleClose, addQuestion, categoryId }) {
   const [question, setQuestion] = React.useState("");
   const [questionDetails, setQuestionDetails] = React.useState("");
   const [canSubmit, setCanSubmit] = React.useState(false);
@@ -16,6 +15,19 @@ function QuestionForm({ handleClose, addQuestion }) {
     event.preventDefault();
     event.stopPropagation();
     setDisableControls(true);
+
+    addQuestion &&
+      addQuestion({
+        user: 1,
+        category: categoryId,
+        title: question,
+        description: questionDetails
+      }).finally(() => {
+        setDisableControls(false);
+        handleClose();
+        setQuestion("");
+        setQuestionDetails("");
+      });
   };
 
   return (
