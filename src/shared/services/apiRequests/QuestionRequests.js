@@ -2,6 +2,7 @@
  * All questions service API requests.
  */
 const QuestionRequests = (requestInstance, baseUrl) => ({
+  getAllQuestions: () => requestInstance.get(`${baseUrl}/questions`),
   getQuestions: categoryId =>
     requestInstance.get(`${baseUrl}/questions/category/${categoryId}`),
   getQuestion: questionId =>

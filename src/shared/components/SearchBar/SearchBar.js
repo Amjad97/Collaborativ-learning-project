@@ -1,39 +1,40 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { inject, observer } from "mobx-react";
 import ReactSearchBox from "react-search-box";
+import history from "../../../history";
 import "./style.css";
 
-function SearchBar() {
+function SearchBar(props) {
   const [value, setValue] = useState("");
+  const [questions, setQuestions] = useState([]);
+  const { fetchAllQuestions, allQuestions } = props.store.categoriesStore;
 
-  const data = [
-    {
-      key: "john",
-      value: "Jane Doe"
-    },
-    {
-      key: "jane",
-      value: "Jane Doe"
-    },
-    {
-      key: "mary",
-      value: "Mary Phillips"
-    },
-    {
-      key: "robert",
-      value: "Robert"
-    },
-    {
-      key: "karius",
-      value: "Karius"
+  useEffect(() => {
+    async function getData() {
+      await fetchAllQuestions();
+      setQuestions(allQuestions);
     }
-  ];
+    getData();
+  }, [fetchAllQuestions, allQuestions]);
 
+  const data = questions.map(question => {
+    return {
+      key: question.id,
+      value: question.title
+    };
+  });
+
+  const handleClick = id => {
+    history.push(`/question/${id}`);
+    setValue("");
+  };
+  console.log(data);
   return (
     <div style={{ width: "400px" }}>
       <ReactSearchBox
-        placeholder="Search for Questions and Resources.. "
+        placeholder="Search for Questions.. "
         data={data}
-        onSelect={record => console.log(record)}
+        onSelect={record => handleClick(record.key)}
         onChange={value => setValue(value)}
         fuseConfigs={{
           threshold: 0.05
@@ -44,4 +45,4 @@ function SearchBar() {
   );
 }
 
-export default SearchBar;
+export default inject("store")(observer(SearchBar));
