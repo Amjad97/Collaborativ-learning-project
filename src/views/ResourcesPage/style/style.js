@@ -49,6 +49,11 @@ const appStyle = () => ({
     color: `#4174FF`,
     fontWeight: "bolder",
     fontSize: "22px"
+  },
+  Footer: {
+    width: "-webkit-fill-available",
+    position: "absolute !important",
+    bottom: "0 !important"
   }
 });
 

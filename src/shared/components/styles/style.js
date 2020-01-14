@@ -36,7 +36,8 @@ const appStyle = theme => ({
   navBarInput: {
     position: "absolute !important",
     width: 400,
-    left: "30%"
+    left: "30%",
+    top: "-4px"
   },
   navBarButtons: {
     backgroundColor: "#4174FF",

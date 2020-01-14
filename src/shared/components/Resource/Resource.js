@@ -11,7 +11,7 @@ import {
 } from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import userImage from "assets/img/default-avatar.png";
-import style from "../style/style";
+import style from "./style/style";
 
 const useStyle = makeStyles(style);
 

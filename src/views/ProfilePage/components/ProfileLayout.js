@@ -1,5 +1,6 @@
 import React from "react";
 import { Grid, Paper, makeStyles, Avatar } from "@material-ui/core";
+import QuestionsResourcesSection from "./QuestionsResourcesSection";
 import userImage from "assets/img/default-avatar.png";
 import style from "../style/style";
 
@@ -28,8 +29,17 @@ function ProfileLayout() {
                 Yourself, editor at The Altucher Report and host of the popular
                 podcast.
               </div>
+              <div className={classes.numQR}>
+                <p>0</p>
+                <p className={classes.leftMargin}>Questions</p>
+                <p style={{ marginLeft: 30 }}>0</p>
+                <p className={classes.leftMargin}>Resources</p>
+              </div>
             </div>
           </div>
+        </Paper>
+        <Paper style={{ marginTop: 20 }}>
+          <QuestionsResourcesSection />
         </Paper>
       </Grid>
       <Grid item xs={4}>

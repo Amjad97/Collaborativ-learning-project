@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { inject, observer } from "mobx-react";
 import { Grid, Paper, makeStyles, Avatar } from "@material-ui/core";
 import ResourceDialog from "shared/components/ResourceDialog/ResourceDialog";
-import Resource from "./Resource";
+import Resource from "../../../shared/components/Resource/Resource";
 import CategorySection from "./CategorySection/CategorySection";
 import userImage from "assets/img/default-avatar.png";
 import style from "../style/style";

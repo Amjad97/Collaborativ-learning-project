@@ -3,7 +3,7 @@ import { inject, observer } from "mobx-react";
 import moment from "moment";
 import { Paper, makeStyles, Avatar } from "@material-ui/core";
 import userImage from "assets/img/default-avatar.png";
-import style from "../style/style";
+import style from "./style/style";
 import history from "../../../history";
 
 const useStyle = makeStyles(style);

@@ -6,6 +6,11 @@ const appStyle = theme => ({
     marginBottom: 90,
     width: "auto"
   },
+  QuestionsResourcescontainer: {
+    paddingTop: "2rem",
+    display: "flex",
+    justifyContent: "center"
+  },
   userImage: {
     width: theme.spacing(20),
     height: theme.spacing(20)
@@ -37,6 +42,30 @@ const appStyle = theme => ({
     color: "#707070",
     marginLeft: 10,
     fontSize: 20
+  },
+  numQR: {
+    display: "flex",
+    marginLeft: 10,
+    marginTop: "1rem"
+  },
+  leftMargin: {
+    marginLeft: 10
+  },
+  item: {
+    color: "#4174FF",
+    fontSize: 24,
+    cursor: "pointer"
+  },
+  itemSelected: {
+    color: "#4174FF",
+    fontSize: 24,
+    fontWeight: "bold",
+    cursor: "pointer"
+  },
+  divider: {
+    color: "#4174FF",
+    margin: "0 20px",
+    fontSize: 24
   }
 });
 

@@ -5,8 +5,15 @@ import NavBar from "../../shared/components/Navbars/NavBar";
 
 // shared components
 import Footer from "shared/components/Footer/Footer.js";
+import { makeStyles } from "@material-ui/core/styles";
+
+import styles from "./style/style";
+
+const useStyles = makeStyles(styles);
 
 function ResourcesPage(props) {
+  const classes = useStyles(props);
+
   useEffect(() => {
     const { fetchCategories } = props.store.categoriesStore;
     fetchCategories();
@@ -17,19 +24,14 @@ function ResourcesPage(props) {
     path
   } = props.match;
 
-  const {
-    categories,
-  } = props.store.categoriesStore;
+  const { categories } = props.store.categoriesStore;
 
   return (
-    <>
+    <div style={{ position: "relative" }}>
       <NavBar categoryId={id} path={path} />
-      <ResourcesLayout
-        categories={categories}
-        categoryId={id}
-      />
+      <ResourcesLayout categories={categories} categoryId={id} />
       <Footer color="#4174FF" />
-    </>
+    </div>
   );
 }
 

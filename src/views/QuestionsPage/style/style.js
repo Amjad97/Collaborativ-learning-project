@@ -4,7 +4,7 @@ const appStyle = () => ({
     marginLeft: 30,
     marginRight: 20,
     marginBottom: 90,
-    width: "auto"
+    width: "auto",
   },
   mainText: {
     fontSize: 22,
@@ -44,6 +44,11 @@ const appStyle = () => ({
   questionFormSubTitle: {
     color: "#707070",
     marginTop: 15
+  },
+  Footer: {
+    width: "-webkit-fill-available",
+    position: "absolute !important",
+    bottom: "0 !important"
   }
 });
 

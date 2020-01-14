@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import classNames from "classnames";
 import history from "../../../history";
 import SearchBar from "../SearchBar/SearchBar";
+import UserMenu from "../UserMenu/UserMenu";
 
 // reactstrap components
 import { Navbar } from "reactstrap";

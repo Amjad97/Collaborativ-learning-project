@@ -28,7 +28,6 @@ function SearchBar(props) {
     history.push(`/question/${id}`);
     setValue("");
   };
-  console.log(data);
   return (
     <div style={{ width: "400px" }}>
       <ReactSearchBox

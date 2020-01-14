@@ -3,7 +3,7 @@ import { inject, observer } from "mobx-react";
 import { Grid, Paper, makeStyles, Avatar } from "@material-ui/core";
 import QuestionDialog from "shared/components/QuestionDialog/QuestionDialog";
 import CategorySection from "./CategorySection/CategorySection";
-import Question from "./Question";
+import Question from "../../../shared/components/Question/Question";
 import userImage from "assets/img/default-avatar.png";
 import style from "../style/style";
 
