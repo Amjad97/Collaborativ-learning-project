@@ -38,7 +38,9 @@ function SettingForm() {
               src={userImage}
               className={classes.userImage}
             />
-            <InputFile />
+            <div className={classes.uploadIcon}>
+              <InputFile />
+            </div>
           </div>
           <Formsy
             onValidSubmit={handleSubmit}

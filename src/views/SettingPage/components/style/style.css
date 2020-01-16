@@ -1,24 +1,25 @@
-.custom-file-input::-webkit-file-upload-button {
-    visibility: hidden;
+.fileContainer {
+    overflow: hidden;
+    position: relative;
 }
-.custom-file-input::before {
-    content: 'Select some files';
-    display: inline-block;
-    background: linear-gradient(top, #f9f9f9, #e3e3e3);
-    border: 1px solid #999;
-    border-radius: 3px;
-    padding: 5px 8px;
-    outline: none;
-    white-space: nowrap;
-    -webkit-user-select: none;
+
+.fileContainer [type=file] {
+    display: block;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: 0;
     cursor: pointer;
-    text-shadow: 1px 1px #fff;
-    font-weight: 700;
-    font-size: 10pt;
+    min-width: 32px;
+    min-height: 26px;
 }
-.custom-file-input:hover::before {
-border-color: black;
+
+.ui.label>.icon{
+    margin: 0;
 }
-.custom-file-input:active::before {
-background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+
+.ui.label:last-child {
+    color: #4174FF;
 }
