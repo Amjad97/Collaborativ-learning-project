@@ -12,7 +12,6 @@ function ProfilePage(props) {
     <>
       <NavBar path={path} />
       <ProfileLayout />
-      <Footer color="#4174FF" />
     </>
   );
 }

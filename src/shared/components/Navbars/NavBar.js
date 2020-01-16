@@ -31,13 +31,13 @@ function NavBar({ categoryId, path }) {
           >
             SHARE WITH ME
           </div>
-          {!isAuthPage && (
+          {!isAuthPage && !path.includes("settings") && (
             <div className={classNames("ui icon input", classes.navBarInput)}>
               <SearchBar />
               <i className={classNames("search icon", classes.navBarIcon)} />
             </div>
           )}
-          {!isAuthPage && (
+          {!isAuthPage && !path.includes("settings") && (
             <span className={classes.navBarItems}>
               <div className={classes.navBarHeaderItem}>
                 <div

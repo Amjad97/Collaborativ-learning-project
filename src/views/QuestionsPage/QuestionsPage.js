@@ -29,7 +29,6 @@ function QuestionsPage(props) {
     <div style={{ position: "relative" }}>
       <NavBar categoryId={id} path={path} />
       <QuestionsLayout categories={categories} categoryId={id} />
-      <Footer color="#4174FF" />
     </div>
   );
 }

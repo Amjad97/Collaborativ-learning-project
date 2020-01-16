@@ -35,7 +35,6 @@ function QuestionPage(props) {
     <div>
       <NavBar categoryId={categoryId} path={path} />
       <QuestionDetails questionId={id} />
-      <Footer color="#4174FF" />
     </div>
   );
 }

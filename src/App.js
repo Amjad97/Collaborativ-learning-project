@@ -15,6 +15,7 @@ import QuestionPage from "views/QuestionPage/QuestionPage";
 import QuestionsPage from "views/QuestionsPage/QuestionsPage";
 import ResourcesPage from "views/ResourcesPage/ResourcesPage";
 import ProfilePage from "views/ProfilePage/ProfilePage";
+import SettingPage from "views/SettingPage/SettingPage";
 import history from "./history";
 import store from "./shared/store";
 
@@ -39,6 +40,11 @@ export default function App() {
           <Route
             path="/profile/:id"
             render={props => <ProfilePage {...props} />}
+          />
+          <Route
+            path="/settings/:id"
+            render={props => <SettingPage {...props} />}
+            exact={true}
           />
           <Route path="/login" render={props => <LoginPage {...props} />} />
           <Route path="/signup" render={props => <SignUpPage {...props} />} />
