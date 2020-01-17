@@ -13,7 +13,8 @@ const appStyle = theme => ({
   },
   userImage: {
     width: theme.spacing(20),
-    height: theme.spacing(20)
+    height: theme.spacing(20),
+    border: "3px solid #227CBB"
   },
   profileForm: {
     padding: 20,
@@ -36,7 +37,7 @@ const appStyle = theme => ({
     fontSize: 15,
     color: "#555554",
     marginLeft: 10,
-    fontWeight: 600
+    fontWeight: 300
   },
   credentials: {
     color: "#707070",

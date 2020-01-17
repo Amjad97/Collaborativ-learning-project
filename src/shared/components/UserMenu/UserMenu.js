@@ -1,176 +1,127 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import {
   Button,
-  Icon,
-  ListItemIcon,
-  ListItemText,
-  Popover,
+  Popper,
   MenuItem,
-  Typography,
-  withStyles,
-  Avatar
+  Avatar,
+  Grow,
+  ClickAwayListener,
+  Paper,
+  MenuList,
+  makeStyles
 } from "@material-ui/core";
+import { KeyboardArrowDown } from "@material-ui/icons";
 import { inject, observer } from "mobx-react";
-import { Link, withRouter } from "react-router-dom";
-import classNames from "classnames";
+import history from "../../../history";
 import userImage from "assets/img/default-avatar.png";
 
-const styles = () => ({
-  accountIcon: {
-    color: "white",
-    fontSize: "3rem",
-    marginRight: "-15px",
-    marginLeft: "15px"
+const useStyle = makeStyles(theme => ({
+  root: {
+    display: "flex"
   },
-  userIcon: {
-    fontSize: "3rem",
-    margin: "auto"
+  paper: {
+    marginRight: theme.spacing(2)
   },
-  popupContainer: {
-    background: "#FFF",
-    borderRadius: 10,
-    boxShadow: "unset",
-    "& $span": {
-      color: "black !important",
-      fontSize: "1.4rem",
-      marginLeft: 10,
-      marginRight: 10
-    }
+  FontColor: {
+    color: "#4174FF"
   },
-  link: {
-    textDecoration: "none"
-  },
-  typography: {
-    marginLeft: "1rem",
-    "& span": {
-      fontSize: "1.5rem"
-    }
-  },
-  icon: { marginLeft: ".85rem" },
-  listItemIcon: {
-    marginRight: 0
-  },
-  listItem: {
-    "&:hover": {
-      background: "#D8DEE3"
-    }
-  },
-  userMenu: {
-    borderRadius: 0
-  },
-  hovered: {
-    background: "#404040"
+  Button: {
+    marginLeft: 10,
+    color: "#4174FF"
   }
-});
+}));
 
 function UserMenu(props) {
-  const { classes } = props;
-  const [userMenu, setUserMenu] = useState(null);
-  const [active, setActive] = useState(false);
+  const classes = useStyle();
+  const [open, setOpen] = useState(false);
+  const anchorRef = useRef(null);
+
+  const handleToggle = () => {
+    setOpen(prevOpen => !prevOpen);
+  };
+
+  const handleClose = event => {
+    if (anchorRef.current && anchorRef.current.contains(event.target)) {
+      return;
+    }
+
+    setOpen(false);
+  };
+
+  const ProfileClick = event => {
+    handleClose(event);
+    history.push("/profile/1");
+  };
+  const SettingsClick = event => {
+    handleClose(event);
+    history.push("/settings/1");
+  };
+  const LogoutClick = event => {
+    handleClose(event);
+  };
+
+  function handleListKeyDown(event) {
+    if (event.key === "Tab") {
+      event.preventDefault();
+      setOpen(false);
+    }
+  }
+
+  const prevOpen = React.useRef(open);
+  React.useEffect(() => {
+    if (prevOpen.current === true && open === false) {
+      anchorRef.current.focus();
+    }
+
+    prevOpen.current = open;
+  }, [open]);
 
   return (
-    <React.Fragment>
+    <div>
       <Button
-        className="h-64"
-        classes={{
-          text: classes.userMenu,
-          root: active ? classes.hovered : null
-        }}
-        onClick={() => {
-          setUserMenu(true);
-          setActive(true);
-        }}
-        disableRipple
-        id="btn-profile"
+        ref={anchorRef}
+        aria-controls={open ? "menu-list-grow" : undefined}
+        aria-haspopup="true"
+        startIcon={<Avatar src={userImage} />}
+        endIcon={<KeyboardArrowDown className={classes.FontColor} />}
+        onClick={handleToggle}
+        className={classes.Button}
       >
-        <ListItemIcon classes={{ root: classes.listItemIcon }}>
-          <Avatar alt="Remy Sharp" src={userImage} />
-        </ListItemIcon>
-
-        <div
-          className={classNames(
-            classes.typography,
-            "hidden md:flex flex-col items-start"
-          )}
-        >
-          <Typography component="span" className="normal-case font-200 flex">
-            {"amjad"}
-          </Typography>
-        </div>
+        Amjad
       </Button>
-
-      <Popover
-        open={Boolean(userMenu)}
-        anchorEl={userMenu}
-        onClose={() => {
-          setUserMenu(null);
-          setActive(false);
-        }}
-        anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "center"
-        }}
-        transformOrigin={{
-          vertical: "top",
-          horizontal: "center"
-        }}
-        classes={{
-          paper: props.classes.popupContainer
-        }}
+      <Popper
+        open={open}
+        anchorEl={anchorRef.current}
+        role={undefined}
+        transition
+        disablePortal
       >
-        {"" !== "guest" && (
-          <div id="user-menu-items">
-            <MenuItem
-              onClick={() => {
-                setUserMenu(null);
-                setActive(false);
-              }}
-              component={Link}
-              to="/profile/account"
-              className={classes.listItem}
-            >
-              <ListItemText
-                className="pl-0"
-                primary="Company Account"
-                id="btn-company-account"
-              />
-            </MenuItem>
-            <MenuItem
-              onClick={() => {
-                setUserMenu(null);
-                setActive(false);
-              }}
-              component={Link}
-              to="/company"
-              className={classes.listItem}
-            >
-              <ListItemText
-                className="pl-0"
-                primary="Company Settings"
-                id="btn-company-settings"
-              />
-            </MenuItem>
-            <MenuItem
-              onClick={() => {
-                this.props.history.push("/");
-                setUserMenu(null);
-                setActive(false);
-              }}
-              className={classes.listItem}
-            >
-              <ListItemText
-                className="plsetting-0"
-                primary="Sign out"
-                id="btn-sign-out"
-              />
-            </MenuItem>
-          </div>
+        {({ TransitionProps, placement }) => (
+          <Grow
+            {...TransitionProps}
+            style={{
+              transformOrigin:
+                placement === "bottom" ? "center top" : "center bottom"
+            }}
+          >
+            <Paper style={{ width: "8rem" }}>
+              <ClickAwayListener onClickAway={handleClose}>
+                <MenuList
+                  autoFocusItem={open}
+                  id="menu-list-grow"
+                  onKeyDown={handleListKeyDown}
+                >
+                  <MenuItem onClick={ProfileClick}>Profile</MenuItem>
+                  <MenuItem onClick={SettingsClick}>Settings</MenuItem>
+                  <MenuItem className={classes.FontColor} onClick={LogoutClick}>Logout</MenuItem>
+                </MenuList>
+              </ClickAwayListener>
+            </Paper>
+          </Grow>
         )}
-      </Popover>
-    </React.Fragment>
+      </Popper>
+    </div>
   );
 }
 
-export default withRouter(
-  withStyles(styles, { withTheme: true })(inject("store")(observer(UserMenu)))
-);
+export default inject("store")(observer(UserMenu));

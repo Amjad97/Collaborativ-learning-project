@@ -70,6 +70,7 @@ function NavBar({ categoryId, path }) {
               </div>
             </span>
           )}
+          {!isAuthPage && <UserMenu />}
         </span>
       </Navbar>
     </>

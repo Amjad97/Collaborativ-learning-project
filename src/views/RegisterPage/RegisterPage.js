@@ -4,7 +4,6 @@ import styles from "./style/style";
 
 // core components
 import NavBar from "shared/components/Navbars/NavBar";
-import Footer from "shared/components/Footer/Footer";
 
 import RegisterForm from "./components/RegisterForm";
 
@@ -20,7 +19,6 @@ function SignUp(props) {
       <div className={classes.SignUpCard}>
         <RegisterForm />
       </div>
-      <Footer className={classes.Footer} color="#4174FF" />
     </div>
   );
 }

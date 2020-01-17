@@ -16,7 +16,8 @@ const appStyle = theme => ({
   },
   userImage: {
     width: theme.spacing(20),
-    height: theme.spacing(20)
+    height: theme.spacing(20),
+    border: "3px solid #227CBB"
   },
   uploadIcon: {
     position: "absolute",

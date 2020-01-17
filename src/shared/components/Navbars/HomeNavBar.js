@@ -4,6 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import classNames from "classnames";
 import history from "../../../history";
 import SearchBar from "../SearchBar/SearchBar";
+import UserMenu from "../UserMenu/UserMenu";
 
 // reactstrap components
 import { Navbar, NavLink } from "reactstrap";
@@ -29,25 +30,33 @@ function NavBar({ path, categoryRef }) {
           >
             SHARE WITH ME
           </div>
-          <div className={classNames("ui icon input", classes.navBarInput)}>
+          <div className={"test" === "test" ? classNames("ui icon input", classes.navBarInput): classNames("ui icon input", classes.navBarHomeInput)}>
             <SearchBar />
             <i className={classNames("search icon", classes.navBarIcon)} />
           </div>
-          <span className={classes.navBarHomeItems}>
-            <div className={classes.navBarHeaderItem}>
-              <div
-                className={
-                  path.includes("home")
-                    ? classes.navBarItemSelected
-                    : classes.navBarItem
-                }
-                onClick={() =>
-                  window.scrollTo(0, categoryRef.current.offsetTop)
-                }
-              >
-                CATEGORIES
-              </div>
-              <div className={classes.navBarItem}>ABOUT</div>
+          <span
+            className={
+              "test" === "test"
+                ? classNames(classes.navBarHomeItems, classes.navBarHomeItems2)
+                : classes.navBarHomeItems
+            }
+          >
+            <div
+              className={
+                path.includes("home")
+                  ? classes.navBarItemSelected
+                  : classes.navBarItem
+              }
+              onClick={() => window.scrollTo(0, categoryRef.current.offsetTop)}
+            >
+              CATEGORIES
+            </div>
+            <div className={classes.navBarItem}>ABOUT</div>
+          </span>
+          {"test" === "test" ? (
+            <UserMenu />
+          ) : (
+            <>
               <NavLink to="/login" tag={Link} className={classes.navBarButtons}>
                 LOGIN
               </NavLink>
@@ -58,8 +67,8 @@ function NavBar({ path, categoryRef }) {
               >
                 SIGNUP
               </NavLink>
-            </div>
-          </span>
+            </>
+          )}
         </span>
       </Navbar>
     </>

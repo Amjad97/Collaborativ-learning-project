@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import { inject, observer } from "mobx-react";
 import { Grid, Paper, makeStyles, Avatar } from "@material-ui/core";
 import ResourceDialog from "shared/components/ResourceDialog/ResourceDialog";
-import Resource from "../../../shared/components/Resource/Resource";
+import Resource from "shared/components/Resource/Resource";
+import NoResources from "shared/components/EmptyContent/NoResources";
 import CategorySection from "./CategorySection/CategorySection";
 import userImage from "assets/img/default-avatar.png";
 import style from "../style/style";
@@ -59,11 +60,15 @@ function ResourcesLayout({ categories, categoryId, store }) {
           />
         </Paper>
         <div className={classes.mainText}>TOP Resources</div>
-        <div style={{ marginTop: 20 }}>
-          {resourcesData.map(resource => (
-            <Resource resource={resource} categories={categories} />
-          ))}
-        </div>
+        {resourcesData.length === 0 ? (
+          <NoResources text="No Resources Here" />
+        ) : (
+          <div style={{ marginTop: 20 }}>
+            {resourcesData.map(resource => (
+              <Resource resource={resource} categories={categories} />
+            ))}
+          </div>
+        )}
       </Grid>
       <Grid item xs={4}>
         <CategorySection categories={categories} categoryId={categoryId} />

@@ -1,19 +1,20 @@
 const appStyle = theme => ({
   navBarBackground: {
     backgroundColor: "#FFF",
-    marginBottom: 0
+    marginBottom: 0,
+    padding: "0rem 1rem !important"
   },
   navBarContainer: {
     display: "flex",
     position: "relative",
-    flex: 1
+    flex: 1,
+    justifyContent: "space-between"
   },
   navBarItems: {
     display: "flex",
     alignItems: "center",
     justifyContent: "flex-end",
-    flex: 1,
-    marginRight: "8%"
+    flex: 1
   },
   navBarHomeItems: {
     display: "flex",
@@ -21,6 +22,9 @@ const appStyle = theme => ({
     justifyContent: "flex-end",
     flex: 1,
     marginRight: "2%"
+  },
+  navBarHomeItems2: {
+    paddingRight: 50
   },
   navBarHeaderItem: {
     display: "flex",
@@ -30,14 +34,20 @@ const appStyle = theme => ({
     color: "#4174FF",
     fontWeight: "bold",
     fontSize: 22,
-    marginLeft: 60,
-    cursor: "pointer"
+    marginLeft: 50,
+    cursor: "pointer",
+    alignSelf: "center"
   },
   navBarInput: {
     position: "absolute !important",
     width: 400,
     left: "30%",
-    top: "-4px"
+    top: "10%"
+  },
+  navBarHomeInput: {
+    position: "absolute !important",
+    width: 400,
+    left: "30%",
   },
   navBarButtons: {
     backgroundColor: "#4174FF",

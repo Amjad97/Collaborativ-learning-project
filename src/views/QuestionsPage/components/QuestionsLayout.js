@@ -4,6 +4,7 @@ import { Grid, Paper, makeStyles, Avatar } from "@material-ui/core";
 import QuestionDialog from "shared/components/QuestionDialog/QuestionDialog";
 import CategorySection from "./CategorySection/CategorySection";
 import Question from "../../../shared/components/Question/Question";
+import NoQuestions from "shared/components/EmptyContent/NoQuestions";
 import userImage from "assets/img/default-avatar.png";
 import style from "../style/style";
 
@@ -59,11 +60,15 @@ function QuestionsLayout({ categories, categoryId, store }) {
           />
         </Paper>
         <div className={classes.mainText}>TOP Questions</div>
-        <div style={{ marginTop: 20 }}>
-          {questionsData.map(question => (
-            <Question question={question} />
-          ))}
-        </div>
+        {questionsData.length === 0 ? (
+          <NoQuestions text="No Questions Here"/>
+        ) : (
+          <div style={{ marginTop: 20 }}>
+            {questionsData.map(question => (
+              <Question question={question} />
+            ))}
+          </div>
+        )}
       </Grid>
       <Grid item xs={4}>
         <CategorySection categories={categories} categoryId={categoryId} />
