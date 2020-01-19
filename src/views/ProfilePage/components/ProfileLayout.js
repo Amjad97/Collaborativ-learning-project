@@ -12,20 +12,20 @@ function ProfileLayout({ userId, store }) {
   const [questionsData, setQuestionsData] = useState([]);
   const [resourcesData, setResourcesData] = useState([]);
 
-  // const { fetchUserData, user } = store.userStore;
+  const { fetchUserData, user } = store.userStore;
 
-  // useEffect(() => {
-  //   async function getData(userId) {
-  //     await fetchUserData(userId);
-  //     await user.fetchUserQuestions();
-  //     await user.fetchUserResources();
-  //     setQuestionsData(user.questions);
-  //     setResourcesData(user.resources);
-  //   }
-  //   getData(userId);
-  // }, [userId, fetchUserData, user]);
+  useEffect(() => {
+    async function getData(userId) {
+      await fetchUserData(userId);
+      await user.fetchUserQuestions();
+      await user.fetchUserResources();
+      setQuestionsData(user.questions);
+      setResourcesData(user.resources);
+    }
+    getData(userId);
+  }, [userId, fetchUserData, user]);
 
-  // const userImage = user.image.length === 0 ? Image : user.image;
+  const userImage = user.image.length === 0 ? Image : user.image;
 
   return (
     <Grid container spacing={3} className={classes.container}>
@@ -34,13 +34,13 @@ function ProfileLayout({ userId, store }) {
           <div className={classes.profileForm}>
             <Avatar
               alt="Remy Sharp"
-              src={Image}
+              src={userImage}
               className={classes.userImage}
             />
             <div style={{ marginLeft: 20 }}>
-              <div className={classes.userName}>Amjad</div>
-              <div className={classes.userInformation}>Amjad</div>
-              <div className={classes.userDescription}>Amjad</div>
+              <div className={classes.userName}>{user.name}</div>
+              <div className={classes.userInformation}>{user.title}</div>
+              <div className={classes.userDescription}>{user.description}</div>
               <div className={classes.numQR}>
                 <p>{questionsData.length}</p>
                 <p className={classes.leftMargin}>Questions</p>

@@ -13,7 +13,7 @@ const useStyles = makeStyles(styles);
 
 function SettingForm({ userId, store }) {
   const classes = useStyles();
-  // const { updateUserData, fetchUserData, user } = store.userStore;
+  const { updateUserData, fetchUserData, user } = store.userStore;
 
   const [userData, setUserData] = useState({});
   const [userImage, setUserImage] = useState("");
@@ -24,20 +24,20 @@ function SettingForm({ userId, store }) {
   const [canSubmit, setCanSubmit] = useState(false);
   const [disableControls, setDisableControls] = useState(false);
 
-  // useEffect(() => {
-  //   async function getData(userId) {
-  //     await fetchUserData(userId);
-  //     setUserData(user);
-  //   }
-  //   getData(userId);
-  // }, [userId, fetchUserData, user]);
+  useEffect(() => {
+    async function getData(userId) {
+      await fetchUserData(userId);
+      setUserData(user);
+    }
+    getData(userId);
+  }, [userId, fetchUserData, user]);
 
   const handleSubmit = event => {
     event.preventDefault();
     event.stopPropagation();
     setDisableControls(true);
   };
-  //const Image = userData.image.length === 0 ? avatar : userData.image;
+  const Image = user.image.length === 0 ? avatar : userData.image;
   return (
     <Card className={classes.SettingForm}>
       <CardContent className={classes.CardContent}>
@@ -46,7 +46,7 @@ function SettingForm({ userId, store }) {
           <div className={classes.imageForm}>
             <Avatar
               alt="Remy Sharp"
-              src={avatar}
+              src={Image}
               className={classes.userImage}
             />
             <div className={classes.uploadIcon}>
@@ -65,7 +65,7 @@ function SettingForm({ userId, store }) {
                   name="FirstName"
                   type="text"
                   validations="isExisty"
-                  //value={userData.firstName}
+                  value={userData.firstName}
                   placeholder="First Name"
                   onChange={e => setFirstName(e.target.value)}
                   required
@@ -77,7 +77,7 @@ function SettingForm({ userId, store }) {
                   name="lastName"
                   type="text"
                   validations="isExisty"
-                  //value={userData.lastName}
+                  value={userData.lastName}
                   placeholder="Last Name"
                   onChange={e => setLastName(e.target.value)}
                   required
@@ -88,7 +88,7 @@ function SettingForm({ userId, store }) {
                 <Input
                   name="title"
                   type="text"
-                  //value={userData.title}
+                  value={userData.title}
                   placeholder="Your Title"
                   onChange={e => setTitle(e.target.value)}
                   autoComplete="off"
@@ -99,7 +99,7 @@ function SettingForm({ userId, store }) {
                   style={{ height: "8em" }}
                   name="Description"
                   type="textarea"
-                  //value={userData.description}
+                  value={userData.description}
                   placeholder="Description"
                   onChange={e => setDescription(e.target.value)}
                   autoComplete="off"
