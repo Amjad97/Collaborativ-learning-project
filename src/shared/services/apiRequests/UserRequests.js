@@ -1,43 +1,16 @@
 const UserRequests = (requestInstance, baseUrl) => ({
-  register: ({ firstName, lastName, email, password, accountId }) =>
-    requestInstance.post(`${baseUrl}/auth/register`, {
-      first_name: firstName,
-      last_name: lastName,
-      email,
-      password,
-      account_id: accountId || null
-    }),
-
-  newPassword: (username, password, newPassword, givenName, familyName) =>
-    requestInstance
-      .post(`${baseUrl}/auth/login`, {
-        username,
-        password,
-        newPassword,
-        familyName,
-        givenName
-      })
-      .catch(error => {
-        if (error === "not authenticated") {
-          return {};
-        }
-        throw error;
-      }),
-
+  getUserData: userId => requestInstance.get(`${baseUrl}/auth/user/${userId}`),
+  updateUserData: userData => requestInstance.patch(`${baseUrl}`),
+  getUserQuestions: () => requestInstance.get(`${baseUrl}/questions/my`),
+  getUserAnswer: () => requestInstance.get(`${baseUrl}/questions/answer/my`),
+  getUserResources: () => requestInstance.get(`${baseUrl}/resources/my`),
+  register: userData =>
+    requestInstance.post(`${baseUrl}/auth/register`, userData),
   login: (email, password) =>
     requestInstance.post(`${baseUrl}/auth/login`, {
       email,
       password
-    }),
-
-  fetchUserAccount: accountId =>
-    requestInstance.get(`${baseUrl}/auth/account/${accountId}`),
-
-  updateAccountInfo: (accountId, data) =>
-    requestInstance.patch(`${baseUrl}/auth/account/${accountId}`, data),
-
-  getUserId: cognitoId =>
-    requestInstance.get(`${baseUrl}/auth/coginto?cognito_id=${cognitoId}`)
+    })
 });
 
 export default UserRequests;

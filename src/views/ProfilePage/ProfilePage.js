@@ -1,19 +1,20 @@
 import React from "react";
-
+import { inject, observer } from "mobx-react";
 // core components
 import NavBar from "shared/components/Navbars/NavBar.js";
-import Footer from "shared/components/Footer/Footer.js";
 import ProfileLayout from "./components/ProfileLayout";
 
 function ProfilePage(props) {
-  const { path } = props.match;
-
+  const {
+    params: { id },
+    path
+  } = props.match;
   return (
     <>
       <NavBar path={path} />
-      <ProfileLayout />
+      <ProfileLayout userId={id} />
     </>
   );
 }
 
-export default ProfilePage;
+export default inject("store")(observer(ProfilePage));

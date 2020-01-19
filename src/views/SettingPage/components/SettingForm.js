@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { inject, observer } from "mobx-react";
 import { Card, CardContent, Avatar } from "@material-ui/core";
 import Formsy from "formsy-react";
 import { makeStyles } from "@material-ui/core/styles";
-import classNames from "classnames";
-import Image from "assets/img/default-avatar.png";
+import avatar from "assets/img/default-avatar.png";
 import Input from "shared/components/Input/Input";
 import InputFile from "./InputFlie";
 import CustomButton from "shared/components/CustomButton/CustomButton";
@@ -11,9 +11,12 @@ import styles from "../style/style";
 
 const useStyles = makeStyles(styles);
 
-function SettingForm() {
+function SettingForm({ userId, store }) {
   const classes = useStyles();
-  const [userImage, setUserImage] = useState(Image);
+  // const { updateUserData, fetchUserData, user } = store.userStore;
+
+  const [userData, setUserData] = useState({});
+  const [userImage, setUserImage] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [title, setTitle] = useState("");
@@ -21,12 +24,20 @@ function SettingForm() {
   const [canSubmit, setCanSubmit] = useState(false);
   const [disableControls, setDisableControls] = useState(false);
 
+  // useEffect(() => {
+  //   async function getData(userId) {
+  //     await fetchUserData(userId);
+  //     setUserData(user);
+  //   }
+  //   getData(userId);
+  // }, [userId, fetchUserData, user]);
+
   const handleSubmit = event => {
     event.preventDefault();
     event.stopPropagation();
     setDisableControls(true);
   };
-
+  //const Image = userData.image.length === 0 ? avatar : userData.image;
   return (
     <Card className={classes.SettingForm}>
       <CardContent className={classes.CardContent}>
@@ -35,7 +46,7 @@ function SettingForm() {
           <div className={classes.imageForm}>
             <Avatar
               alt="Remy Sharp"
-              src={userImage}
+              src={avatar}
               className={classes.userImage}
             />
             <div className={classes.uploadIcon}>
@@ -54,7 +65,7 @@ function SettingForm() {
                   name="FirstName"
                   type="text"
                   validations="isExisty"
-                  value={firstName}
+                  //value={userData.firstName}
                   placeholder="First Name"
                   onChange={e => setFirstName(e.target.value)}
                   required
@@ -66,7 +77,7 @@ function SettingForm() {
                   name="lastName"
                   type="text"
                   validations="isExisty"
-                  value={lastName}
+                  //value={userData.lastName}
                   placeholder="Last Name"
                   onChange={e => setLastName(e.target.value)}
                   required
@@ -77,7 +88,7 @@ function SettingForm() {
                 <Input
                   name="title"
                   type="text"
-                  value={title}
+                  //value={userData.title}
                   placeholder="Your Title"
                   onChange={e => setTitle(e.target.value)}
                   autoComplete="off"
@@ -88,7 +99,7 @@ function SettingForm() {
                   style={{ height: "8em" }}
                   name="Description"
                   type="textarea"
-                  value={description}
+                  //value={userData.description}
                   placeholder="Description"
                   onChange={e => setDescription(e.target.value)}
                   autoComplete="off"
@@ -119,4 +130,4 @@ function SettingForm() {
   );
 }
 
-export default SettingForm;
+export default inject("store")(observer(SettingForm));

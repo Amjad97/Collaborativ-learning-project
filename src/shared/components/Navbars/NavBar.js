@@ -18,6 +18,7 @@ function NavBar({ categoryId, path }) {
     path.includes("signup") ||
     path.includes("forgot-password") ||
     path.includes("reset-password");
+  const id = categoryId ? categoryId : 1;
   return (
     <>
       <Navbar
@@ -31,13 +32,13 @@ function NavBar({ categoryId, path }) {
           >
             SHARE WITH ME
           </div>
-          {!isAuthPage && !path.includes("settings") && (
+          {!isAuthPage && (
             <div className={classNames("ui icon input", classes.navBarInput)}>
               <SearchBar />
               <i className={classNames("search icon", classes.navBarIcon)} />
             </div>
           )}
-          {!isAuthPage && !path.includes("settings") && (
+          {!isAuthPage && (
             <span className={classes.navBarItems}>
               <div className={classes.navBarHeaderItem}>
                 <div
@@ -53,7 +54,7 @@ function NavBar({ categoryId, path }) {
                       ? classes.navBarItemSelected
                       : classes.navBarItem
                   }
-                  onClick={() => history.push(`/questions/${categoryId}`)}
+                  onClick={() => history.push(`/questions/${id}`)}
                 >
                   QUESTIONS
                 </div>
@@ -63,7 +64,7 @@ function NavBar({ categoryId, path }) {
                       ? classes.navBarItemSelected
                       : classes.navBarItem
                   }
-                  onClick={() => history.push(`/resources/${categoryId}`)}
+                  onClick={() => history.push(`/resources/${id}`)}
                 >
                   RESOURCES
                 </div>

@@ -1,8 +1,9 @@
 import React from "react";
+import { inject, observer } from "mobx-react";
 import classNames from "classnames";
 import "./style/style.css";
 
-function InputFlie() {
+function InputFlie({ store }) {
   const handleFiles = event => {
     console.log(event.target.files[0]);
   };
@@ -14,4 +15,4 @@ function InputFlie() {
   );
 }
 
-export default InputFlie;
+export default inject("store")(observer(InputFlie));

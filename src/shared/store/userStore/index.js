@@ -1,105 +1,43 @@
-import { types, getParent, flow } from "mobx-state-tree";
+import { types, flow } from "mobx-state-tree";
 import RegisterStore from "./RegisterStore";
-
+import user from "./model/User";
 import UserService from "./services/user.service";
 
 const userStore = types
   .model({
-    user: types.optional(
-      types.model({
-        accountId: types.number,
-        role: types.string,
-        isSignedIn: types.boolean
-      }),
-      {
-        accountId: 0,
-        role: "guest",
-        isSignedIn: true
-      }
-    ),
-    registerStore: types.optional(RegisterStore, {}),
-    isSubmitting: false,
-    error: types.optional(types.frozen({}), {})
+    //users: types.optional(user, []),
+    //user: types.optional(user, []),
+    registerStore: types.optional(RegisterStore, {})
   })
-  .views(self => ({
-    get rootStore() {
-      return getParent(self);
-    },
-
-    get userNotFound() {
-      return self.error.code === "UserNotFoundException";
-    },
-    get isGuest() {
-      return self.user.role === "guest";
-    },
-
-    get notAuth() {
-      return self.error.code === "NotAuthorizedException";
-    }
-  }))
   .actions(self => ({
-    clearError: () => {
-      self.error = {};
-    },
+    // fetchUserData: flow(function* fetchUserData(userId) {
+    //   try {
+    //     const response = yield UserService.getUserData(userId);
+    //     self.user = response;
+    //   } catch (error) {
+    //     console.log(error);
+    //   }
+    // }),
 
-    setError: (code, message) => {
-      self.error = { code, message };
-    },
-
-    setIsSubmitting: isSubmitting => {
-      self.isSubmitting = isSubmitting;
-    },
-
-    setUserRole: accountType => {
-      self.user.role = accountType;
-    },
-
-    clearUser: () => {
-      self.user = {
-        accountId: 0,
-        role: "guest",
-        isSignedIn: false
-      };
-    },
+    // updateUserData: flow(function* updateUserData(userData) {
+    //   try {
+    //     const response = yield UserService.updateUserData(userData);
+    //     self.user = response;
+    //   } catch (error) {
+    //     console.log(error);
+    //   }
+    // }),
 
     login: flow(function* login(email, password) {
-      self.setIsSubmitting(true);
-      self.clearError();
       try {
-        yield UserService.login(email, password);
+        const response = yield UserService.login(email, password);
+        console.log(response);
       } catch (err) {
-        // This err indicates an invited user.
-        self.setError(err.code, err.message);
-      } finally {
-        self.setIsSubmitting(false);
+        console.log(err);
       }
     }),
 
-    forgotPassword: flow(function* forgotPassword(email) {
-      self.isSubmitting = true;
-      self.clearError();
-      try {
-        yield UserService.forgotPassword(email);
-      } catch (err) {
-        self.setError(err.code, err.message);
-      } finally {
-        self.isSubmitting = false;
-      }
-    }),
-
-    logout: flow(function* logout() {
-    }),
-
-    resetPassword: flow(function* resetPassword(email, code, password) {
-      self.clearError();
-      try {
-        yield UserService.forgotPasswordSubmit(email, code, password);
-      } catch (err) {
-        self.setError(err.code, err.message);
-      } finally {
-        self.isSubmitting = false;
-      }
-    })
+    logout: flow(function* logout() {})
   }));
 
 export default userStore;

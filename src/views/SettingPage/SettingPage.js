@@ -1,4 +1,5 @@
 import React from "react";
+import { inject, observer } from "mobx-react";
 import { makeStyles } from "@material-ui/core/styles";
 import styles from "./style/style";
 
@@ -10,16 +11,19 @@ const useStyles = makeStyles(styles);
 
 function SettingPage(props) {
   const classes = useStyles(props);
-  const { path } = props.match;
+  const {
+    path,
+    params: { id }
+  } = props.match;
 
   return (
     <div>
       <NavBar path={path} />
       <div className={classes.SettingCard}>
-        <SettingForm />
+        <SettingForm userId={id} />
       </div>
     </div>
   );
 }
 
-export default SettingPage;
+export default inject("store")(observer(SettingPage));

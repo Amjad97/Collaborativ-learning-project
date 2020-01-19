@@ -24,8 +24,11 @@ function QuestionsLayout({ categories, categoryId, store }) {
     async function getData(categoryId) {
       await fetchCategory(categoryId);
       await category.fetchQuestions(categoryId);
-      await setCategoryDate(category);
-      await setQuestionsData(category.questions);
+      setCategoryDate(category);
+      const sortedQuestions = category.questions
+        .slice()
+        .sort((a, b) => b.createdAt - a.createdAt);
+      setQuestionsData(sortedQuestions);
     }
     getData(categoryId);
   }, [categoryId, category, fetchCategory]);
@@ -61,7 +64,7 @@ function QuestionsLayout({ categories, categoryId, store }) {
         </Paper>
         <div className={classes.mainText}>TOP Questions</div>
         {questionsData.length === 0 ? (
-          <NoQuestions text="No Questions Here"/>
+          <NoQuestions text="No Questions Here" />
         ) : (
           <div style={{ marginTop: 20 }}>
             {questionsData.map(question => (

@@ -1,13 +1,31 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { inject, observer } from "mobx-react";
 import { Grid, Paper, makeStyles, Avatar } from "@material-ui/core";
 import QuestionsResourcesSection from "./QuestionsResourcesSection";
-import userImage from "assets/img/default-avatar.png";
+import Image from "assets/img/default-avatar.png";
 import style from "../style/style";
 
 const useStyle = makeStyles(style);
 
-function ProfileLayout() {
+function ProfileLayout({ userId, store }) {
   const classes = useStyle();
+  const [questionsData, setQuestionsData] = useState([]);
+  const [resourcesData, setResourcesData] = useState([]);
+
+  // const { fetchUserData, user } = store.userStore;
+
+  // useEffect(() => {
+  //   async function getData(userId) {
+  //     await fetchUserData(userId);
+  //     await user.fetchUserQuestions();
+  //     await user.fetchUserResources();
+  //     setQuestionsData(user.questions);
+  //     setResourcesData(user.resources);
+  //   }
+  //   getData(userId);
+  // }, [userId, fetchUserData, user]);
+
+  // const userImage = user.image.length === 0 ? Image : user.image;
 
   return (
     <Grid container spacing={3} className={classes.container}>
@@ -16,30 +34,27 @@ function ProfileLayout() {
           <div className={classes.profileForm}>
             <Avatar
               alt="Remy Sharp"
-              src={userImage}
+              src={Image}
               className={classes.userImage}
             />
             <div style={{ marginLeft: 20 }}>
-              <div className={classes.userName}>James Altucher</div>
-              <div className={classes.userInformation}>
-                Author, entrepreneur, podcaster
-              </div>
-              <div className={classes.userDescription}>
-                James Altucher is the author of the bestselling book Choose
-                Yourself, editor at The Altucher Report and host of the popular
-                podcast.
-              </div>
+              <div className={classes.userName}>Amjad</div>
+              <div className={classes.userInformation}>Amjad</div>
+              <div className={classes.userDescription}>Amjad</div>
               <div className={classes.numQR}>
-                <p>0</p>
+                <p>{questionsData.length}</p>
                 <p className={classes.leftMargin}>Questions</p>
-                <p style={{ marginLeft: 30 }}>0</p>
+                <p style={{ marginLeft: 30 }}>{resourcesData.length}</p>
                 <p className={classes.leftMargin}>Resources</p>
               </div>
             </div>
           </div>
         </Paper>
         <Paper style={{ marginTop: 20 }}>
-          <QuestionsResourcesSection />
+          <QuestionsResourcesSection
+            resources={resourcesData}
+            questions={questionsData}
+          />
         </Paper>
       </Grid>
       <Grid item xs={4}>
@@ -49,4 +64,4 @@ function ProfileLayout() {
   );
 }
 
-export default ProfileLayout;
+export default inject("store")(observer(ProfileLayout));
