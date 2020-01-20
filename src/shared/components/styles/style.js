@@ -21,7 +21,6 @@ const appStyle = theme => ({
     alignItems: "center",
     justifyContent: "flex-end",
     flex: 1,
-    marginRight: "2%"
   },
   navBarHomeItems2: {
     paddingRight: 50
@@ -59,7 +58,7 @@ const appStyle = theme => ({
   navBarItem: {
     color: "#555554",
     fontWeight: "500",
-    marginLeft: 45,
+    marginLeft: 25,
     cursor: "pointer"
   },
   navBarItemSelected: {

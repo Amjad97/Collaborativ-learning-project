@@ -2,9 +2,7 @@ import axios from "axios";
 import makeCancelable from "axios-cancelable";
 import getConfig from "../../../config";
 
-import {
-  camelCase
-} from "lodash";
+import { camelCase } from "lodash";
 
 import getUserRequests from "./UserRequests";
 import getCategoryRequests from "./CategoryRequests";
@@ -32,7 +30,7 @@ const toCamelCase = obj => {
 };
 
 // Process the request response
-const processResponse = (response) => {
+const processResponse = response => {
   return toCamelCase(response.data);
 };
 
@@ -49,6 +47,22 @@ class Request {
   }
 
   async send(method, url, data = {}) {
+    const userToken = localStorage.getItem("userToken");
+    if (
+      userToken.length !== 0 &&
+      (url.includes("me") || url.includes("my") || url.includes("auth"))
+    ) {
+      return axios({
+        url,
+        method,
+        data,
+        headers: {
+          Authentication: userToken
+        }
+      })
+        .then(response => processResponse(response))
+        .catch(error => console.log(error));
+    }
     return axios({
       url,
       method,
@@ -79,7 +93,7 @@ class Request {
   }
 }
 
-const requests = (config) => {
+const requests = config => {
   const baseUrl = config.apiUrl;
   const requestInstance = new Request(baseUrl);
   return {
@@ -88,7 +102,7 @@ const requests = (config) => {
     CategoryApiRequests: getCategoryRequests(requestInstance, baseUrl),
     ResourceApiRequests: getResourceRequests(requestInstance, baseUrl),
     QuestionApiRequests: getQuestionRequests(requestInstance, baseUrl),
-    AnswerApiRequests: getAnswerRequests(requestInstance, baseUrl),
+    AnswerApiRequests: getAnswerRequests(requestInstance, baseUrl)
   };
 };
 

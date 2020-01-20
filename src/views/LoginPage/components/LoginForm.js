@@ -19,9 +19,9 @@ import styles from "../style/style";
 
 const useStyles = makeStyles(styles);
 
-function LoginForm() {
+function LoginForm({ login }) {
   const classes = useStyles();
-  const [email, setEmail] = useState("");
+  const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
   const [canSubmit, setCanSubmit] = useState(false);
@@ -33,6 +33,10 @@ function LoginForm() {
     event.preventDefault();
     event.stopPropagation();
     setDisableControls(true);
+    login &&
+      login({ username: userName, password: password }).finally(() => {
+        setDisableControls(false);
+      });
   };
 
   return (
@@ -51,25 +55,28 @@ function LoginForm() {
               }
             >
               <Input
-                name="Email"
-                placeholder="Email"
-                type="email"
-                validations="isEmail"
+                name="userName"
+                placeholder="User Name"
+                type="text"
                 onChange={e => {
-                  setEmail(e.target.value);
+                  setUserName(e.target.value);
+                }}
+                validations={{
+                  //
+                  matchRegexp: /^[a-zA-Z0-9@/./+/-/_]+$/
                 }}
                 validate={{
                   required: {
                     value: true,
-                    errorMessage: "Please enter an email"
+                    errorMessage: "Please enter an userName"
                   },
-                  //
                   pattern: {
-                    value: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/i,
-                    errorMessage: "Invalid email"
+                    value: /^[a-zA-Z0-9@/./+/-/_]+$/,
+                    errorMessage:
+                      "username contains only letters, numbers and special characters"
                   }
                 }}
-                value={email}
+                value={userName}
                 onFocus={() => setFirstFocus(true)}
                 onBlur={() => setFirstFocus(false)}
                 required
@@ -124,8 +131,8 @@ function LoginForm() {
           </AvForm>
           <div>
             <CustomButton
-              //disabled={!canSubmit}
-              //isLoading={disableControls}
+              disabled={!canSubmit}
+              isLoading={disableControls}
               onClick={handleSubmit}
             >
               Log in

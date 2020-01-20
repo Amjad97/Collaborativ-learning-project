@@ -1,14 +1,15 @@
 import { apiRequests } from "../../../services/apiRequests";
 
 const UserService = {
+  // fetchMyData
+  getMyData: () => apiRequests.UserApiRequests.fetchMyData(),
   // fetchUser
   getUserData: userId => apiRequests.UserApiRequests.fetchUserData(userId),
   // updateUserData
   updateUserData: userData =>
     apiRequests.UserApiRequests.updateUserData(userData),
   // login
-  login: (email, password) =>
-    apiRequests.UserApiRequests.login(email, password),
+  login: userData => apiRequests.UserApiRequests.login(userData),
   // register
   register: userData => apiRequests.UserApiRequests.register(userData),
   // fetchUser questions

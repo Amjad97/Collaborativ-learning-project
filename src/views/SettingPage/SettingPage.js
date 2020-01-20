@@ -13,14 +13,13 @@ function SettingPage(props) {
   const classes = useStyles(props);
   const {
     path,
-    params: { id }
   } = props.match;
 
   return (
     <div>
       <NavBar path={path} />
       <div className={classes.SettingCard}>
-        <SettingForm userId={id} />
+        <SettingForm />
       </div>
     </div>
   );

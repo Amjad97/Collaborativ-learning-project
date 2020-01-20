@@ -11,9 +11,9 @@ import styles from "../style/style";
 
 const useStyles = makeStyles(styles);
 
-function SettingForm({ userId, store }) {
+function SettingForm({ store }) {
   const classes = useStyles();
-  const { updateUserData, fetchUserData, user } = store.userStore;
+  const { updateUserData, fetchMyData, myprofile } = store.userStore;
 
   const [userData, setUserData] = useState({});
   const [userImage, setUserImage] = useState("");
@@ -25,19 +25,20 @@ function SettingForm({ userId, store }) {
   const [disableControls, setDisableControls] = useState(false);
 
   useEffect(() => {
-    async function getData(userId) {
-      await fetchUserData(userId);
-      setUserData(user);
+    async function getData() {
+      await fetchMyData();
+      setUserData(myprofile);
     }
-    getData(userId);
-  }, [userId, fetchUserData, user]);
+    getData();
+  }, [fetchMyData, myprofile]);
 
   const handleSubmit = event => {
     event.preventDefault();
     event.stopPropagation();
     setDisableControls(true);
   };
-  const Image = user.image.length === 0 ? avatar : userData.image;
+  const Image = myprofile.image.length === 0 ? avatar : userData.image;
+  console.log(userData);
   return (
     <Card className={classes.SettingForm}>
       <CardContent className={classes.CardContent}>

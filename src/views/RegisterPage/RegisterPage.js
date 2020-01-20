@@ -1,4 +1,5 @@
 import React from "react";
+import { inject, observer } from "mobx-react";
 import { makeStyles } from "@material-ui/core/styles";
 import styles from "./style/style";
 
@@ -12,15 +13,15 @@ const useStyles = makeStyles(styles);
 function SignUp(props) {
   const classes = useStyles(props);
   const { path } = props.match;
-
+  const { register } = props.store.userStore;
   return (
     <div>
       <NavBar path={path} />
       <div className={classes.SignUpCard}>
-        <RegisterForm />
+        <RegisterForm register={register} />
       </div>
     </div>
   );
 }
 
-export default SignUp;
+export default inject("store")(observer(SignUp));

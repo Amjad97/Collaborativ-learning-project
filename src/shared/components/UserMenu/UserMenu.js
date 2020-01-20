@@ -27,11 +27,12 @@ const useStyle = makeStyles(theme => ({
   },
   Button: {
     marginLeft: 10,
-    color: "#4174FF"
+    color: "#4174FF",
+    textTransform: "lowercase"
   }
 }));
 
-function UserMenu(props) {
+function UserMenu({ userId, store }) {
   const classes = useStyle();
   const [open, setOpen] = useState(false);
   const anchorRef = useRef(null);
@@ -50,14 +51,16 @@ function UserMenu(props) {
 
   const ProfileClick = event => {
     handleClose(event);
-    history.push("/profile/1");
+    history.push(`/profile/${userId}`);
   };
   const SettingsClick = event => {
     handleClose(event);
-    history.push("/settings/1");
+    history.push("/settings");
   };
   const LogoutClick = event => {
     handleClose(event);
+    const { logout } = store.userStore;
+    logout();
   };
 
   function handleListKeyDown(event) {
@@ -87,7 +90,7 @@ function UserMenu(props) {
         onClick={handleToggle}
         className={classes.Button}
       >
-        Amjad
+        {localStorage.getItem("username") || ""}
       </Button>
       <Popper
         open={open}
@@ -113,7 +116,9 @@ function UserMenu(props) {
                 >
                   <MenuItem onClick={ProfileClick}>Profile</MenuItem>
                   <MenuItem onClick={SettingsClick}>Settings</MenuItem>
-                  <MenuItem className={classes.FontColor} onClick={LogoutClick}>Logout</MenuItem>
+                  <MenuItem className={classes.FontColor} onClick={LogoutClick}>
+                    Logout
+                  </MenuItem>
                 </MenuList>
               </ClickAwayListener>
             </Paper>

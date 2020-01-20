@@ -18,9 +18,10 @@ function Home(props) {
   const path = props.match.path;
   const { categories } = props.store.categoriesStore;
   const categoryRef = useRef();
+  const isLoggedIn = localStorage.getItem("isLoggedIn");
   return (
     <>
-      <NavBar path={path} categoryRef={categoryRef} />
+      <NavBar path={path} categoryRef={categoryRef} isLoggedIn={isLoggedIn} />
       <div className="wrapper">
         <Header categories={categories} />
         <div className="main" ref={categoryRef}>

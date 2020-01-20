@@ -12,8 +12,9 @@ import { Navbar, NavLink } from "reactstrap";
 import styles from "../styles/style";
 const useStyles = makeStyles(styles);
 
-function NavBar({ path, categoryRef }) {
+function NavBar({ path, categoryRef, isLoggedIn }) {
   const classes = useStyles();
+
   return (
     <>
       <Navbar
@@ -30,13 +31,19 @@ function NavBar({ path, categoryRef }) {
           >
             SHARE WITH ME
           </div>
-          <div className={"test" === "test" ? classNames("ui icon input", classes.navBarInput): classNames("ui icon input", classes.navBarHomeInput)}>
+          <div
+            className={
+              isLoggedIn
+                ? classNames("ui icon input", classes.navBarInput)
+                : classNames("ui icon input", classes.navBarHomeInput)
+            }
+          >
             <SearchBar />
             <i className={classNames("search icon", classes.navBarIcon)} />
           </div>
           <span
             className={
-              "test" === "test"
+              isLoggedIn
                 ? classNames(classes.navBarHomeItems, classes.navBarHomeItems2)
                 : classes.navBarHomeItems
             }
@@ -53,8 +60,8 @@ function NavBar({ path, categoryRef }) {
             </div>
             <div className={classes.navBarItem}>ABOUT</div>
           </span>
-          {"test" === "test" ? (
-            <UserMenu />
+          {isLoggedIn ? (
+            <UserMenu userId={1} />
           ) : (
             <>
               <NavLink to="/login" tag={Link} className={classes.navBarButtons}>

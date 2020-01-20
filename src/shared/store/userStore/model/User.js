@@ -9,6 +9,7 @@ const user = types
     id: types.optional(types.number, 0),
     firstName: types.optional(types.string, ""),
     lastName: types.optional(types.string, ""),
+    username: types.optional(types.string, ""),
     title: types.optional(types.string, ""),
     description: types.optional(types.string, ""),
     image: types.optional(types.string, ""),
@@ -17,7 +18,6 @@ const user = types
     resources: types.array(resource, []),
     questions: types.array(question, []),
     answers: types.array(answer, []),
-    isLoggedIn: types.optional(types.boolean, false)
   })
   .actions(self => ({
     fetchUserQuestions: flow(function* fetchUserQuestions() {

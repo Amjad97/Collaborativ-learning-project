@@ -42,7 +42,7 @@ export default function App() {
             render={props => <ProfilePage {...props} />}
           />
           <Route
-            path="/settings/:id"
+            path="/settings"
             render={props => <SettingPage {...props} />}
             exact={true}
           />

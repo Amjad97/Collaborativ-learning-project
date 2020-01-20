@@ -19,6 +19,8 @@ function NavBar({ categoryId, path }) {
     path.includes("forgot-password") ||
     path.includes("reset-password");
   const id = categoryId ? categoryId : 1;
+  const isLoggedIn = localStorage.getItem("isLoggedIn");
+
   return (
     <>
       <Navbar
@@ -71,7 +73,7 @@ function NavBar({ categoryId, path }) {
               </div>
             </span>
           )}
-          {!isAuthPage && <UserMenu />}
+          {!isAuthPage && isLoggedIn && <UserMenu userId={1} />}
         </span>
       </Navbar>
     </>
