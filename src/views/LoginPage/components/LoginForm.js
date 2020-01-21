@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { AvForm } from "availity-reactstrap-validation";
 // reactstrap components
 import { InputGroup } from "reactstrap";
@@ -11,6 +11,7 @@ import {
   FormControlLabel
 } from "@material-ui/core";
 import classNames from "classnames";
+import { isEqual } from "lodash";
 import Input from "shared/components/Input/LoginInput";
 import CustomButton from "shared/components/CustomButton/CustomButton";
 import history from "../../../history";
@@ -29,16 +30,37 @@ function LoginForm({ login }) {
   const [firstFocus, setFirstFocus] = useState(false);
   const [lastFocus, setLastFocus] = useState(false);
 
+  useEffect(() => {
+    const rememberMe = localStorage.getItem("rememberMe") === "true";
+    if (localStorage.getItem("userName") !== null) {
+      if (localStorage.getItem("userName").length !== 0) {
+        const userName = rememberMe ? localStorage.getItem("userName") : "";
+        setUserName(userName);
+      }
+    }
+    if (localStorage.getItem("password") !== null) {
+      if (localStorage.getItem("password").length !== 0) {
+        const password = rememberMe ? localStorage.getItem("password") : "";
+        setPassword(password);
+      }
+    }
+    setRememberMe(isEqual(localStorage.getItem("rememberMe"), "true"));
+  }, []);
+
   const handleSubmit = event => {
     event.preventDefault();
     event.stopPropagation();
     setDisableControls(true);
+    localStorage.setItem("rememberMe", rememberMe);
+    localStorage.setItem("userName", rememberMe ? userName : "");
+    localStorage.setItem("password", rememberMe ? password : "");
     login &&
       login({ username: userName, password: password }).finally(() => {
         setDisableControls(false);
       });
   };
 
+  console.log(rememberMe);
   return (
     <Card className={classes.LoginForm}>
       <CardContent className={classes.CardContent}>
