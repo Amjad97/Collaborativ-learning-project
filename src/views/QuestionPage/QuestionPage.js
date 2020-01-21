@@ -4,6 +4,7 @@ import { inject, observer } from "mobx-react";
 // core components
 import NavBar from "shared/components/Navbars/NavBar";
 import QuestionDetails from "./components/QuestionDetails";
+import { isEqual } from "lodash";
 
 function QuestionPage(props) {
   const [questions, setQuestions] = useState([]);
@@ -31,11 +32,12 @@ function QuestionPage(props) {
   }, [id, questions, fetchAllQuestions, allQuestions]);
 
   const isLoggedIn = localStorage.getItem("isLoggedIn");
+  const LoggedIn = isEqual(isLoggedIn, "true");
 
   return (
     <div>
       <NavBar isLoggedIn={isLoggedIn} categoryId={categoryId} path={path} />
-      <QuestionDetails questionId={id} />
+      <QuestionDetails questionId={id} isLoggedIn={LoggedIn} />
     </div>
   );
 }

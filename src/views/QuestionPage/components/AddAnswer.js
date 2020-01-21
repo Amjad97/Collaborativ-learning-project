@@ -14,7 +14,6 @@ function AddAnswer({ addAnswer, questionId }) {
     addAnswer &&
       answer.length > 0 &&
       addAnswer({
-        user: 1,
         question: questionId,
         answer: answer
       }).finally(() => {
@@ -31,10 +30,7 @@ function AddAnswer({ addAnswer, questionId }) {
           value={answer}
         />
       </div>
-      <button
-        className={classNames("ui button primary", classes.addAnswerBtn)}
-        onClick={handleSubmit}
-      >
+      <button className="ui button primary" onClick={handleSubmit}>
         Add answer
       </button>
     </div>

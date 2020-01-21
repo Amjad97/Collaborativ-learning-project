@@ -4,13 +4,14 @@ import { Grid, Paper, makeStyles, Avatar } from "@material-ui/core";
 import ResourceDialog from "shared/components/ResourceDialog/ResourceDialog";
 import Resource from "shared/components/Resource/Resource";
 import NoResources from "shared/components/EmptyContent/NoResources";
+import Content from "shared/components/NotLoggedInContent/Content";
 import CategorySection from "./CategorySection/CategorySection";
 import userImage from "assets/img/default-avatar.png";
 import style from "../style/style";
 
 const useStyle = makeStyles(style);
 
-function ResourcesLayout({ categories, categoryId, store }) {
+function ResourcesLayout({ categories, categoryId, store, isLoggedIn }) {
   const classes = useStyle();
   const [open, setOpen] = useState(false);
   const [categoryData, setCategoryDate] = useState({});
@@ -24,8 +25,8 @@ function ResourcesLayout({ categories, categoryId, store }) {
     async function getData(categoryId) {
       await fetchCategory(categoryId);
       await category.fetchResources(categoryId);
-      await setCategoryDate(category);
-      await setResourcesData(category.resources);
+      setCategoryDate(category);
+      setResourcesData(category.resources);
     }
     getData(categoryId);
   }, [categoryId, category, fetchCategory]);
@@ -41,23 +42,29 @@ function ResourcesLayout({ categories, categoryId, store }) {
     <Grid container spacing={3} className={classes.container}>
       <Grid item xs={8}>
         <Paper>
-          <div className={classes.resourceForm} onClick={handleClickOpen}>
-            <Avatar alt="Remy Sharp" src={userImage} />
-            <div style={{ marginLeft: 20 }}>
-              <div className={classes.resourceFormTitle}>
-                Do you have a new resource?
+          {isLoggedIn ? (
+            <>
+              <div className={classes.resourceForm} onClick={handleClickOpen}>
+                <Avatar alt="Remy Sharp" src={userImage} />
+                <div style={{ marginLeft: 20 }}>
+                  <div className={classes.resourceFormTitle}>
+                    Do you have a new resource?
+                  </div>
+                  <div className={classes.resourceFormSubTitle}>
+                    Add a resource now...
+                  </div>
+                </div>
               </div>
-              <div className={classes.resourceFormSubTitle}>
-                Add a resource now...
-              </div>
-            </div>
-          </div>
-          <ResourceDialog
-            open={open}
-            handleClose={handleClose}
-            categories={categories}
-            addResource={categoryData.addResource}
-          />
+              <ResourceDialog
+                open={open}
+                handleClose={handleClose}
+                categories={categories}
+                addResource={categoryData.addResource}
+              />
+            </>
+          ) : (
+            <Content content="To add resources you need to login" />
+          )}
         </Paper>
         <div className={classes.mainText}>TOP Resources</div>
         {resourcesData.length === 0 ? (

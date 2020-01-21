@@ -6,13 +6,14 @@ import Question from "./Question";
 import Answer from "./Answer";
 import userImage from "assets/img/default-avatar.png";
 import QuestionDialog from "shared/components/QuestionDialog/QuestionDialog";
+import Content from "shared/components/NotLoggedInContent/Content";
 import RelatedQuestion from "./RelatedQuestion";
 import styles from "../style/style";
 import AddAnswer from "./AddAnswer";
 
 const useStyles = makeStyles(styles);
 
-function QuestionDetails({ questionId, store }) {
+function QuestionDetails({ questionId, store, isLoggedIn }) {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   const [question, setQuestion] = useState({});
@@ -49,18 +50,24 @@ function QuestionDetails({ questionId, store }) {
     <Grid container spacing={3} className={classes.container}>
       <Grid item xs={8}>
         <Paper>
-          <div className={classes.questionForm} onClick={handleClickOpen}>
-            <Avatar alt="Remy Sharp" src={userImage} />
-            <div style={{ marginLeft: 20 }}>
-              <div className={classes.questionFormTitle}>
-                What's your question ?
+          {isLoggedIn ? (
+            <>
+              <div className={classes.questionForm} onClick={handleClickOpen}>
+                <Avatar alt="Remy Sharp" src={userImage} />
+                <div style={{ marginLeft: 20 }}>
+                  <div className={classes.questionFormTitle}>
+                    What's your question ?
+                  </div>
+                  <div className={classes.questionFormSubTitle}>
+                    Write a question now !
+                  </div>
+                </div>
               </div>
-              <div className={classes.questionFormSubTitle}>
-                Write a question now !
-              </div>
-            </div>
-          </div>
-          <QuestionDialog open={open} handleClose={handleClose} />
+              <QuestionDialog open={open} handleClose={handleClose} />
+            </>
+          ) : (
+            <Content content="To ask questions you need to login" />
+          )}
         </Paper>
         <div className={classes.mainText}>Question</div>
         <div style={{ marginTop: 20 }}>

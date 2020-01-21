@@ -19,7 +19,7 @@ function Resource({ resource, categories }) {
   const classes = useStyle();
   const [categoryName, setCategoryName] = useState("");
   const {
-    user,
+    username,
     title,
     description,
     platform,
@@ -45,7 +45,7 @@ function Resource({ resource, categories }) {
               <Avatar alt="Remy Sharp" src={userImage} />
               <div style={{ marginLeft: 10 }}>
                 <div style={{ color: "#555554", fontWeight: "900" }}>
-                  Anonymous
+                  {username}
                 </div>
                 <div style={{ color: "#555554", fontSize: 12 }}>
                   {moment(createdAt).format("MMMM Do YYYY, h:mm a")}

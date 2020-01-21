@@ -5,12 +5,13 @@ import QuestionDialog from "shared/components/QuestionDialog/QuestionDialog";
 import CategorySection from "./CategorySection/CategorySection";
 import Question from "../../../shared/components/Question/Question";
 import NoQuestions from "shared/components/EmptyContent/NoQuestions";
+import Content from "shared/components/NotLoggedInContent/Content";
 import userImage from "assets/img/default-avatar.png";
 import style from "../style/style";
 
 const useStyle = makeStyles(style);
 
-function QuestionsLayout({ categories, categoryId, store }) {
+function QuestionsLayout({ categories, categoryId, store, isLoggedIn }) {
   const classes = useStyle();
   const [open, setOpen] = useState(false);
   const [categoryData, setCategoryDate] = useState({});
@@ -25,10 +26,7 @@ function QuestionsLayout({ categories, categoryId, store }) {
       await fetchCategory(categoryId);
       await category.fetchQuestions(categoryId);
       setCategoryDate(category);
-      const sortedQuestions = category.questions
-        .slice()
-        .sort((a, b) => b.createdAt - a.createdAt);
-      setQuestionsData(sortedQuestions);
+      setQuestionsData(category.questions);
     }
     getData(categoryId);
   }, [categoryId, category, fetchCategory]);
@@ -40,27 +38,34 @@ function QuestionsLayout({ categories, categoryId, store }) {
     setOpen(false);
   };
 
+  console.log(questionsData);
   return (
     <Grid container spacing={3} className={classes.container}>
       <Grid item xs={8}>
         <Paper>
-          <div className={classes.questionForm} onClick={handleClickOpen}>
-            <Avatar alt="Remy Sharp" src={userImage} />
-            <div style={{ marginLeft: 20 }}>
-              <div className={classes.questionFormTitle}>
-                What's your question ?
+          {isLoggedIn ? (
+            <>
+              <div className={classes.questionForm} onClick={handleClickOpen}>
+                <Avatar alt="Remy Sharp" src={userImage} />
+                <div style={{ marginLeft: 20 }}>
+                  <div className={classes.questionFormTitle}>
+                    What's your question ?
+                  </div>
+                  <div className={classes.questionFormSubTitle}>
+                    Write a question now !
+                  </div>
+                </div>
               </div>
-              <div className={classes.questionFormSubTitle}>
-                Write a question now !
-              </div>
-            </div>
-          </div>
-          <QuestionDialog
-            open={open}
-            handleClose={handleClose}
-            addQuestion={categoryData.addQuestion}
-            categoryId={categoryId}
-          />
+              <QuestionDialog
+                open={open}
+                handleClose={handleClose}
+                addQuestion={categoryData.addQuestion}
+                categoryId={categoryId}
+              />
+            </>
+          ) : (
+            <Content content="To ask questions you need to login" />
+          )}
         </Paper>
         <div className={classes.mainText}>TOP Questions</div>
         {questionsData.length === 0 ? (

@@ -7,6 +7,7 @@ const question = types
   .model({
     id: types.optional(types.number, 0),
     user: types.optional(types.number, 0),
+    username: types.optional(types.string, ""),
     category: types.optional(types.number, 0),
     title: types.optional(types.string, ""),
     description: types.optional(types.string, ""),

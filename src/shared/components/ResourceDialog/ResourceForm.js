@@ -21,7 +21,6 @@ function ResourceForm({ handleClose, categories, addResource }) {
 
     addResource &&
       addResource({
-        user: 1,
         category: resourceCategory,
         title: resourceTitle,
         description: resourceDetails,

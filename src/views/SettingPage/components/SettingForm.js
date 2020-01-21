@@ -25,12 +25,12 @@ function SettingForm(props) {
     getData();
   }, [fetchMyData, myprofile]);
 
-  const [userImage, setUserImage] = useState(userData.image);
-  const [userName, setUserName] = useState(userData.username);
-  const [firstName, setFirstName] = useState(userData.firstName);
-  const [lastName, setLastName] = useState(userData.lastName);
-  const [title, setTitle] = useState(userData.title);
-  const [description, setDescription] = useState(userData.description);
+  const [userImage, setUserImage] = useState("");
+  const [userName, setUserName] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
   const [canSubmit, setCanSubmit] = useState(false);
   const [disableControls, setDisableControls] = useState(false);
 
@@ -46,7 +46,7 @@ function SettingForm(props) {
     //   });
   };
   const Image = myprofile.image.length === 0 ? avatar : userData.image;
-  console.log(userData);
+
   return (
     <Card className={classes.SettingForm}>
       <ReactNotification />
@@ -75,7 +75,7 @@ function SettingForm(props) {
                   name="userName"
                   type="text"
                   validations="isExisty"
-                  value={userName}
+                  value={userData.username}
                   placeholder="User Name"
                   onChange={e => setUserName(e.target.value)}
                   required

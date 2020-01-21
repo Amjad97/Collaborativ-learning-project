@@ -48,16 +48,13 @@ class Request {
 
   async send(method, url, data = {}) {
     const userToken = localStorage.getItem("userToken");
-    if (
-      userToken.length !== 0 &&
-      (url.includes("me") || url.includes("my") || url.includes("auth"))
-    ) {
+    if (userToken.length !== 0) {
       return axios({
         url,
         method,
         data,
         headers: {
-          Authentication: userToken
+          Authorization: `Bearer ${userToken}`
         }
       })
         .then(response => processResponse(response))

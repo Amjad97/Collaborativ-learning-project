@@ -18,7 +18,6 @@ function QuestionForm({ handleClose, addQuestion, categoryId }) {
 
     addQuestion &&
       addQuestion({
-        user: 1,
         category: categoryId,
         title: question,
         description: questionDetails
