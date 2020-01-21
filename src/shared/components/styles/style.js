@@ -16,11 +16,18 @@ const appStyle = theme => ({
     justifyContent: "flex-end",
     flex: 1
   },
-  navBarHomeItems: {
+  navBarItems2: {
     display: "flex",
     alignItems: "center",
     justifyContent: "flex-end",
     flex: 1,
+    marginRight: "10%"
+  },
+  navBarHomeItems: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "flex-end",
+    flex: 1
   },
   navBarHomeItems2: {
     paddingRight: 50
@@ -47,6 +54,7 @@ const appStyle = theme => ({
     position: "absolute !important",
     width: 400,
     left: "30%",
+    top: "-3px"
   },
   navBarButtons: {
     backgroundColor: "#4174FF",
@@ -64,7 +72,7 @@ const appStyle = theme => ({
   navBarItemSelected: {
     color: "#4174FF",
     fontWeight: "500",
-    marginLeft: 45,
+    marginLeft: 25,
     cursor: "pointer"
   },
   navBarIcon: {

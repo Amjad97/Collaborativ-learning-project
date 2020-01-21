@@ -11,13 +11,11 @@ const useStyles = makeStyles(styles);
 
 function SettingPage(props) {
   const classes = useStyles(props);
-  const {
-    path,
-  } = props.match;
-
+  const { path } = props.match;
+  const isLoggedIn = localStorage.getItem("isLoggedIn");
   return (
     <div>
-      <NavBar path={path} />
+      <NavBar path={path} isLoggedIn={isLoggedIn} />
       <div className={classes.SettingCard}>
         <SettingForm />
       </div>

@@ -4,7 +4,6 @@ import { inject, observer } from "mobx-react";
 // core components
 import NavBar from "shared/components/Navbars/NavBar";
 import QuestionDetails from "./components/QuestionDetails";
-import Footer from "shared/components/Footer/Footer.js";
 
 function QuestionPage(props) {
   const [questions, setQuestions] = useState([]);
@@ -31,9 +30,11 @@ function QuestionPage(props) {
     }
   }, [id, questions, fetchAllQuestions, allQuestions]);
 
+  const isLoggedIn = localStorage.getItem("isLoggedIn");
+
   return (
     <div>
-      <NavBar categoryId={categoryId} path={path} />
+      <NavBar isLoggedIn={isLoggedIn} categoryId={categoryId} path={path} />
       <QuestionDetails questionId={id} />
     </div>
   );

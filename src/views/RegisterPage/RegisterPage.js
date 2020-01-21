@@ -14,9 +14,10 @@ function SignUp(props) {
   const classes = useStyles(props);
   const { path } = props.match;
   const { register } = props.store.userStore;
+  const isLoggedIn = localStorage.getItem("isLoggedIn");
   return (
     <div>
-      <NavBar path={path} />
+      <NavBar path={path} isLoggedIn={isLoggedIn} />
       <div className={classes.SignUpCard}>
         <RegisterForm register={register} />
       </div>

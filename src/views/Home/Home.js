@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { inject, observer } from "mobx-react";
 
 // core components
-import NavBar from "../../shared/components/Navbars/HomeNavBar";
+import NavBar from "../../shared/components/Navbars/NavBar";
 import Header from "./components/Header/Header";
 import Categories from "./components/Categories/Categories";
 import Contact from "./components/Contact/Contact";

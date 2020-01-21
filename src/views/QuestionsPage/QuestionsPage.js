@@ -3,17 +3,7 @@ import { inject, observer } from "mobx-react";
 import QuestionsLayout from "./components/QuestionsLayout";
 import NavBar from "../../shared/components/Navbars/NavBar";
 
-// shared components
-import Footer from "shared/components/Footer/Footer.js";
-import { makeStyles } from "@material-ui/core/styles";
-
-import styles from "./style/style";
-
-const useStyles = makeStyles(styles);
-
 function QuestionsPage(props) {
-  const classes = useStyles(props);
-
   useEffect(() => {
     const { fetchCategories } = props.store.categoriesStore;
     fetchCategories();
@@ -23,11 +13,11 @@ function QuestionsPage(props) {
     params: { id },
     path
   } = props.match;
-
+  const isLoggedIn = localStorage.getItem("isLoggedIn");
   const { categories } = props.store.categoriesStore;
   return (
     <div style={{ position: "relative" }}>
-      <NavBar categoryId={id} path={path} />
+      <NavBar categoryId={id} path={path} isLoggedIn={isLoggedIn} />
       <QuestionsLayout categories={categories} categoryId={id} />
     </div>
   );

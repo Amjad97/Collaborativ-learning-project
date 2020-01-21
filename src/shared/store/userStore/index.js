@@ -45,7 +45,7 @@ const userStore = types
         localStorage.setItem("username", userData.username);
         localStorage.setItem("userToken", accessToken);
         localStorage.setItem("refreshToken", refreshToken);
-        localStorage.setItem("isLoggedIn", true);
+        localStorage.setItem("isLoggedIn", "true");
         history.push("/home");
       } catch (err) {
         console.log(err);
@@ -62,7 +62,7 @@ const userStore = types
     }),
     logout: function logout() {
       try {
-        localStorage.setItem("isLoggedIn", false);
+        localStorage.setItem("isLoggedIn", "false");
         localStorage.setItem("username", "");
         localStorage.setItem("userToken", "");
         localStorage.setItem("refreshToken", "");
