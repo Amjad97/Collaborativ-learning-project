@@ -1,4 +1,6 @@
 import { mapKeys, camelCase, mapValues, snakeCase } from "lodash";
+import { store } from "react-notifications-component";
+import "react-notifications-component/dist/theme.css";
 
 const UtilFunctions = {
   /**
@@ -47,6 +49,20 @@ const UtilFunctions = {
     });
 
     return result;
+  },
+  addNotification: (title, message,state) => {
+    store.addNotification({
+      title: title,
+      message: message,
+      type: state,
+      insert: "top",
+      container: "top-right",
+      animationIn: ["animated", "zoomIn"],
+      animationOut: ["animated", "zoomOut"],
+      dismiss: {
+        duration: 3000
+      }
+    });
   }
 };
 

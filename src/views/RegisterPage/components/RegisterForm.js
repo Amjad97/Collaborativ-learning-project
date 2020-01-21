@@ -6,8 +6,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Formsy from "formsy-react";
 import { addValidationRule } from "formsy-react";
 
-import { store } from "react-notifications-component";
-import "react-notifications-component/dist/theme.css";
+import Utils from "shared/utils/UtilFunctions";
 
 import CustomButton from "shared/components/CustomButton/CustomButton";
 import Input from "shared/components/Input/LoginInput";
@@ -33,21 +32,6 @@ function RegisterForm({ register }) {
   const [canSubmit, setCanSubmit] = React.useState(false);
   const [disableControls, setDisableControls] = React.useState(false);
 
-  const addNotification = () => {
-    store.addNotification({
-      title: "Create Account",
-      message: "Create account successfully",
-      type: "success",
-      insert: "top",
-      container: "top-right",
-      animationIn: ["animated", "zoomIn"],
-      animationOut: ["animated", "zoomOut"],
-      dismiss: {
-        duration: 3000
-      }
-    });
-  };
-
   const handleSubmit = event => {
     event.preventDefault();
     event.stopPropagation();
@@ -60,7 +44,11 @@ function RegisterForm({ register }) {
         password: password
       }).finally(() => {
         setDisableControls(false);
-        addNotification();
+        Utils.addNotification(
+          "Create Account",
+          "Create account successfully",
+          "success"
+        );
       });
   };
 
