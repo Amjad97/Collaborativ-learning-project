@@ -3,7 +3,7 @@ const UserRequests = (requestInstance, baseUrl) => ({
   fetchUserData: userId =>
     requestInstance.get(`${baseUrl}/auth/user/${userId}`),
   updateUserData: userData =>
-    requestInstance.patch(`${baseUrl}/auth/update_profile/`, userData),
+    requestInstance.post(`${baseUrl}/auth/update_profile/`, userData),
   uploadImage: Image => requestInstance.post(`${baseUrl}/upload_image/`, Image),
   getUserQuestions: () => requestInstance.get(`${baseUrl}/questions/my`),
   getUserAnswer: () => requestInstance.get(`${baseUrl}/questions/answer/my`),

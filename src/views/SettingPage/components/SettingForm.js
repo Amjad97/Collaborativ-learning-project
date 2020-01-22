@@ -44,19 +44,22 @@ function SettingForm(props) {
     setDisableControls(false);
     updateUserData &&
       updateUserData({
-        username: userName,
         first_name: firstName,
         last_name: lastName,
         title: title,
         description: description
-      }).finally(() => {
-        setDisableControls(false);
-        Utils.addNotification(
-          "Update Profile",
-          "Updated successfully",
-          "success"
-        );
-      });
+      })
+        .then(res => {
+          console.log(res);
+        })
+        .finally(() => {
+          setDisableControls(false);
+          Utils.addNotification(
+            "Update Profile",
+            "Updated successfully",
+            "success"
+          );
+        });
   };
   const Image = myprofile.image.length === 0 ? avatar : userData.image;
 
@@ -87,12 +90,11 @@ function SettingForm(props) {
                 <Input
                   name="userName"
                   type="text"
-                  validations="isExisty"
                   value={userName}
                   placeholder="User Name"
                   onChange={e => setUserName(e.target.value)}
-                  required
                   autoComplete="off"
+                  disabled
                 />
               </div>
               <span
