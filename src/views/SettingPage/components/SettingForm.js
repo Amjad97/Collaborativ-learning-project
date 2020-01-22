@@ -17,15 +17,6 @@ function SettingForm(props) {
   const classes = useStyles();
   const { updateUserData, fetchMyData, myprofile } = props.store.userStore;
   const [userData, setUserData] = useState({});
-  useEffect(() => {
-    async function getData() {
-      await fetchMyData();
-      setUserData(myprofile);
-    }
-    getData();
-  }, [fetchMyData, myprofile]);
-
-  const [userImage, setUserImage] = useState("");
   const [userName, setUserName] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -33,17 +24,39 @@ function SettingForm(props) {
   const [description, setDescription] = useState("");
   const [canSubmit, setCanSubmit] = useState(false);
   const [disableControls, setDisableControls] = useState(false);
+  useEffect(() => {
+    async function getData() {
+      await fetchMyData();
+      setUserData(myprofile);
+      setUserName(userData.username);
+      setFirstName(userData.firstName);
+      setLastName(userData.lastName);
+      setTitle(userData.title);
+      setDescription(userData.description);
+    }
+    getData();
+  }, [fetchMyData, myprofile, userData]);
 
   const handleSubmit = event => {
     event.preventDefault();
     event.stopPropagation();
     setDisableControls(true);
     setDisableControls(false);
-    Utils.addNotification("Update Profile", "Update successfully", "success");
-    // updateUserData &&
-    //   updateUserData({}).finally(() => {
-    //     setDisableControls(false);
-    //   });
+    updateUserData &&
+      updateUserData({
+        username: userName,
+        first_name: firstName,
+        last_name: lastName,
+        title: title,
+        description: description
+      }).finally(() => {
+        setDisableControls(false);
+        Utils.addNotification(
+          "Update Profile",
+          "Updated successfully",
+          "success"
+        );
+      });
   };
   const Image = myprofile.image.length === 0 ? avatar : userData.image;
 
@@ -60,7 +73,7 @@ function SettingForm(props) {
               className={classes.userImage}
             />
             <div className={classes.uploadIcon}>
-              <InputFile />
+              <InputFile uploadImage={myprofile.uploadImage} />
             </div>
           </div>
           <Formsy
@@ -75,7 +88,7 @@ function SettingForm(props) {
                   name="userName"
                   type="text"
                   validations="isExisty"
-                  value={userData.username}
+                  value={userName}
                   placeholder="User Name"
                   onChange={e => setUserName(e.target.value)}
                   required

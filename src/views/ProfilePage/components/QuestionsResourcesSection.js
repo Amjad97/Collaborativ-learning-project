@@ -8,7 +8,7 @@ import NoResources from "../../../shared/components/EmptyContent/NoResources";
 import styles from "../style/style";
 const useStyles = makeStyles(styles);
 
-function QuestionsResourcesSection({ resources, questions }) {
+function QuestionsResourcesSection({ resources, questions, categories }) {
   const classes = useStyles();
 
   const [Selected, setSelected] = useState("Questions");
@@ -52,7 +52,9 @@ function QuestionsResourcesSection({ resources, questions }) {
             {resources.length === 0 ? (
               <NoResources text="You Have No Resources" />
             ) : (
-              resources.map(resource => <Resource resource={resource} />)
+              resources.map(resource => (
+                <Resource resource={resource} categories={categories} />
+              ))
             )}
           </div>
         )}

@@ -32,6 +32,7 @@ const userStore = types
       try {
         const response = yield UserService.updateUserData(userData);
         self.user = response;
+        self.fetchMyData();
       } catch (error) {
         console.log(error);
       }

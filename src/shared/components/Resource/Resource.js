@@ -32,7 +32,7 @@ function Resource({ resource, categories }) {
     const categoryItem = categories.filter(item => item.id === category);
     setCategoryName(categoryItem[0].name);
   }, [category, categories]);
-
+  console.log(categories);
   return (
     <Card style={{ marginTop: 20 }}>
       <ExpansionPanel>

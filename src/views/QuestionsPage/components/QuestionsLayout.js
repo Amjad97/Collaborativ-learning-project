@@ -38,7 +38,6 @@ function QuestionsLayout({ categories, categoryId, store, isLoggedIn }) {
     setOpen(false);
   };
 
-  console.log(questionsData);
   return (
     <Grid container spacing={3} className={classes.container}>
       <Grid item xs={8}>

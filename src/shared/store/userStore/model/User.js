@@ -17,7 +17,7 @@ const user = types
     password: types.optional(types.string, ""),
     resources: types.array(resource, []),
     questions: types.array(question, []),
-    answers: types.array(answer, []),
+    answers: types.array(answer, [])
   })
   .actions(self => ({
     fetchUserQuestions: flow(function* fetchUserQuestions() {
@@ -40,6 +40,14 @@ const user = types
       try {
         const response = yield UserService.getUserAnswer();
         self.answers = response;
+      } catch (err) {
+        console.log(err);
+      }
+    }),
+    uploadImage: flow(function* uploadImage(Image) {
+      try {
+        const response = yield UserService.uploadImage(Image);
+        self.image = response;
       } catch (err) {
         console.log(err);
       }

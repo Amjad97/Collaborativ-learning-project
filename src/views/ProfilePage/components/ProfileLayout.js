@@ -13,17 +13,19 @@ function ProfileLayout({ userId, store }) {
   const [resourcesData, setResourcesData] = useState([]);
 
   const { fetchUserData, fetchMyData, myprofile, user } = store.userStore;
+  const { fetchCategories, categories } = store.categoriesStore;
 
   useEffect(() => {
     async function getData() {
       await fetchMyData();
+      await fetchCategories();
       await myprofile.fetchUserQuestions();
       await myprofile.fetchUserResources();
       setQuestionsData(myprofile.questions);
       setResourcesData(myprofile.resources);
     }
     getData();
-  }, [fetchMyData, myprofile]);
+  }, [fetchMyData, fetchCategories, myprofile]);
 
   const userImage = myprofile.image.length === 0 ? Image : myprofile.image;
 
@@ -40,7 +42,9 @@ function ProfileLayout({ userId, store }) {
             <div style={{ marginLeft: 20 }}>
               <div className={classes.userName}>{myprofile.username}</div>
               <div className={classes.userInformation}>{myprofile.title}</div>
-              <div className={classes.userDescription}>{myprofile.description}</div>
+              <div className={classes.userDescription}>
+                {myprofile.description}
+              </div>
               <div className={classes.numQR}>
                 <p>{questionsData.length}</p>
                 <p className={classes.leftMargin}>Questions</p>
@@ -54,6 +58,7 @@ function ProfileLayout({ userId, store }) {
           <QuestionsResourcesSection
             resources={resourcesData}
             questions={questionsData}
+            categories={categories}
           />
         </Paper>
       </Grid>

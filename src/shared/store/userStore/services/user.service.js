@@ -8,6 +8,8 @@ const UserService = {
   // updateUserData
   updateUserData: userData =>
     apiRequests.UserApiRequests.updateUserData(userData),
+  // uploadImage
+  uploadImage: Image => apiRequests.UserApiRequests.uploadImage(Image),
   // login
   login: userData => apiRequests.UserApiRequests.login(userData),
   // register

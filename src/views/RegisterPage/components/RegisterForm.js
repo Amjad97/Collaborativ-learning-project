@@ -46,7 +46,7 @@ function RegisterForm({ register }) {
         setDisableControls(false);
         Utils.addNotification(
           "Create Account",
-          "Create account successfully",
+          "Created successfully",
           "success"
         );
       });
