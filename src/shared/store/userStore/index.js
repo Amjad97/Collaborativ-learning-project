@@ -28,9 +28,9 @@ const userStore = types
       }
     }),
 
-    updateUserData: flow(function* updateUserData(userData) {
+    updateMyData: flow(function* updateMyData(userData) {
       try {
-        const response = yield UserService.updateUserData(userData);
+        const response = yield UserService.updateMyData(userData);
         self.user = response;
         self.fetchMyData();
       } catch (error) {

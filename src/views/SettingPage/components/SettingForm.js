@@ -15,7 +15,7 @@ const useStyles = makeStyles(styles);
 
 function SettingForm(props) {
   const classes = useStyles();
-  const { updateUserData, fetchMyData, myprofile } = props.store.userStore;
+  const { updateMyData, fetchMyData, myprofile } = props.store.userStore;
   const [userData, setUserData] = useState({});
   const [userName, setUserName] = useState("");
   const [firstName, setFirstName] = useState("");
@@ -42,8 +42,8 @@ function SettingForm(props) {
     event.stopPropagation();
     setDisableControls(true);
     setDisableControls(false);
-    updateUserData &&
-      updateUserData({
+    updateMyData &&
+      updateMyData({
         first_name: firstName,
         last_name: lastName,
         title: title,
@@ -61,7 +61,10 @@ function SettingForm(props) {
           );
         });
   };
-  const Image = myprofile.image.length === 0 ? avatar : userData.image;
+  const Image =
+    myprofile.picture.length === 0
+      ? avatar
+      : `http://localhost:8000${myprofile.picture}`;
 
   return (
     <Card className={classes.SettingForm}>
@@ -76,7 +79,7 @@ function SettingForm(props) {
               className={classes.userImage}
             />
             <div className={classes.uploadIcon}>
-              <InputFile uploadImage={myprofile.uploadImage} />
+              <InputFile updateMyData={updateMyData} />
             </div>
           </div>
           <Formsy

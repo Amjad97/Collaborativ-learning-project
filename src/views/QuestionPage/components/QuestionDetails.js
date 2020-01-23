@@ -19,6 +19,8 @@ function QuestionDetails({ questionId, store, isLoggedIn }) {
   const [question, setQuestion] = useState({});
   const [answers, setAnswers] = useState([]);
 
+  const { myprofile } = store.userStore;
+
   useEffect(() => {
     window.scrollTo(0, 0);
     document.body.scrollTop = 0;
@@ -36,7 +38,7 @@ function QuestionDetails({ questionId, store, isLoggedIn }) {
     getData(questionId);
     setQuestion(question);
     setAnswers(question.answers);
-  }, [store, questionId]);
+  }, [store, questionId, myprofile]);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -46,6 +48,11 @@ function QuestionDetails({ questionId, store, isLoggedIn }) {
     setOpen(false);
   };
 
+  const Image =
+    myprofile.picture.length === 0
+      ? userImage
+      : `http://localhost:8000${myprofile.picture}`;
+
   return (
     <Grid container spacing={3} className={classes.container}>
       <Grid item xs={8}>
@@ -53,7 +60,7 @@ function QuestionDetails({ questionId, store, isLoggedIn }) {
           {isLoggedIn ? (
             <>
               <div className={classes.questionForm} onClick={handleClickOpen}>
-                <Avatar alt="Remy Sharp" src={userImage} />
+                <Avatar alt="Remy Sharp" src={Image} />
                 <div style={{ marginLeft: 20 }}>
                   <div className={classes.questionFormTitle}>
                     What's your question ?

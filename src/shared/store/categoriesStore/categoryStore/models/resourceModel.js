@@ -4,6 +4,7 @@ const resource = types.model({
   id: types.optional(types.number, 0),
   user: types.optional(types.number, 0),
   username: types.optional(types.string, ""),
+  picture: types.optional(types.string, ""),
   category: types.optional(types.number, 0),
   createdAt: types.optional(types.string, ""),
   updatedAt: types.optional(types.string, ""),

@@ -60,7 +60,6 @@ function LoginForm({ login }) {
       });
   };
 
-  console.log(rememberMe);
   return (
     <Card className={classes.LoginForm}>
       <CardContent className={classes.CardContent}>

@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import {
   Button,
   Popper,
@@ -32,8 +32,9 @@ const useStyle = makeStyles(theme => ({
   }
 }));
 
-function UserMenu({ userId, store }) {
+function UserMenu({ store }) {
   const classes = useStyle();
+  const { fetchMyData, myprofile } = store.userStore;
   const [open, setOpen] = useState(false);
   const anchorRef = useRef(null);
 
@@ -51,7 +52,7 @@ function UserMenu({ userId, store }) {
 
   const ProfileClick = event => {
     handleClose(event);
-    history.push(`/profile/${userId}`);
+    history.push(`/profile`);
   };
   const SettingsClick = event => {
     handleClose(event);
@@ -70,14 +71,24 @@ function UserMenu({ userId, store }) {
     }
   }
 
-  const prevOpen = React.useRef(open);
-  React.useEffect(() => {
+  const prevOpen = useRef(open);
+
+  useEffect(() => {
+    async function getData() {
+      await fetchMyData();
+    }
+    getData();
     if (prevOpen.current === true && open === false) {
       anchorRef.current.focus();
     }
 
     prevOpen.current = open;
-  }, [open]);
+  }, [fetchMyData, open]);
+
+  const Image =
+    myprofile.picture.length === 0
+      ? userImage
+      : `http://localhost:8000${myprofile.picture}`;
 
   return (
     <div>
@@ -85,7 +96,7 @@ function UserMenu({ userId, store }) {
         ref={anchorRef}
         aria-controls={open ? "menu-list-grow" : undefined}
         aria-haspopup="true"
-        startIcon={<Avatar src={userImage} />}
+        startIcon={<Avatar src={Image} />}
         endIcon={<KeyboardArrowDown className={classes.FontColor} />}
         onClick={handleToggle}
         className={classes.Button}

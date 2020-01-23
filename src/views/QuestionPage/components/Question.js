@@ -9,12 +9,14 @@ const useStyles = makeStyles(styles);
 
 function Question({ question }) {
   const classes = useStyles();
-  const { username, title, description, createdAt } = question;
+  const { username, picture, title, description, createdAt } = question;
+  const Image =
+    picture && picture.length === 0 ? userImage : `http://localhost:8000${picture}`;
   return (
     <Paper style={{ padding: 20 }}>
       <div className={classes.questionFormTitle}>{title}</div>
       <div style={{ display: "flex", marginTop: 10 }}>
-        <Avatar alt="Remy Sharp" src={userImage} />
+        <Avatar alt="Remy Sharp" src={Image} />
         <div style={{ marginLeft: 10 }}>
           <div style={{ color: "#555554", fontWeight: "900" }}>{username}</div>
           <div style={{ color: "#555554", fontSize: 12 }}>

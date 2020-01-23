@@ -109,7 +109,7 @@ function NavBar({ path, categoryId, categoryRef, isLoggedIn }) {
             </span>
           )}
           {LoggedIn ? (
-            <UserMenu userId={1} />
+            <UserMenu />
           ) : isHomePage ? (
             <>
               <NavLink to="/login" tag={Link} className={classes.navBarButtons}>

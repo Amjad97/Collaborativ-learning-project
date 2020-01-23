@@ -6,19 +6,23 @@ const UserService = {
   // fetchUser
   getUserData: userId => apiRequests.UserApiRequests.fetchUserData(userId),
   // updateUserData
-  updateUserData: userData =>
-    apiRequests.UserApiRequests.updateUserData(userData),
-  // uploadImage
-  uploadImage: Image => apiRequests.UserApiRequests.uploadImage(Image),
+  updateMyData: userData =>
+    apiRequests.UserApiRequests.updateMyData(userData),
   // login
   login: userData => apiRequests.UserApiRequests.login(userData),
   // register
   register: userData => apiRequests.UserApiRequests.register(userData),
-  // fetchUser questions
-  getUserQuestions: () => apiRequests.UserApiRequests.getUserQuestions(),
-  // fetchUser answers
-  getUserAnswer: () => apiRequests.UserApiRequests.getUserAnswer(),
-  // fetchUser resources
-  getUserResources: () => apiRequests.UserApiRequests.getUserResources()
+  // fetch my questions
+  getMyQuestions: () => apiRequests.UserApiRequests.getMyQuestions(),
+  // fetch my answers
+  getMyAnswer: () => apiRequests.UserApiRequests.getMyAnswer(),
+  // fetch my resources
+  getMyResources: () => apiRequests.UserApiRequests.getMyResources(),
+  // fetch user questions
+  getUserQuestions: (userId) => apiRequests.UserApiRequests.getUserQuestions(userId),
+  // fetch user answers
+  getUserAnswer: (userId) => apiRequests.UserApiRequests.getUserAnswer(userId),
+  // fetch user resources
+  getUserResources: (userId) => apiRequests.UserApiRequests.getUserResources(userId)
 };
 export default UserService;

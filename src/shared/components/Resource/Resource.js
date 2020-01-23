@@ -20,6 +20,7 @@ function Resource({ resource, categories }) {
   const [categoryName, setCategoryName] = useState("");
   const {
     username,
+    picture,
     title,
     description,
     platform,
@@ -32,7 +33,8 @@ function Resource({ resource, categories }) {
     const categoryItem = categories.filter(item => item.id === category);
     setCategoryName(categoryItem[0].name);
   }, [category, categories]);
-  console.log(categories);
+  const Image =
+    picture.length === 0 ? userImage : `http://localhost:8000${picture}`;
   return (
     <Card style={{ marginTop: 20 }}>
       <ExpansionPanel>
@@ -42,7 +44,7 @@ function Resource({ resource, categories }) {
           <div style={{ marginBottom: 20 }}>
             <div className={classes.resourceFormTitle}>{title}</div>
             <div style={{ display: "flex", marginTop: 10 }}>
-              <Avatar alt="Remy Sharp" src={userImage} />
+              <Avatar alt="Remy Sharp" src={Image} />
               <div style={{ marginLeft: 10 }}>
                 <div style={{ color: "#555554", fontWeight: "900" }}>
                   {username}

@@ -17,6 +17,7 @@ function QuestionsLayout({ categories, categoryId, store, isLoggedIn }) {
   const [categoryData, setCategoryDate] = useState({});
   const [questionsData, setQuestionsData] = useState([]);
 
+  const { myprofile } = store.userStore;
   const { fetchCategory, category } = store.categoriesStore;
 
   useEffect(() => {
@@ -29,7 +30,7 @@ function QuestionsLayout({ categories, categoryId, store, isLoggedIn }) {
       setQuestionsData(category.questions);
     }
     getData(categoryId);
-  }, [categoryId, category, fetchCategory]);
+  }, [categoryId, category, fetchCategory, myprofile]);
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -38,6 +39,11 @@ function QuestionsLayout({ categories, categoryId, store, isLoggedIn }) {
     setOpen(false);
   };
 
+  const Image =
+    myprofile.picture.length === 0
+      ? userImage
+      : `http://localhost:8000${myprofile.picture}`;
+
   return (
     <Grid container spacing={3} className={classes.container}>
       <Grid item xs={8}>
@@ -45,7 +51,7 @@ function QuestionsLayout({ categories, categoryId, store, isLoggedIn }) {
           {isLoggedIn ? (
             <>
               <div className={classes.questionForm} onClick={handleClickOpen}>
-                <Avatar alt="Remy Sharp" src={userImage} />
+                <Avatar alt="Remy Sharp" src={Image} />
                 <div style={{ marginLeft: 20 }}>
                   <div className={classes.questionFormTitle}>
                     What's your question ?

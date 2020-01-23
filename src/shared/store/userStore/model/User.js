@@ -7,12 +7,12 @@ import answer from "../../categoriesStore/categoryStore/models/answerModel";
 const user = types
   .model({
     id: types.optional(types.number, 0),
-    firstName: types.optional(types.string, ""),
-    lastName: types.optional(types.string, ""),
+    firstName: types.maybeNull(types.optional(types.string, "")),
+    lastName: types.maybeNull(types.optional(types.string, "")),
     username: types.optional(types.string, ""),
-    title: types.optional(types.string, ""),
-    description: types.optional(types.string, ""),
-    image: types.optional(types.string, ""),
+    title: types.maybeNull(types.optional(types.string, "")),
+    description: types.maybeNull(types.optional(types.string, "")),
+    picture: types.optional(types.string, ""),
     email: types.optional(types.string, ""),
     password: types.optional(types.string, ""),
     resources: types.array(resource, []),
@@ -20,34 +20,50 @@ const user = types
     answers: types.array(answer, [])
   })
   .actions(self => ({
-    fetchUserQuestions: flow(function* fetchUserQuestions() {
+    fetchMyQuestions: flow(function* fetchMyQuestions() {
       try {
-        const response = yield UserService.getUserQuestions();
+        const response = yield UserService.getMyQuestions();
         self.questions = response;
       } catch (err) {
         console.log(err);
       }
     }),
-    fetchUserResources: flow(function* fetchUserResources() {
+    fetchMyResources: flow(function* fetchMyResources() {
       try {
-        const response = yield UserService.getUserResources();
+        const response = yield UserService.getMyResources();
         self.resources = response;
       } catch (err) {
         console.log(err);
       }
     }),
-    fetchUserAnswer: flow(function* fetchUserAnswer() {
+    fetchMyAnswer: flow(function* fetchMyAnswer() {
       try {
-        const response = yield UserService.getUserAnswer();
+        const response = yield UserService.getMyAnswer();
         self.answers = response;
       } catch (err) {
         console.log(err);
       }
     }),
-    uploadImage: flow(function* uploadImage(Image) {
+    fetchUserQuestions: flow(function* fetchUserQuestions(userId) {
       try {
-        const response = yield UserService.uploadImage(Image);
-        self.image = response;
+        const response = yield UserService.getUserQuestions(userId);
+        self.questions = response;
+      } catch (err) {
+        console.log(err);
+      }
+    }),
+    fetchUserResources: flow(function* fetchUserResources(userId) {
+      try {
+        const response = yield UserService.getUserResources(userId);
+        self.resources = response;
+      } catch (err) {
+        console.log(err);
+      }
+    }),
+    fetchUserAnswer: flow(function* fetchUserAnswer(userId) {
+      try {
+        const response = yield UserService.getUserAnswer(userId);
+        self.answers = response;
       } catch (err) {
         console.log(err);
       }

@@ -38,8 +38,14 @@ export default function App() {
             render={props => <QuestionPage {...props} />}
           />
           <Route
+            path="/profile"
+            render={props => <ProfilePage {...props} />}
+            exact
+          />
+          <Route
             path="/profile/:id"
             render={props => <ProfilePage {...props} />}
+            exact
           />
           <Route
             path="/settings"

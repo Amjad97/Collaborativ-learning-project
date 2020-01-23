@@ -16,7 +16,7 @@ function ResourcesLayout({ categories, categoryId, store, isLoggedIn }) {
   const [open, setOpen] = useState(false);
   const [categoryData, setCategoryDate] = useState({});
   const [resourcesData, setResourcesData] = useState([]);
-
+  const { myprofile } = store.userStore;
   const { fetchCategory, category } = store.categoriesStore;
 
   useEffect(() => {
@@ -29,7 +29,7 @@ function ResourcesLayout({ categories, categoryId, store, isLoggedIn }) {
       setResourcesData(category.resources);
     }
     getData(categoryId);
-  }, [categoryId, category, fetchCategory]);
+  }, [categoryId, category, fetchCategory, myprofile]);
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -38,6 +38,10 @@ function ResourcesLayout({ categories, categoryId, store, isLoggedIn }) {
     setOpen(false);
   };
 
+  const Image =
+    myprofile.picture.length === 0
+      ? userImage
+      : `http://localhost:8000${myprofile.picture}`;
   return (
     <Grid container spacing={3} className={classes.container}>
       <Grid item xs={8}>
@@ -45,7 +49,7 @@ function ResourcesLayout({ categories, categoryId, store, isLoggedIn }) {
           {isLoggedIn ? (
             <>
               <div className={classes.resourceForm} onClick={handleClickOpen}>
-                <Avatar alt="Remy Sharp" src={userImage} />
+                <Avatar alt="Remy Sharp" src={Image} />
                 <div style={{ marginLeft: 20 }}>
                   <div className={classes.resourceFormTitle}>
                     Do you have a new resource?

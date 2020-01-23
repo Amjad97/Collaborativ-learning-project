@@ -10,12 +10,28 @@ const useStyle = makeStyles(style);
 
 function Question({ question }) {
   const classes = useStyle();
-  const { username, id, title, description, createdAt } = question;
+  const {
+    username,
+    picture,
+    id,
+    title,
+    description,
+    createdAt,
+    user
+  } = question;
+  const handleQuestionClick = () => {
+    if (localStorage.getItem("isLoggedIn") === "true")
+      history.push(`/profile/${user}`);
+  };
+  const Image =
+    picture.length === 0 ? userImage : `http://localhost:8000${picture}`;
   return (
     <Paper style={{ padding: 20, marginTop: 20 }}>
-      <div className={classes.questionFormTitle}>{title}</div>
-      <div style={{ display: "flex", marginTop: 10 }}>
-        <Avatar alt="Remy Sharp" src={userImage} />
+      <div
+        style={{ display: "flex", cursor: "pointer" }}
+        onClick={handleQuestionClick}
+      >
+        <Avatar alt="Remy Sharp" src={Image} />
         <div style={{ marginLeft: 10 }}>
           <div style={{ color: "#555554", fontWeight: "900" }}>{username}</div>
           <div style={{ color: "#555554", fontSize: 12 }}>
@@ -23,6 +39,7 @@ function Question({ question }) {
           </div>
         </div>
       </div>
+      <div className={classes.questionFormTitle}>{title}</div>
       <div className={classes.questionFormSubTitle}>{description}</div>
       <div
         style={{
