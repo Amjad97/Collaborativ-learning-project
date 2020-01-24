@@ -3,6 +3,7 @@ import { inject, observer } from "mobx-react";
 import ResourcesLayout from "./components/ResourcesLayout";
 import NavBar from "../../shared/components/Navbars/NavBar";
 import { isEqual } from "lodash";
+import ReactNotification from "react-notifications-component";
 
 function ResourcesPage(props) {
   useEffect(() => {
@@ -21,6 +22,7 @@ function ResourcesPage(props) {
 
   return (
     <div style={{ position: "relative" }}>
+      <ReactNotification />
       <NavBar categoryId={id} path={path} isLoggedIn={isLoggedIn} />
       <ResourcesLayout
         categories={categories}

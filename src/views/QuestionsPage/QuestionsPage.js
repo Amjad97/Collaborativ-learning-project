@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { inject, observer } from "mobx-react";
 import QuestionsLayout from "./components/QuestionsLayout";
 import NavBar from "../../shared/components/Navbars/NavBar";
+import ReactNotification from "react-notifications-component";
 import { isEqual } from "lodash";
 
 function QuestionsPage(props) {
@@ -19,6 +20,7 @@ function QuestionsPage(props) {
   const { categories } = props.store.categoriesStore;
   return (
     <div style={{ position: "relative" }}>
+      <ReactNotification />
       <NavBar categoryId={id} path={path} isLoggedIn={isLoggedIn} />
       <QuestionsLayout
         categories={categories}

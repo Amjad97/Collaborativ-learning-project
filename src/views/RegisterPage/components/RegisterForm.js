@@ -5,8 +5,7 @@ import { Card, CardContent, Divider } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Formsy from "formsy-react";
 import { addValidationRule } from "formsy-react";
-
-import Utils from "shared/utils/UtilFunctions";
+import ReactNotification from "react-notifications-component";
 
 import CustomButton from "shared/components/CustomButton/CustomButton";
 import Input from "shared/components/Input/LoginInput";
@@ -44,11 +43,6 @@ function RegisterForm({ register }) {
         password: password
       }).finally(() => {
         setDisableControls(false);
-        Utils.addNotification(
-          "Create Account",
-          "Created successfully",
-          "success"
-        );
       });
   };
 
@@ -56,6 +50,7 @@ function RegisterForm({ register }) {
 
   return (
     <>
+      <ReactNotification />
       <Card className={classes.SignUpForm}>
         <CardContent className={classes.CardContent}>
           <div className={classes.SignUpText}>Sign up</div>

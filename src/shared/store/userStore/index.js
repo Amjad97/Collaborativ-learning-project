@@ -2,6 +2,7 @@ import { types, flow } from "mobx-state-tree";
 import user from "./model/User";
 import UserService from "./services/user.service";
 import history from "../../../history";
+import Utils from "shared/utils/UtilFunctions";
 
 const userStore = types
   .model({
@@ -53,14 +54,31 @@ const userStore = types
       }
     }),
 
-    register: flow(function* login(userData) {
+    register: async userData => {
       try {
-        yield UserService.register(userData);
-        history.push("/login");
+        const response = await UserService.register(userData);
+        console.log(response);
+        if (!!response) {
+          localStorage.setItem("rememberMe", "false");
+          localStorage.setItem("userName", "");
+          localStorage.setItem("password", "");
+          history.push("/login");
+          Utils.addNotification(
+            "Create Account",
+            "Created successfully",
+            "success"
+          );
+        } else {
+          Utils.addNotification(
+            "Create Account",
+            "Username is already exist",
+            "danger"
+          );
+        }
       } catch (err) {
         console.log(err.message);
       }
-    }),
+    },
     logout: function logout() {
       try {
         localStorage.setItem("isLoggedIn", "false");

@@ -6,6 +6,8 @@ import question from "./models/questionModel";
 import ResourcesService from "./services/resources.service";
 import QuestionsService from "./services/questions.service";
 
+import Utils from "shared/utils/UtilFunctions";
+
 const categoryStore = types
   .model({
     id: types.optional(types.number, 0),
@@ -44,16 +46,34 @@ const categoryStore = types
     }),
     addResource: flow(function* addResource(payload) {
       try {
-        yield ResourcesService.addResource(payload);
+        const response = yield ResourcesService.addResource(payload);
         self.fetchResources(payload.category);
+        if (!!response) {
+          Utils.addNotification(
+            "Add Resource",
+            "Added successfully",
+            "success"
+          );
+        } else {
+          Utils.addNotification("Add Resource", "Failed to add", "danger");
+        }
       } catch (error) {
         console.log(error);
       }
     }),
     addQuestion: flow(function* addQuestion(payload) {
       try {
-        yield QuestionsService.addQuestion(payload);
+        const response = yield QuestionsService.addQuestion(payload);
         self.fetchQuestions(payload.category);
+        if (!!response) {
+          Utils.addNotification(
+            "Ask Question",
+            "Asked successfully",
+            "success"
+          );
+        } else {
+          Utils.addNotification("Ask Question", "Failed to ask", "danger");
+        }
       } catch (error) {
         console.log(error);
       }
