@@ -48,22 +48,24 @@ class Request {
 
   async send(method, url, data = {}) {
     const userToken = localStorage.getItem("userToken");
-    if (userToken.length !== 0) {
-      return axios({
-        url,
-        method,
-        data,
-        headers: {
-          Authorization: `Bearer ${userToken}`
-        }
-      })
-        .then(response => processResponse(response))
-        .catch(error => console.log(error));
+    if (userToken) {
+      if (userToken.length !== 0) {
+        return axios({
+          url,
+          method,
+          data,
+          headers: {
+            Authorization: `Bearer ${userToken}`
+          }
+        })
+          .then(response => processResponse(response))
+          .catch(error => console.log(error));
+      }
     }
     return axios({
       url,
       method,
-      data
+      data,
     })
       .then(response => processResponse(response))
       .catch(error => console.log(error));

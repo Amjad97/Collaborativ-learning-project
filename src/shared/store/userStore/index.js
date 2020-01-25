@@ -54,6 +54,11 @@ const userStore = types
       }
     }),
 
+    googleAuth: () => {
+      window.location.href =
+        "http://kareemayesh.com:8000/auth/social-auth/login/google-oauth2/";
+      localStorage.setItem("isLoggedIn", "true");
+    },
     register: async userData => {
       try {
         const response = await UserService.register(userData);

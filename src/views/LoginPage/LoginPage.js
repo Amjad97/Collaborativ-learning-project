@@ -14,14 +14,14 @@ const useStyles = makeStyles(styles);
 function LoginPage(props) {
   const classes = useStyles(props);
   const { path } = props.match;
-  const { login } = props.store.userStore;
+  const { login, googleAuth } = props.store.userStore;
 
   return (
     <div>
       <ReactNotification />
       <NavBar path={path} />
       <div className={classes.LoginCard}>
-        <LoginForm login={login} />
+        <LoginForm login={login} googleAuth={googleAuth} />
       </div>
     </div>
   );

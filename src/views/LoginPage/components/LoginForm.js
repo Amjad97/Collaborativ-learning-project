@@ -20,7 +20,7 @@ import styles from "../style/style";
 
 const useStyles = makeStyles(styles);
 
-function LoginForm({ login }) {
+function LoginForm({ login, googleAuth }) {
   const classes = useStyles();
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
@@ -58,6 +58,10 @@ function LoginForm({ login }) {
       login({ username: userName, password: password }).finally(() => {
         setDisableControls(false);
       });
+  };
+
+  const handleGoogleAuth = () => {
+    googleAuth();
   };
 
   return (
@@ -171,18 +175,16 @@ function LoginForm({ login }) {
               Sign up
             </CustomButton>
           </div>
-          <div style={{ marginTop: 10 }}>
-            <button
-              className={classNames(
-                "ui red google button",
-                classes.googleButton
-              )}
-            >
-              <i className="google icon" />
-              Sign In with google
-            </button>
-          </div>
         </Formsy>
+        <div style={{ marginTop: 10 }}>
+          <button
+            className={classNames("ui red google button", classes.googleButton)}
+            onClick={handleGoogleAuth}
+          >
+            <i className="google icon" />
+            Sign In with google
+          </button>
+        </div>
       </CardContent>
     </Card>
   );
