@@ -42,27 +42,34 @@ const userStore = types
     login: flow(function* login(userData) {
       try {
         const response = yield UserService.login(userData);
-        const accessToken = response.access;
-        const refreshToken = response.refresh;
-        localStorage.setItem("username", userData.username);
-        localStorage.setItem("userToken", accessToken);
-        localStorage.setItem("refreshToken", refreshToken);
-        localStorage.setItem("isLoggedIn", "true");
-        history.push("/home");
+        if (!!response) {
+          const accessToken = response.access;
+          const refreshToken = response.refresh;
+          localStorage.setItem("userToken", accessToken);
+          localStorage.setItem("refreshToken", refreshToken);
+          localStorage.setItem("isLoggedIn", "true");
+          history.push("/home");
+        } else {
+          Utils.addNotification(
+            "Login",
+            "Invalid username or password",
+            "danger"
+          );
+        }
       } catch (err) {
         console.log(err);
       }
     }),
 
-    googleAuth: () => {
+    googleAuth: flow(function googleAuth() {
       window.location.href =
         "http://kareemayesh.com:8000/auth/social-auth/login/google-oauth2/";
       localStorage.setItem("isLoggedIn", "true");
-    },
+    }),
+
     register: async userData => {
       try {
         const response = await UserService.register(userData);
-        console.log(response);
         if (!!response) {
           localStorage.setItem("rememberMe", "false");
           localStorage.setItem("userName", "");
@@ -87,7 +94,6 @@ const userStore = types
     logout: function logout() {
       try {
         localStorage.setItem("isLoggedIn", "false");
-        localStorage.setItem("username", "");
         localStorage.setItem("userToken", "");
         localStorage.setItem("refreshToken", "");
         history.push("/");

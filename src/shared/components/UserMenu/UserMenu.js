@@ -101,7 +101,7 @@ function UserMenu({ store }) {
         onClick={handleToggle}
         className={classes.Button}
       >
-        {localStorage.getItem("username") || "user_name"}
+        {myprofile.username || "user_name"}
       </Button>
       <Popper
         open={open}
