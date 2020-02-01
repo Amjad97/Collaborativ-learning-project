@@ -13,7 +13,7 @@ import AddAnswer from "./AddAnswer";
 
 const useStyles = makeStyles(styles);
 
-function QuestionDetails({ questionId, store, isLoggedIn }) {
+function QuestionDetails({ categoryId, questionId, store, isLoggedIn }) {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   const [question, setQuestion] = useState({});
@@ -96,7 +96,7 @@ function QuestionDetails({ questionId, store, isLoggedIn }) {
       <Grid item xs={4}>
         <div className={classes.RelatedQuestionText}>Related Questions</div>
         <Divider />
-        <RelatedQuestion />
+        <RelatedQuestion categoryId={categoryId} questionId={questionId}/>
       </Grid>
     </Grid>
   );

@@ -8,7 +8,7 @@ import { isEqual } from "lodash";
 
 function QuestionPage(props) {
   const [questions, setQuestions] = useState([]);
-  const [categoryId, setCategoryId] = useState(0);
+  const [categoryId, setCategoryId] = useState(1);
   const { fetchAllQuestions, allQuestions } = props.store.categoriesStore;
 
   const {
@@ -37,7 +37,7 @@ function QuestionPage(props) {
   return (
     <div>
       <NavBar isLoggedIn={isLoggedIn} categoryId={categoryId} path={path} />
-      <QuestionDetails questionId={id} isLoggedIn={LoggedIn} />
+      <QuestionDetails categoryId={categoryId} questionId={id} isLoggedIn={LoggedIn} />
     </div>
   );
 }

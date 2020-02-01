@@ -11,7 +11,9 @@ function Question({ question }) {
   const classes = useStyles();
   const { username, picture, title, description, createdAt } = question;
   const Image =
-    picture && picture.length === 0 ? userImage : `http://localhost:8000${picture}`;
+    picture && picture.length === 0
+      ? userImage
+      : `http://localhost:8000${picture}`;
   return (
     <Paper style={{ padding: 20 }}>
       <div className={classes.questionFormTitle}>{title}</div>
